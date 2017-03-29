@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'college_apps/new'
+
+  get 'college_apps/show'
+
   root to: 'pages#home'
 
   get "/dashboard", to: "pages#dashboard"
