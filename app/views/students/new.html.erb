@@ -1,21 +1,21 @@
 <div class="wrapper-form">
   <div class="container-form">
-    <%= simple_form_for @user do |f| %>
+    <%= form_for :user, url: create_student_path do |f| %>
     <div class="text-center">
     <h1>Add a student</h1>
       <p>Keep this username and password for your student</p>
       <p>Student will be prompted to enter a new password when they login for the first time</p>
     </div>
-      <%= f.error_notification %>
+      <%#= f.error_notification %>
       <div class="form-inputs">
-        <%= f.input :name, require: true, autofocus:true %>
-        <%= f.input :email, required: true %>
-        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-        <%= f.input :password_confirmation, required: true %>
+        Name: <%= f.text_field :name, require: true, autofocus:true %>
+        Email: <%= f.text_field :email, type: 'email', required: true %>
+        Pswd: <%= f.text_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        Pswd: <%= f.text_field :password_confirmation, required: true %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
+        <%= f.submit %>
       </div>
     <% end %>
   </div>

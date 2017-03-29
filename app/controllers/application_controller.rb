@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+
+  def check_counselor
+    unless current_user.is_counselor
+      flash[:notice] = "no way"
+      redirect_to root_path
+    end
+  end
 end
