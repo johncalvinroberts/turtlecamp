@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin: 15px 0px
+  margin: 15 0 0 0;
 }
 
 #footer .fa  {
@@ -20,12 +20,3 @@
   font-weight: bolder;
 }
 
-.site{
-  display:flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.site-content{
-  flex:1;
-}
