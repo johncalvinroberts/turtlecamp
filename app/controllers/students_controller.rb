@@ -1,4 +1,7 @@
 class StudentsController < ApplicationController
+  def index
+    @students = current_counselor.students
+  end
 
   def new
     # @student = Student.new(counselor_id: current_counselor.id)

@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="container text-center">
+    <h1>Hello <%= current_counselor.name %></h1>
+    <p>here are your students</p>
+  </div>
+  <div class="container">
+    <% @students.each do |student| %>
+    <div>
+      <p><%= student.name %></p>
+    </div>
+    <% end %>
+    <div>
+      <%= link_to "add a student", new_student_path, class:"btn-default" %>
+    </div>
+  </div>
+
+</div>
