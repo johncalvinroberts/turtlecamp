@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     elsif !resource.is_counselor && resource.sign_in_count== 1
       edit_user_registration_path
     else
-      dashboard_path
+      college_apps_path
     end
   end
 end
