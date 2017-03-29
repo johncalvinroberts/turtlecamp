@@ -10,11 +10,7 @@ class StudentsController < ApplicationController
   end
 
   def new
-    # if current_user.is_counselor
       @user = User.new
-    # else
-      # redirect_to root_path
-    # end
   end
 
   def create
