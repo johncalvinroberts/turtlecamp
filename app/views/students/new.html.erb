@@ -1,0 +1,22 @@
+<div class="wrapper-form">
+  <div class="container-form">
+    <%= simple_form_for @student do |f| %>
+    <div class="text-center">
+    <h1>Add a student</h1>
+      <p>Keep this username and password for your student</p>
+      <p>Student will be prompted to enter a new password when they login for the first time</p>
+    </div>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :name, require: true, autofocus:true %>
+        <%= f.input :email, required: true %>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+    <% end %>
+  </div>
+</div>
