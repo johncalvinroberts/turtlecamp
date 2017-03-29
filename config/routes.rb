@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'tasks/new'
+
+  get 'tasks/create'
+
+  get 'tasks/edit'
+
+  get 'tasks/update'
+
+  get 'tasksnew/create'
+
+  get 'tasksnew/edit'
+
+  get 'tasksnew/update'
+
   root to: 'pages#home'
 
   get "/dashboard", to: "pages#dashboard"
