@@ -5,7 +5,7 @@ class CollegeAppsController < ApplicationController
   end
 
   def create
-    @student = Student.find(params[:student_id])
+    @student = User.find(params[:student_id])
     @college_app = CollegeApp.new(college_app_params)
     @college_app.student_id = @student.id
     if @college_app.save
