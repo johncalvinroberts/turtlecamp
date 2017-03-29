@@ -10,6 +10,6 @@ class AddFieldsToStudents < ActiveRecord::Migration[5.0]
     add_column :students, :toeflwr, :integer
     add_column :students, :toefls, :integer
     add_column :students, :toefll, :integer
-    t.references :counselor, foreign_key: true
+    add_reference :students, :counselor, index: true, foreign_key: true
   end
 end
