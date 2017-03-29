@@ -4,7 +4,6 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.string :name
       t.datetime :due_date
       t.string :status
-      t.boolean :has_attachment
       t.references :college_app, foreign_key: true
 
       t.timestamps
