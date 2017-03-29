@@ -9,7 +9,7 @@
     <% else %>
       <% @students.each do |student| %>
       <div>
-        <p><%= student.name %></p>
+        <p><%= link_to "#{student.name}", student_path(student)%></p>
       </div>
       <% end %>
     <% end %>
