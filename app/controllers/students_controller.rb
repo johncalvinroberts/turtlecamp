@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
     @user.counselor_ref = current_user.id
     @user.is_counselor = false
     if @user.save
-      redirect_to root_path
+      redirect_to student_path(@user)
     else
       render 'new'
     end
