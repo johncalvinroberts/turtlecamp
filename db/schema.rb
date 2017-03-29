@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328081450) do
+ActiveRecord::Schema.define(version: 20170329064941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "format"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_attachments_on_task_id", using: :btree
+  end
+
+  create_table "college_apps", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "deadline"
+    t.string   "category"
+    t.boolean  "status"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_college_apps_on_student_id", using: :btree
+  end
+
+  create_table "colleges", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "counselors", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,6 +59,12 @@ ActiveRecord::Schema.define(version: 20170328081450) do
     t.string   "wechat_id"
     t.index ["email"], name: "index_counselors_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_counselors_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -63,5 +96,19 @@ ActiveRecord::Schema.define(version: 20170328081450) do
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "due_date"
+    t.string   "status"
+    t.boolean  "has_attachment"
+    t.integer  "college_app_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["college_app_id"], name: "index_tasks_on_college_app_id", using: :btree
+  end
+
+  add_foreign_key "attachments", "tasks"
+  add_foreign_key "college_apps", "students"
   add_foreign_key "students", "counselors"
+  add_foreign_key "tasks", "college_apps"
 end

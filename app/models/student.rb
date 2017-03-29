@@ -5,6 +5,10 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :counselor
+  has_many :college_apps
+  has_many :colleges, through: :college_apps
+  has_many :tasks, through: :college_apps
+  has_many :attachments, through: :tasks
 end
 
 
