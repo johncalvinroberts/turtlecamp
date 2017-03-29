@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(version: 20170329092028) do
   create_table "college_apps", force: :cascade do |t|
     t.string   "name"
     t.datetime "deadline"
-    t.string   "category", default: "Reach"
-    t.boolean  "status", default: false
-    t.integer  "student_id"
+
+    t.string   "category"
+    t.boolean  "status"
+    t.integer  "user_id"
+    t.integer  "college_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "college_id"
-    t.index ["student_id"], name: "index_college_apps_on_student_id", using: :btree
+    t.index ["college_id"], name: "index_college_apps_on_college_id", using: :btree
+    t.index ["user_id"], name: "index_college_apps_on_user_id", using: :btree
   end
 
 
@@ -44,32 +46,23 @@ ActiveRecord::Schema.define(version: 20170329092028) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "counselors", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "name",                                null: false
-    t.string   "wechat_id"
-    t.index ["email"], name: "index_counselors_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_counselors_on_reset_password_token", unique: true, using: :btree
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "due_date"
+    t.string   "status"
+    t.integer  "college_app_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["college_app_id"], name: "index_tasks_on_college_app_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -92,25 +85,15 @@ ActiveRecord::Schema.define(version: 20170329092028) do
     t.integer  "toeflwr"
     t.integer  "toefls"
     t.integer  "toefll"
-    t.integer  "counselor_id"
-    t.index ["counselor_id"], name: "index_students_on_counselor_id", using: :btree
-    t.index ["email"], name: "index_students_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "due_date"
-    t.string   "status"
-    t.boolean  "has_attachment"
-    t.integer  "college_app_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["college_app_id"], name: "index_tasks_on_college_app_id", using: :btree
+    t.boolean  "is_counselor"
+    t.boolean  "admin"
+    t.integer  "counselor_ref"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "attachments", "tasks"
-  add_foreign_key "college_apps", "students"
-  add_foreign_key "students", "counselors"
+  add_foreign_key "college_apps", "colleges"
+  add_foreign_key "college_apps", "users"
   add_foreign_key "tasks", "college_apps"
 end

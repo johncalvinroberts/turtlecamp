@@ -5,7 +5,8 @@ class CreateCollegeApps < ActiveRecord::Migration[5.0]
       t.datetime :deadline
       t.string :category
       t.boolean :status
-      t.references :student, foreign_key: true
+      t.references :user, foreign_key: true
+      t.references :college, foreign_key: true
 
       t.timestamps
     end
