@@ -26,14 +26,15 @@ ActiveRecord::Schema.define(version: 20170329092028) do
   create_table "college_apps", force: :cascade do |t|
     t.string   "name"
     t.datetime "deadline"
-    t.string   "category"
-    t.boolean  "status"
+    t.string   "category", default: "Reach"
+    t.boolean  "status", default: false
     t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "college_id"
     t.index ["student_id"], name: "index_college_apps_on_student_id", using: :btree
   end
+
 
   create_table "colleges", force: :cascade do |t|
     t.string   "name"

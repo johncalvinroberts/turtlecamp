@@ -14,7 +14,7 @@ class CollegeAppsController < ApplicationController
       render :new
     end
   end
-
+  
   def index
     @college_app = CollegeApp.all
   end
@@ -22,7 +22,6 @@ class CollegeAppsController < ApplicationController
   def show
     @college_app = CollegeApp.find(params[:id])
   end
-
 
   private
   def college_app_params
