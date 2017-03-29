@@ -2,14 +2,20 @@ class CollegeAppsController < ApplicationController
 
   def new
     @college_app = CollegeApp.new
+    @colleges = College.all
   end
 
   def create
-    @student = User.find(params[:student_id])
+    if current_user.is_counselor
+      @student = User.find_by(counselor_ref: current_user.id, id: params[:id])
+    else
+      @student = current_user
+    end
     @college_app = CollegeApp.new(college_app_params)
-    @college_app.student_id = @student.id
+    @college_app.user_id = @student.id
     if @college_app.save
-      redirect_to student_application_path
+      redirect_to root_path
+      # redirect_to student_college_app_path(@student)
     else
       render :new
     end
@@ -25,7 +31,7 @@ class CollegeAppsController < ApplicationController
 
   private
   def college_app_params
-    params.require(:college_app).permit(:name, :deadline, :category, :college_id)
+    params.require(:college_app).permit(:college_id, :deadline, :category, )
   end
 
 end

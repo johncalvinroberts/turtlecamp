@@ -2,10 +2,9 @@
   <div class="container-form">
     <%= simple_form_for @college_app do |f| %>
     <%= f.error_notification %>
-      <%= f.input :name, label:"Name", placeholder: "Enter a name" %>
-      <%= f.input :deadline,as: :date_time_picker%>
+      <%= f.input :college_id, collection: @colleges, label:"Name of college" %>
+      <%= f.input :deadline, as: :date_time_picker%>
       <%= f.input :category, collection:["REACH", "TARGET", "SAFETY"]%>
-      <%= f.input :college_id, collection:["Harvard", "Berkeley", "Yale", "Other"]%>
       <%= f.button :submit %>
     </div>
   <% end %>
