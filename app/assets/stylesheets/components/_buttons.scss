@@ -1,0 +1,124 @@
+.btn-rd-danger {
+  border: 2px;
+  border-color: white;
+  border-radius: 50px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #F63E44;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rd-danger:hover {
+  opacity: 1;
+}
+
+.btn-rd-out-white {
+  border: 1px white solid;
+  border-radius: 50px;
+  color: white;
+  padding: 12px 20px;
+  background-color: transparent;
+  margin: 15px;
+  opacity: 0.78;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rd-out-white:hover {
+  opacity: 1;
+}
+
+.btn-rd-out-black {
+  border: 1px #404040 solid;
+  border-radius: 50px;
+  color: #404040;
+  padding: 12px 20px;
+  background-color: transparent;
+  margin: 15px;
+  opacity: 0.78;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rd-out-black:hover {
+  opacity: 1;
+}
+
+.btn-rec-green {
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #35DA69;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-green:hover {
+  opacity: 1;
+}
+
+.btn-rec-blue {
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #4F8DFF;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-blue:hover {
+  opacity: 1;
+}
+
+.btn-rec-out-black {
+  border: 1px #404040 solid;
+  border-radius: 5px;
+  color: #404040;
+  padding: 12px 20px;
+  background-color: transparent;
+  margin: 15px;
+  opacity: 0.78;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-out-black:hover {
+  opacity: 1;
+}
+// this small button needs btn class //
+.btn-rec-green-sm {
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  background-color: #35DA69;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-green:hover {
+  opacity: 1;
+}
+
+.btn-txt {
+  padding: 0px 2px;
+  background: #dedddd;
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid #233142;
+  text-transform: uppercase;
+  margin: 0px 2px;
+  font-size: 12px;
+  font-weight: initial;
+  opacity: 0.78;
+  transition: background 0.3s ease;
+}
+.btn-txt:hover {
+  opacity: 1;
+}
