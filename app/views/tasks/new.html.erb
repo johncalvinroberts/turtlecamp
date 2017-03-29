@@ -1,2 +1,17 @@
 <h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<div class="wrapper-form">
+  <div class="container-form">
+
+  <h2>Create a task</h2>
+
+    <div class="form-inputs">
+     <%= render "form" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Create" %>
+    </div>
+  <% end %>
+
+  </div>
+</div>
