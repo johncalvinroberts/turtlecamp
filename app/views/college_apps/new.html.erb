@@ -1,0 +1,20 @@
+<h1>CollegeApps#new</h1>
+<p>Find me in app/views/college_apps/new.html.erb</p>
+
+<div class="wrapper-form">
+  <div class="container-form">
+    <h2>Create a College App</h2>
+    <%= simple_form_for @college_app do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :name, label:"Name", placeholder: "Enter a name" %>
+      <%= f.input :deadline, as: :bootstrapdatepicker, input_html: { format: :default} label:"Deadline", placeholder: "Enter a deadline"  %>
+      <%= f.input :category, collection:["REACH", "TARGET", "SAFETY"]%>
+      <%= f.input :college, collection:["Harvard", "Berkeley", "Yale", "Other"]%>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+  </div>
+</div>
