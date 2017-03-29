@@ -15,4 +15,15 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def after_sign_in_path_for(resource)
+    # resource.is_counselor ? students_path : dashboard_path
+    if resource.is_counselor
+      students_path
+    elsif !resource.is_counselor && resource.sign_in_count== 1
+      edit_user_registration_path
+    else
+      dashboard_path
+    end
+  end
 end
