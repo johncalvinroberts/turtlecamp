@@ -1,13 +1,17 @@
 <div class="wrapper">
   <div class="container text-center">
-    <h1>Hello <%= current_counselor.name %></h1>
+    <h1>Hello <%= current_user.name %></h1>
     <p>here are your students</p>
   </div>
   <div class="container">
-    <% @students.each do |student| %>
-    <div>
-      <p><%= student.name %></p>
-    </div>
+    <% if @students == nil %>
+     <p>nothing</p>
+    <% else %>
+      <% @students.each do |student| %>
+      <div>
+        <p><%= student.name %></p>
+      </div>
+      <% end %>
     <% end %>
     <div>
       <%= link_to "add a student", new_student_path, class:"btn-default" %>

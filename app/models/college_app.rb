@@ -1,4 +1,4 @@
 class CollegeApp < ApplicationRecord
-  belongs_to :student
+  belongs_to :user
   has_many :tasks
 end

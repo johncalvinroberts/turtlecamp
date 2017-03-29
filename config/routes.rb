@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  devise_for :users
 
   get "/dashboard", to: "pages#dashboard"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -19,6 +20,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  devise_for :counselors
-  devise_for :students
 end

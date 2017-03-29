@@ -10,7 +10,7 @@ class AddFieldsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :toeflwr, :integer
     add_column :users, :toefls, :integer
     add_column :users, :toefll, :integer
-    add_column :users, :counselor, :boolean
+    add_column :users, :is_counselor, :boolean
     add_column :users, :admin, :boolean
     add_column :users, :counselor_ref, :integer
   end
