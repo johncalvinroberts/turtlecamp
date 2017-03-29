@@ -14,13 +14,13 @@ class CollegeAppsController < ApplicationController
       render :new
     end
   end
-  
+
   def index
-    @college_app = CollegeApp.all
+    @student = current_user
+    @college_apps = current_user.college_apps
   end
 
   def show
-    @college_app = CollegeApp.find(params[:id])
   end
 
   private

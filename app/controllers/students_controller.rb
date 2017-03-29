@@ -24,6 +24,13 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+    check_counselor
+    @student = User.find_by(counselor_ref: current_user.id, id: params[:id])
+    @college_apps = @student.college_apps
+  end
+
+
   def edit
 
   end
