@@ -6,7 +6,17 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = current_counselor.students.new(:params[:id])
+    @student = current_counselor.students.new(student_params)
+    if @student.save
+      redirect_to root_path
+    else
+      puts @student.errors.messages
+      render 'new'
+    end
+  end
+
+  def edit
+
   end
 
   private
@@ -15,6 +25,6 @@ class StudentsController < ApplicationController
     params.require(:student).permit(:name,
                                     :email,
                                     :password,
-                                    :current_school)
+                                    :password_confirmation)
   end
 end

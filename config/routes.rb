@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :counselors
-  devise_for :students
   root to: 'pages#home'
 
   get "/dashboard", to: "pages#dashboard"
@@ -21,4 +19,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  devise_for :counselors
+  devise_for :students
 end

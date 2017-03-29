@@ -1,1 +1,15 @@
 <p>this is my form to add a student that counselor will use</p>
+<%= simple_form_for @student do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :name, require: true, autofocus:true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
