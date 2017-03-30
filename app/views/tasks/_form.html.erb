@@ -1,5 +1,10 @@
-<%= simple_form_for @task do |f| %>
-<%= f.error_notification %>
-<%= f.input :name, label: "Name" %>
-<%= f.input :due_date, label: "Due Date" %>
-<%= end %>
+
+<div class="wrapper-form">
+  <div class="container-form">
+    <%= form_for([@task, @college_app]) do |f| %>
+      <%= f.text_field :name %>
+      <%= f.date_field :deadline, as: :date_time_picker%>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

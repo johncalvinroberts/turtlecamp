@@ -7,9 +7,10 @@ class TasksController < ApplicationController
     @college_app = CollegeApp.find(params[:college_app_id])
     @task = @college_app.tasks.new(task_params)
     if @task.save
-      redirect_to college_apps
+      redirect_to college_app(@college_app)
     else
       render :new
+    end
   end
 
   def edit
