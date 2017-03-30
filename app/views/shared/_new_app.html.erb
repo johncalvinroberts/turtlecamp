@@ -1,12 +1,11 @@
 <div class="wrapper-form">
   <div class="container-form">
-    <%= form_for([@student, @college_app], url: student_college_apps_path ) do |f| %>
+    <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
+    <%= form_for([@student, @college_app], url:"#{apps_path}" ) do |f| %>
       <%= f.date_field :deadline, as: :date_time_picker%>
       <%= f.select :category, ["REACH", "TARGET", "SAFETY"]%>
       <%= f.submit %>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
-
 

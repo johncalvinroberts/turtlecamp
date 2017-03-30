@@ -37,7 +37,7 @@ class CollegeAppsController < ApplicationController
 
   private
   def college_app_params
-    params.require(:college_app).permit(:college_id, :deadline, :category, :student_id)
+    params.require(:college_app).permit(:college_id, :deadline, :category)
   end
 
 end
