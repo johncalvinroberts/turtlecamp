@@ -2,6 +2,7 @@
   <div class="container-form">
     <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
     <%= form_for([@student, @college_app], url:"#{apps_path}" ) do |f| %>
+      <%= f.collection_select(:college_id, @colleges) %>
       <%= f.date_field :deadline, as: :date_time_picker%>
       <%= f.select :category, ["REACH", "TARGET", "SAFETY"]%>
       <%= f.submit %>
