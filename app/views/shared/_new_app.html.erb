@@ -7,7 +7,6 @@
           <%= content_tag(:option, c.name, value: c.id) %>
         <% end %>
       <% end %>
-      <%#= f.hidden_field_tag, :college_id %>
       <%= f.date_field :deadline, as: :date_time_picker%>
       <%= f.select :category, ["REACH", "TARGET", "SAFETY"]%>
       <%= f.submit %>

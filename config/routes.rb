@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post "students", to: "students#create", as: "create_student"
 
   resources :students, only: [:show, :new, :index] do
-    resources :college_apps, only: [:new, :show, :create] do
+    resources :college_apps, only: [:new, :show, :create, :edit, :update, :destroy] do
       resources :tasks, only: [:new, :create, :edit, :update] do
         member do
           post "/attach_file", to: "tasks#attach_file"
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :college_apps, only: [:show, :create, :new, :index] do
+  resources :college_apps, only: [:show, :create, :new, :index, :edit, :update, :destroy] do
     resources :tasks, only: [:new, :create, :edit, :update] do
       member do
         post "/attach_file", to: "tasks#attach_file"
