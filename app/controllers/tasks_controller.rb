@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     else
       @student = current_user
     end
-    @college_app = CollegeApp.find(params[:college_app])
+    @college_app = CollegeApp.find(params[:college_app_id])
     @task = @college_app.tasks.new(task_params)
     if @task.save
       redirect_to root
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
     params.require(:task)
           .permit(:name,
                   :due_date,
-                  :college_app,
+                  :college_app_id,
                   :status,
                   :document,
                   :document_cache,
