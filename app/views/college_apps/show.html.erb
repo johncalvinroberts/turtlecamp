@@ -1,10 +1,16 @@
-<div class="container text-center">
-  <h1><%= @college_app.college.name %></h1>
-  <p><%= @college_app.college.address %></p>
-  <p><%= @college_app.category %></p>
-  <%= link_to "edit", edit_student_college_app_path %>
+<div class="wrapper-form">
+  <div class="container-form">
 
-  <%= link_to "delete", college_app_path, method: :delete %>
+    <h1>College application for <%= @college_app.college.name %></h1>
+    <%= @college_app.college.address %>
+    <%= @college_app.college.website %>
+    <h1>Application deadline: <%= @college_app.deadline %></h1>
+    <%= @college_app.category %>
+    <%= @college_app.status %>
+
+    <%= link_to "Add a Task", new_college_app_task_path(@college_app), class:"btn-rd-out-black" %>
+    <%= link_to "edit", edit_student_college_app_path %>
+    <%= link_to "delete", college_app_path, method: :delete %>
+  </div>
 </div>
-
 
