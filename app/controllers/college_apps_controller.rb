@@ -48,18 +48,21 @@ class CollegeAppsController < ApplicationController
     else
       @student = current_user
     end
-    @college_app.update(college_app_params)
-
-    if current_user.is_counselor
+    if @college_app.update(college_app_params)
       redirect_to student_college_app_path(@student, @college_app)
     else
-      redirect_to college_app_path(@student)
+      render :edit
     end
   end
 
   def destroy
+    @student = User.find_by(id:@college_app.user_id)
     @college_app.destroy
-    redirect_to college_apps_path(@student)
+    if current_user.is_counselor
+      redirect_to student_path(@student.id)
+    else
+      redirect_to college_apps_path(@student)
+    end
   end
 
   private

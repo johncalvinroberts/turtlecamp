@@ -2,7 +2,6 @@
   <h1><%= @college_app.college.name %></h1>
   <p><%= @college_app.college.address %></p>
   <p><%= @college_app.category %></p>
-  <%#= link_to "edit", edit_college_app_path %>
   <%= link_to "edit", edit_student_college_app_path %>
 
   <%= link_to "delete", college_app_path, method: :delete %>
