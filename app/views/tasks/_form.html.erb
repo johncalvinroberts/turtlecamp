@@ -1,9 +1,10 @@
 
 <div class="wrapper-form">
   <div class="container-form">
-    <%= form_for([@task, @college_app]) do |f| %>
-      <%= f.text_field :name %>
-      <%= f.date_field :deadline, as: :date_time_picker%>
+    <%= form_for([@college_app, @task]) do |f| %>
+      Name: <%= f.text_field :name %>
+      Due date: <%= f.date_field :due_date, as: :date_time_picker%>
+      Status: <%= f.text_field :status %>
       <%= f.submit %>
     <% end %>
   </div>
