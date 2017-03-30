@@ -1,0 +1,12 @@
+<div class="wrapper-form">
+  <div class="container-form">
+    <%= simple_form_for @college_app do |f| %>
+      <%= f.input :deadline, as: :date_time_picker%>
+      <%= f.input :category, collection: ["REACH", "TARGET", "SAFETY"]%>
+      <%= f.input :student_id, as: :hidden, input_html: { value: @student.id }
+ %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
