@@ -19,9 +19,8 @@ class CollegeAppsController < ApplicationController
       @student = current_user
     end
     @college_app.user_id = @student.id
-    if @college_app.save!
-      redirect_to root_path
-      # redirect_to student_college_app_path(@student)
+    if @college_app.save
+      redirect_to student_college_app_path(@student, @college_app)
     else
       render :new
     end
