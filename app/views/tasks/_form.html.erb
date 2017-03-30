@@ -1,14 +1,15 @@
 
 <div class="wrapper-form">
   <div class="container-form">
+   <div class="form-inputs">
     <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
     <%= form_for([@college_app, @task], url:"#{apps_path}" ) do |f| %>
       Name: <%= f.text_field :name %>
       Due date: <%= f.date_field :due_date, as: :date_time_picker%>
-      Status: <%= f.text_field :status %>
       Attachment: <%= f.file_field :document %>
       <%= f.hidden_field :document_cache %>
       <%= f.submit %>
     <% end %>
+    </div>
   </div>
 </div>
