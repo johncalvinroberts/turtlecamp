@@ -1,3 +1,12 @@
-<html>
-  <h1>College application page</h1>
-</html>
+<div class="wrapper-form">
+  <div class="container-form">
+
+    <h1>College application for <%= @college_app.college.name %></h1>
+    <%= @college_app.college.address %>
+    <%= @college_app.college.website %>
+    <h1>Due on <%= @college_app.deadline %></h1>
+    <%= @college_app.category %>
+    <%= @college_app.status %>
+
+  </div>
+</div>

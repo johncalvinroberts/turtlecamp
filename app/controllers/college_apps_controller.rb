@@ -31,6 +31,7 @@ class CollegeAppsController < ApplicationController
   end
 
   def show
+    @college_app = CollegeApp.find(params[:id])
   end
 
   private
