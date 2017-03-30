@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def new
     @task = Task.new
+    @college_app = CollegeApp.find(params[:college_app_id])
   end
 
   def create
