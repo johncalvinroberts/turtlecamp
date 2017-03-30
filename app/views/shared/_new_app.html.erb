@@ -1,12 +1,12 @@
 <div class="wrapper-form">
   <div class="container-form">
-    <%= simple_form_for @college_app do |f| %>
-    <%= f.error_notification %>
-      <%= f.input :college_id, collection: @colleges, label:"Name of college" %>
-      <%= f.input :deadline, as: :date_time_picker%>
-      <%= f.input :category, collection:["REACH", "TARGET", "SAFETY"]%>
-      <%= f.button :submit %>
+    <%= form_for([@student, @college_app], url: student_college_apps_path ) do |f| %>
+      <%= f.date_field :deadline, as: :date_time_picker%>
+      <%= f.select :category, ["REACH", "TARGET", "SAFETY"]%>
+      <%= f.submit %>
     </div>
   <% end %>
   </div>
 </div>
+
+
