@@ -5,7 +5,13 @@
         <h3><%= @student.name%>'s Schools</h3>
         <p>add progress bar</p>
         <p>add school page button</p>
-        <div><%= link_to "Add a school", college_apps_new_path, class: "btn-sm" %></div>
+        <div>
+        <% if current_user.is_counselor %>
+        <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-sm" %>
+        <% else %>
+        <%= link_to "Add a school", new_college_app_path, class: "btn-sm" %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>

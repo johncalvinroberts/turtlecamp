@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  get 'college_apps/new'
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'college_apps/show'
+  # get 'college_apps/new'
+
+  # get 'college_apps/show'
 
   root to: 'pages#home'
+
   devise_for :users
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   post "students", to: "students#create", as: "create_student"
+
   resources :students, only: [:show, :new, :index] do
     resources :college_apps, only: [:new, :show, :create] do
       resources :tasks, only: [:new, :create, :edit, :update] do
