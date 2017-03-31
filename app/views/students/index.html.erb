@@ -1,15 +1,15 @@
 <div class="wrapper">
   <div class="container text-center">
     <h1>Hello <%= current_user.name %></h1>
-    <p>here are your students</p>
+    <h4>here are your students</h4>
   </div>
-  <div class="container">
+  <div class="container text-center">
     <% if @students == nil %>
      <p>nothing</p>
     <% else %>
       <% @students.each do |student| %>
       <div>
-        <p><%= link_to "#{student.name}", student_path(student)%></p>
+        <p style="margin-bottom:100px;"><%= link_to "#{student.name}", student_path(student)%></p>
       </div>
       <% end %>
     <% end %>
@@ -17,5 +17,4 @@
       <%= link_to "add a student", new_student_path, class:"btn-rd-out-black" %>
     </div>
   </div>
-
 </div>
