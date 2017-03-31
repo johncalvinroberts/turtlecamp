@@ -7,7 +7,9 @@
     <p>Application deadline: <%= @college_app.deadline %></p>
     <p><%= @college_app.category %></p>
     <p><%= @college_app.status %></p>
-
+      <%#= #put a conditional statment here to set the URL for add task path
+          #so that its different for counselor and student
+          #below it's only the student's link %>
     <%= link_to "Add a Task", new_college_app_task_path(@college_app), class:"btn-rd-out-black" %>
     <%= link_to "edit", edit_student_college_app_path %>
     <%= link_to "delete", college_app_path, method: :delete %>

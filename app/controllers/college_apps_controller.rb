@@ -1,5 +1,6 @@
 class CollegeAppsController < ApplicationController
   before_action :find_app, only: [:show, :edit, :update, :destroy]
+
   def new
     @college_app = CollegeApp.new
     @colleges = College.all
@@ -20,6 +21,7 @@ class CollegeAppsController < ApplicationController
     end
     @college_app.user_id = @student.id
     if @college_app.save
+      #the below is a counselor redirect, needs to redirect to student show page for student but
       redirect_to student_college_app_path(@student, @college_app)
     else
       render :new
@@ -32,6 +34,7 @@ class CollegeAppsController < ApplicationController
   end
 
   def show
+    #students college app doesnt show but can see counselers view of college app
     @college_app = CollegeApp.find(params[:id])
   end
 
