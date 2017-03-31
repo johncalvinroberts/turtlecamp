@@ -3,7 +3,7 @@ class CollegeAppsController < ApplicationController
   def new
     @college_app = CollegeApp.new
     @colleges = College.all
-     if current_user.is_counselor
+    if current_user.is_counselor
       @student = User.find_by(counselor_ref: current_user.id, id: params[:student_id])
     else
       @student = current_user
@@ -11,7 +11,7 @@ class CollegeAppsController < ApplicationController
   end
 
   def create
-     @colleges = College.all
+    @colleges = College.all
     @college_app = CollegeApp.new(college_app_params)
     if current_user.is_counselor
       @student = User.find_by(counselor_ref: current_user.id, id: params[:student_id])
