@@ -36,6 +36,11 @@ class CollegeAppsController < ApplicationController
   def show
     #students college app doesnt show but can see counselers view of college app
     @college_app = CollegeApp.find(params[:id])
+    if current_user.is_counselor
+      @student = User.find_by(counselor_ref: current_user.id, id: params[:student_id])
+    else
+      @student = current_user
+    end
   end
 
   def edit
@@ -65,7 +70,7 @@ class CollegeAppsController < ApplicationController
     if current_user.is_counselor
       redirect_to student_path(@student.id)
     else
-      redirect_to college_apps_path(@student)
+      redirect_to college_apps_path
     end
   end
 
