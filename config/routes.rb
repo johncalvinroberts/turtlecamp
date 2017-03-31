@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :students, only: [:show, :new, :index] do
     resources :college_apps, only: [:new, :show, :create, :edit, :update, :destroy] do
-      resources :tasks, only: [:new, :create, :edit, :update] do
+      resources :tasks, only: [:new, :create, :edit, :update, :destroy] do
         member do
           post "/attach_file", to: "tasks#attach_file"
         end
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :college_apps, only: [:show, :create, :new, :index, :edit, :update, :destroy] do
-    resources :tasks, only: [:new, :create, :edit, :update] do
+    resources :tasks, only: [:new, :create, :edit, :update, :destroy] do
       member do
         post "/attach_file", to: "tasks#attach_file"
       end
