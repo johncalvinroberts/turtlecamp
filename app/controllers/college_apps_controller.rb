@@ -20,9 +20,10 @@ class CollegeAppsController < ApplicationController
       @student = current_user
     end
     @college_app.user_id = @student.id
-    if @college_app.save
-      #the below is a counselor redirect, needs to redirect to student show page for student but
+    if @college_app.save && current_user.is_counselor
       redirect_to student_college_app_path(@student, @college_app)
+    elsif @college_app.save
+      redirect_to college_app_path(@college_app)
     else
       render :new
     end
@@ -57,8 +58,10 @@ class CollegeAppsController < ApplicationController
     else
       @student = current_user
     end
-    if @college_app.update(college_app_params)
+    if @college_app.update(college_app_params) && current_user.is_counselor
       redirect_to student_college_app_path(@student, @college_app)
+    elsif @college_app.update(college_app_params)
+      redirect_to college_app_path(@college_app)
     else
       render :edit
     end
