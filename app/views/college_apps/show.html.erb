@@ -1,3 +1,5 @@
+<%= render 'shared/student_header'%>
+
 <div class="wrapper-form">
   <div class="container-form">
 
@@ -7,6 +9,7 @@
     <p>Application deadline: <%= @college_app.deadline %></p>
     <p><%= @college_app.category %></p>
     <p><%= @college_app.status %></p>
+
   <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
     <%= link_to "Add a Task", add_task, class:"btn-rd-out-black" %>
   <% edit_app = current_user.is_counselor ? edit_student_college_app_path : edit_college_app_path %>
