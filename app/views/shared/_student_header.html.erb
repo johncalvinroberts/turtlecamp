@@ -1,0 +1,20 @@
+<div class="container-fluid student-header">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-1">
+      <p>AVATAR</p>
+    </div>
+    <div class="col-xs-12 col-sm-11">
+      <div class="student-header-top">
+        <h3><%= @student.name%>'s Schools</h3>
+      </div>
+      <div class="student-header-bottom">
+        <% if current_user.is_counselor %>
+        <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
+        <% else %>
+        <%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
