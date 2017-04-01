@@ -1,0 +1,37 @@
+.container-tasks{
+  margin: 15px auto;
+  border: 1px solid $black;
+  padding: 20px;
+  max-width: 800px;
+  position: relative;
+}
+
+.task-content{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.task{
+  border-radius: 1px solid black;
+  border: 1px solid $black;
+  margin: 5px 0;
+  padding: 5px;
+
+}
+
+.task-list-inline{
+}
+
+.add_task{
+  padding:5px;
+}
+
+.edit{
+  position:absolute;
+  right: 25px;
+}
+.duedate{
+  position:absolute;
+  right: 120px;
+}

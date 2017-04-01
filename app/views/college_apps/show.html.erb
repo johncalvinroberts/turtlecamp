@@ -1,30 +1,35 @@
 <div class="wrapper-form">
-  <div class="container-form">
-    <div class="text-center">
+  <div class="container">
+    <div class="text-center padded">
       <p>College application for <%= @college_app.college.name %></p>
       <p><%= @college_app.college.address %></p>
       <p><%= @college_app.college.website %></p>
-      <p>Application deadline: <%= @college_app.deadline %></p>
+      <p>Application deadline: <%= @college_app.deadline.strftime("%A, %B %m, %Y") %></p>
       <p><%= @college_app.category %></p>
       <p><%= @college_app.status %></p>
     </div>
-    <div class="container">
+      <div class="container-tasks">
+          <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
+          <div class="add_task">
+            <%= render "tasks/form" %>
+            <%= link_to "Add a Task", add_task, class:"btn btn-rec-green-sm" %>
+          </div>
+      <% tasks_chronological = @college_app.tasks.sort_by { |i| i.due_date } %>
+      <% tasks_chronological.each do |task| %>
+      <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
+        <div class="task">
+          <div class="task-content">
+            <div class="name"><p><%= task.name %></p></div>
+            <div class="duedate"><p>Due: <em><%= task.due_date.strftime("%A, %B %m, %Y") %></em></p></div>
+            <div class="edit"><p><%= link_to "#{task.status}", edit_task, class:"btn btn-rd-danger-small" %></p></div>
+            <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
+          </div>
+             <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>
+          </div>
+          <% end %>
 
-    <% @college_app.tasks.each do |task| %>
-      <div class="task">
-        <p><%= task.name %></p>
-        <p><em><%= task.due_date %></em>em</p>
-         <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
-
-         <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>
-
-        <p><%= link_to "edit task", edit_task %></p>
-        <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
         </div>
-        <% end %>
-        <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
-        <%= link_to "Add a Task", add_task, class:"" %>
-    </div>
+
     <div class="text-center padded">
       <% edit_app = current_user.is_counselor ? edit_student_college_app_path : edit_college_app_path %>
         <%= link_to "edit this application", edit_app %>

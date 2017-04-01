@@ -14,6 +14,23 @@
   opacity: 1;
 }
 
+.btn-rd-danger-small{
+  border: 2px;
+  border-color: white;
+  border-radius: 3px;
+  color: white;
+  padding: 5px 2px;
+  background-color: #F63E44;
+  margin: 1px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+
+.btn-rd-danger-small:hover{
+  opacity:1;
+}
+
 .btn-rd-out-white {
   border: 1px white solid;
   border-radius: 50px;
@@ -100,7 +117,6 @@
   border-radius: 5px;
   color: white;
   background-color: #35DA69;
-  margin: 15px;
   opacity: 0.88;
   transition: background 0.3s ease;
   font-weight: normal;
