@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="college-list">
+        <% @student.college_apps.each do |college_app| %>
+          <div>
+            <%= college_app.deadline %>
+            <%= college_app.category %>
+            <%= college_app.status %>
+            <%= college_app.college.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <p>here comes the circle data</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="dashboard-todolist">
+        <h3>To-Do List</h3>
+        <div>
+          <table class="table todolist-table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>School Page</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="dashboard-notfications">
+        <h3>Notifications</h3>
+      </div>
+    </div>
+  </div>
+</div>

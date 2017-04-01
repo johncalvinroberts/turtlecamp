@@ -6,6 +6,7 @@ tmp/*
 .DS_Store
 public/assets
 *.sublime-workspace
+.idea
 
 # Ignore application configuration
 /config/application.yml
