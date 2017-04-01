@@ -35,8 +35,9 @@ class CollegeAppsController < ApplicationController
   end
 
   def show
-    #students college app doesnt show but can see counselers view of college app
+    # students college app doesnt show but can see counselers view of college app
     @college_app = CollegeApp.find(params[:id])
+    @new_task = @college_app.tasks.build
     if current_user.is_counselor
       @student = User.find_by(counselor_ref: current_user.id, id: params[:student_id])
     else
