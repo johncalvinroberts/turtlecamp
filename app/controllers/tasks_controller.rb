@@ -53,6 +53,13 @@ class TasksController < ApplicationController
     @student = User.find(params[:student_id])
   end
 
+  def pending
+    @task = Task.find(params[:id])
+    @task.update(status: 'pending')
+    @college_app = CollegeApp.find(params[:college_app_id])
+    @student = User.find(params[:student_id])
+  end
+
   private
 
   def task_params

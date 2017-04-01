@@ -32,12 +32,22 @@
 
 
             <div class="edit">
+
             <% if task.status =="approved" %>
             <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-green-sm", remote: true%></div>
-            <% elsif task.status == "pending"%>
+
+            <% elsif task.status == "pending" && current_user.is_counselor%>
             <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-yellow", remote: true%></div>
-            <% else %>
+
+          <% elsif task.status == "pending" && !current_user.is_counselor%>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", "#", class:"btn btn-yellow", remote: true%></div>
+
+            <% elsif task.status =="not done" && current_user.is_counselor %>
             <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small", remote: true%></div>
+
+            <% elsif task.status =="not done" && !current_user.is_counselor %>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small", remote: true%></div>
+
             <% end %>
             </div>
 
