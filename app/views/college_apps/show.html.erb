@@ -25,7 +25,6 @@
         <div class="task">
           <div class="task-content">
             <div class="name"><p><%= task.name %></p>
-            <p>Due: <em><%= task&.due_date&.strftime("%A, %B %m, %Y") %></em></p>
             </div>
 
             <% if task.no_document && !current_user.is_counselor %>
