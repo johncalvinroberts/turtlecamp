@@ -10,18 +10,41 @@
     <div class="col-xs-12 col-sm-10">
       <div class="student-header-top">
         <div class="student-header-top-content">
+          <div class ="student-header-top-name">
           <h4><%= @student.name%></h4>
-          <p>more details</p>
+          <small>Current school: Shanghai High School</small>
+          </div>
+          <div class ="student-header-top-name">
+          <h4><%= @student.name%></h4>
+          <small>more details</small>
+          </div>
+          <div class ="student-header-top-name">
+          <h4><%= @student.name%></h4>
+          <small>more details</small>
+          </div>
         </div>
       </div>
       <div class="student-header-bottom">
-        <p>more details</p>
-        <% if current_user.is_counselor %>
-        <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
-        <% else %>
-        <%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
-        <% end %>
+      <div class="student-header-bottom-content">
+        <div class ="student-header-bottom-name">
+          <h4><%= @student.name%></h4>
+          <small>PHONE:</small>
+          <small>+86 186 0114 6029</small>
+        </div>
+        <div class ="student-header-bottom-name">
+          <h4><%= @student.name%></h4>
+          <small>more details</small>
+        </div>
+        <div>
+          <% if current_user.is_counselor %>
+          <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
+          <% else %>
+          <%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
+          <% end %>
+        </div>
+      </div>
       </div>
     </div>
   </div>
 </div>
+

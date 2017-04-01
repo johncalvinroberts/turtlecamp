@@ -1,3 +1,35 @@
+.container-fluid.student-header {
+  background-color: white;
+  min-height: 200px;
+  .student-header-top {
+    border-bottom: 1px solid #979797;
+    height: 99px;
+  }
+  .student-header-bottom {
+    height: 100px;
+  }
+}
+
+.student-header-top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-header-top-name {
+  align-items: left;
+}
+
+.student-header-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.student-header-bottom-name {
+  align-items: left;
+}
+
+
 .student-picture {
   padding: 55px;
   display: flex;
@@ -6,18 +38,8 @@
   align-items: center;
 }
 
-
 .student-avatar {
     width: 85px;
     height: 85px;
     background-color: grey;
-  }
-
-.student-header-top {
-  padding: 55px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 }
-
