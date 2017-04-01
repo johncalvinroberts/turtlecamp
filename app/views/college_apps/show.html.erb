@@ -30,7 +30,8 @@
             <%# document_link = task.document ? task.document : "nothing" %>
             <div class="attachment"><%#= document_link %></div>
             <% if task.status == "not done" %>
-            <div class="edit"><p><%= button_to [:approve, @task], class:"btn btn-rd-danger-small"%></p></div>
+
+            <div class="edit"><p><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small"%></p></div>
             <% elsif task.status == "pending" %>
             <p>pending button</p>
             <% else %>
