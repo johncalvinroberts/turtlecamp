@@ -125,6 +125,20 @@
   opacity: 1;
 }
 
+.btn-rec-green-sm-outline {
+  border: 2px;
+  border-color: #35DA69;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-green:hover {
+  opacity: 1;
+}
+
 .btn-txt {
   padding: 0px 2px;
   background: #dedddd;

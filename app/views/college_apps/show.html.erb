@@ -29,7 +29,13 @@
             </div>
             <%# document_link = task.document ? task.document : "nothing" %>
             <div class="attachment"><%#= document_link %></div>
-            <div class="edit"><p><%= link_to "#{task.status}", edit_task, class:"btn btn-rd-danger-small" %></p></div>
+            <% if task.status == "not done" %>
+            <div class="edit"><p><%= button_to "#{task.status}", { action: "approve", controller: :tasks}, class:"btn btn-rd-danger-small"%></p></div>
+            <% elsif task.status == "pending" %>
+            <p>pending button</p>
+            <% else %>
+            <div class="btn btn-rec-green-sm-outline">approved</div>
+            <% end %>
             <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
           </div>
              <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>
