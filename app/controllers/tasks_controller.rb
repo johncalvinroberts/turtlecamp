@@ -46,6 +46,11 @@ class TasksController < ApplicationController
     @task.destroy
   end
 
+  def approve
+    @task = Task.find(params[:id])
+    @task.update(status: 'approved')
+  end
+
   private
 
   def task_params
