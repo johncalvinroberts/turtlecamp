@@ -213,7 +213,7 @@ ALTER TABLE schema_migrations OWNER TO johnroberts;
 CREATE TABLE tasks (
     id integer NOT NULL,
     name character varying,
-    due_date timestamp without time zone,
+    due_date timestamp without time zone NOT NULL,
     status character varying DEFAULT 'not done'::character varying,
     college_app_id integer,
     created_at timestamp without time zone NOT NULL,
@@ -386,6 +386,11 @@ COPY college_apps (id, deadline, category, status, user_id, college_id, created_
 29	2017-01-01 00:00:00	REACH	\N	8	1	2017-03-31 09:20:36.792887	2017-03-31 09:20:36.792887
 31	2017-01-01 00:00:00	REACH	\N	2	2	2017-04-01 04:08:28.435873	2017-04-01 04:08:28.435873
 32	2017-01-01 00:00:00	REACH	\N	2	4	2017-04-01 04:52:16.081664	2017-04-01 04:52:16.081664
+33	\N	REACH	\N	3	1	2017-04-01 09:59:14.525082	2017-04-01 09:59:14.525082
+34	2017-01-01 00:00:00	REACH	\N	3	3	2017-04-01 09:59:34.180192	2017-04-01 09:59:34.180192
+35	2017-01-01 00:00:00	REACH	\N	9	1	2017-04-01 10:34:12.390781	2017-04-01 10:34:12.390781
+36	2017-01-01 00:00:00	REACH	\N	4	4	2017-04-01 11:16:09.612185	2017-04-01 11:16:09.612185
+37	2017-01-01 00:00:00	TARGET	\N	11	2	2017-04-01 11:56:52.248549	2017-04-01 12:22:33.465241
 \.
 
 
@@ -393,7 +398,7 @@ COPY college_apps (id, deadline, category, status, user_id, college_id, created_
 -- Name: college_apps_id_seq; Type: SEQUENCE SET; Schema: public; Owner: johnroberts
 --
 
-SELECT pg_catalog.setval('college_apps_id_seq', 32, true);
+SELECT pg_catalog.setval('college_apps_id_seq', 37, true);
 
 
 --
@@ -445,6 +450,7 @@ COPY schema_migrations (version) FROM stdin;
 20170329064941
 20170329172316
 20170330150219
+20170401100953
 \.
 
 
@@ -453,25 +459,63 @@ COPY schema_migrations (version) FROM stdin;
 --
 
 COPY tasks (id, name, due_date, status, college_app_id, created_at, updated_at, document) FROM stdin;
-6	Write an amazing life changufwaskjfhasf saofsng	\N	not done	19	2017-03-31 05:32:01.925254	2017-03-31 05:32:01.925254	\N
 7	Go buy a gun	2017-01-01 00:00:00	not done	19	2017-03-31 05:32:12.6488	2017-03-31 05:32:12.6488	\N
 8	Go buy a gun	2017-01-01 00:00:00	not done	19	2017-03-31 05:33:36.795652	2017-03-31 05:33:36.795652	mvtg5kac1sanptofdlp7.docx
 9	gogogo	2017-01-01 00:00:00	not done	20	2017-03-31 06:33:27.700263	2017-03-31 06:33:27.700263	\N
-10	get super hig	2017-01-01 00:00:00	not done	22	2017-03-31 06:36:23.235125	2017-03-31 06:36:23.235125	\N
 11	uglyface	2018-01-01 00:00:00	not done	20	2017-03-31 06:37:29.845885	2017-03-31 06:37:29.845885	\N
-12	get super hig	2017-01-01 00:00:00	not done	22	2017-03-31 06:37:39.497568	2017-03-31 06:37:39.497568	pp05t5skxtcah5zxfnjz.png
-13	blash	2018-02-02 00:00:00	not done	22	2017-03-31 06:52:25.20584	2017-03-31 06:52:25.20584	\N
 14	gofasfas	2017-01-01 00:00:00	not done	25	2017-03-31 07:07:01.474306	2017-03-31 07:07:01.474306	\N
 16	go fishing n stuff	2017-02-01 00:00:00	not done	27	2017-03-31 08:18:44.048957	2017-03-31 08:18:44.048957	\N
 17	go fishing n stuff	2017-01-01 00:00:00	not done	28	2017-03-31 09:13:13.115266	2017-03-31 09:13:13.115266	\N
 18	go fishing n stuff	2017-12-01 00:00:00	not done	29	2017-03-31 09:20:58.168676	2017-03-31 09:20:58.168676	\N
 19	fafas	2017-01-01 00:00:00	not done	29	2017-03-31 09:24:32.573891	2017-03-31 09:24:32.573891	aiorzalvapizstxuvbvp.png
 20	suckasfhjas	2017-01-01 00:00:00	not done	31	2017-04-01 04:08:43.476594	2017-04-01 04:08:43.476594	\N
-21	go fishing n stuff	2018-01-01 00:00:00	not done	32	2017-04-01 04:52:26.359505	2017-04-01 04:52:26.359505	\N
-22	be free and fuck shit up	2017-01-01 00:00:00	not done	32	2017-04-01 04:52:36.522432	2017-04-01 04:52:36.522432	\N
-23	get married and have kids	2017-01-01 00:00:00	not done	32	2017-04-01 05:18:23.167534	2017-04-01 05:18:23.167534	\N
-24	asfsa	2017-01-02 00:00:00	not done	32	2017-04-01 05:30:45.293929	2017-04-01 05:30:45.293929	\N
-25	hate life	2017-01-01 00:00:00	not done	32	2017-04-01 05:43:17.307751	2017-04-01 05:43:17.307751	\N
+26	Testing the attachment	2016-01-01 00:00:00	approved	32	2017-04-01 06:22:38.122437	2017-04-01 09:08:25.79846	fqnycatpqhtrz38qzp1w.pdf
+29	Upload passport	2016-04-02 00:00:00	approved	32	2017-04-01 08:45:02.402516	2017-04-01 09:12:21.875079	\N
+23	get married and have kids	2017-01-01 00:00:00	approved	32	2017-04-01 05:18:23.167534	2017-04-01 09:15:45.119408	\N
+25	hate life	2017-01-01 00:00:00	approved	32	2017-04-01 05:43:17.307751	2017-04-01 09:26:46.639439	\N
+22	be free and fuck shit up	2017-01-01 00:00:00	approved	32	2017-04-01 04:52:36.522432	2017-04-01 09:27:11.569647	\N
+27	go	2017-01-01 00:00:00	approved	32	2017-04-01 07:11:48.373558	2017-04-01 09:28:25.008498	\N
+24	asfsa	2017-01-02 00:00:00	approved	32	2017-04-01 05:30:45.293929	2017-04-01 09:29:49.848736	\N
+21	go fishing n stuff	2018-01-01 00:00:00	approved	32	2017-04-01 04:52:26.359505	2017-04-01 09:31:56.5576	\N
+28	Hahaha	2017-01-02 00:00:00	approved	32	2017-04-01 07:12:14.42947	2017-04-01 09:32:34.950642	oibdigun2oglz89xdc51.jpg
+30	asfafs	2016-01-01 00:00:00	approved	32	2017-04-01 09:34:14.447224	2017-04-01 09:34:48.055417	\N
+31	asfas	2017-01-01 00:00:00	approved	32	2017-04-01 09:37:12.009973	2017-04-01 09:38:56.465201	\N
+32	afshahs	2015-01-01 00:00:00	not done	32	2017-04-01 09:45:43.898209	2017-04-01 09:45:43.898209	\N
+33	Go swimming	2017-01-01 00:00:00	approved	34	2017-04-01 09:59:43.761221	2017-04-01 09:59:50.365448	\N
+35	write essay	2017-01-01 00:00:00	pending	34	2017-04-01 10:01:35.266746	2017-04-01 10:01:59.697719	\N
+34	upload my passport	2017-01-01 00:00:00	approved	34	2017-04-01 10:00:50.375747	2017-04-01 10:02:07.989418	\N
+37	upload my passport	2015-01-01 00:00:00	pending	34	2017-04-01 10:08:39.917642	2017-04-01 10:08:55.795301	\N
+6	Write an amazing life changufwaskjfhasf saofsng	2017-04-08 10:17:58.73482	not done	19	2017-03-31 05:32:01.925254	2017-03-31 05:32:01.925254	\N
+36	go fishing n stuff	2017-01-01 00:00:00	pending	34	2017-04-01 10:08:24.282316	2017-04-01 10:18:42.833126	\N
+38	Get incredibly lit	2017-01-01 00:00:00	not done	34	2017-04-01 10:20:47.160867	2017-04-01 10:20:47.160867	\N
+39	Finish my essay	2014-01-01 00:00:00	pending	34	2017-04-01 10:21:10.567758	2017-04-01 10:21:15.636225	\N
+46	Go sledding	2017-01-01 00:00:00	approved	36	2017-04-01 11:19:07.772762	2017-04-01 11:29:21.200834	\N
+10	get super hig	2017-01-01 00:00:00	approved	22	2017-03-31 06:36:23.235125	2017-04-01 10:22:14.237104	\N
+12	get super hig	2017-01-01 00:00:00	approved	22	2017-03-31 06:37:39.497568	2017-04-01 10:22:50.016066	pp05t5skxtcah5zxfnjz.png
+13	blash	2018-02-02 00:00:00	approved	22	2017-03-31 06:52:25.20584	2017-04-01 10:24:07.425313	\N
+40	Cry and go die	2017-01-01 00:00:00	approved	22	2017-04-01 10:25:02.828945	2017-04-01 10:26:32.214483	\N
+41	go for a run	2017-01-01 00:00:00	approved	22	2017-04-01 10:26:45.728271	2017-04-01 10:27:04.340582	\N
+47	go	2017-01-01 00:00:00	approved	36	2017-04-01 11:29:46.251422	2017-04-01 11:29:56.260721	\N
+42	Go sledding	2017-01-01 00:00:00	approved	35	2017-04-01 10:34:26.646604	2017-04-01 10:35:57.772023	\N
+43	ahfash	2017-01-01 00:00:00	approved	35	2017-04-01 10:44:19.91717	2017-04-01 10:44:28.518398	\N
+48	go 	2017-01-01 00:00:00	approved	36	2017-04-01 11:30:15.659796	2017-04-01 11:30:17.88904	\N
+44	fasasf	2017-12-01 00:00:00	approved	35	2017-04-01 10:45:04.240042	2017-04-01 10:46:04.588018	\N
+45	hate	2017-01-01 00:00:00	approved	35	2017-04-01 10:48:04.528845	2017-04-01 10:48:06.766148	\N
+49	afsfsa	2017-01-01 00:00:00	approved	36	2017-04-01 11:30:28.799618	2017-04-01 11:30:51.184426	\N
+50	My passport	2017-01-01 00:00:00	not done	36	2017-04-01 11:33:28.053423	2017-04-01 11:33:28.053423	dxogdcf3cvy3bnd8xx9k.png
+51	Upload your passport	2017-01-01 00:00:00	approved	36	2017-04-01 11:33:52.275973	2017-04-01 11:34:02.227986	\N
+52	Upload your passport	2017-02-01 00:00:00	approved	37	2017-04-01 11:57:13.057356	2017-04-01 11:59:22.351139	\N
+55	Task with document	2017-01-01 00:00:00	pending	37	2017-04-01 13:13:58.135914	2017-04-01 13:15:34.39893	spriyrwcf00n0fwiy8t7.png
+64	sfaasf	2017-01-01 00:00:00	pending	37	2017-04-01 14:04:28.096454	2017-04-01 14:04:36.768745	\N
+54	task with no attachment	2017-01-01 00:00:00	approved	37	2017-04-01 13:12:54.264506	2017-04-01 13:50:56.752374	\N
+63	asfasf	2017-01-01 00:00:00	approved	37	2017-04-01 14:04:17.627884	2017-04-01 14:18:21.436373	oe3madzizfrshgnmb3vz.png
+58	safsaf	2017-01-02 00:00:00	approved	37	2017-04-01 13:51:10.401878	2017-04-01 13:51:16.408661	\N
+53	hhjjhhj	2017-01-01 00:00:00	pending	37	2017-04-01 12:56:14.422293	2017-04-01 14:18:42.192396	iozisj0riedyfjamjonv.png
+56	My shit	2017-01-01 00:00:00	approved	37	2017-04-01 13:28:36.964332	2017-04-01 13:51:41.196662	dycxlshr14rs4mf4jdjn.png
+62	fsaasf	2017-01-01 00:00:00	approved	37	2017-04-01 14:04:06.615955	2017-04-01 14:20:06.732486	y3w1ujhyhtnakuon9e0g.png
+59	asfsafsa	2017-01-01 00:00:00	approved	37	2017-04-01 13:51:26.402622	2017-04-01 14:03:37.711331	\N
+60	asfsaf	2017-01-01 00:00:00	pending	37	2017-04-01 14:03:33.916002	2017-04-01 14:03:46.15614	\N
+61	afs	2017-01-01 00:00:00	pending	37	2017-04-01 14:03:53.987352	2017-04-01 14:20:20.954916	dluiimg8dle8nkagzagr.png
 \.
 
 
@@ -479,7 +523,7 @@ COPY tasks (id, name, due_date, status, college_app_id, created_at, updated_at, 
 -- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: johnroberts
 --
 
-SELECT pg_catalog.setval('tasks_id_seq', 25, true);
+SELECT pg_catalog.setval('tasks_id_seq', 64, true);
 
 
 --
@@ -487,14 +531,17 @@ SELECT pg_catalog.setval('tasks_id_seq', 25, true);
 --
 
 COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, name, current_school, satm, satv, satwr, act, toeflr, toeflwr, toefls, toefll, is_counselor, admin, counselor_ref) FROM stdin;
-2	ask@ask.com	$2a$11$AfASSCkBk1mHmZ1OZoiB1.m4yK.t82YotnsytOBqfomLQloyoaEYG	\N	\N	\N	2	2017-03-31 04:22:11.219567	2017-03-31 04:04:54.409205	127.0.0.1	127.0.0.1	2017-03-30 11:32:42.513808	2017-03-31 04:22:11.22047	Usagi Tsukino	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
-3	m@m.com	$2a$11$Lsm.yWxgQrDt9IeaGmGG/u4LyadXXyeffjlHDJpkmxDwNgkk2KQUi	\N	\N	\N	7	2017-03-31 05:25:26.083666	2017-03-31 04:21:42.457906	127.0.0.1	127.0.0.1	2017-03-30 14:20:12.433194	2017-03-31 05:25:26.084757	Mamoru Chiba	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
-4	ryuichi@ryuichi.com	$2a$11$PDxAoOuE.Y0P.ntaO40eAejFSQd1vlnLm7uycgFdSEwYpnSzwP9qq	\N	\N	\N	1	2017-03-31 06:34:52.404111	2017-03-31 06:34:52.404111	127.0.0.1	127.0.0.1	2017-03-31 05:31:17.45707	2017-03-31 06:34:52.405198	Ryuichi Sakomoto	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
+3	m@m.com	$2a$11$Lsm.yWxgQrDt9IeaGmGG/u4LyadXXyeffjlHDJpkmxDwNgkk2KQUi	\N	\N	\N	10	2017-04-01 10:24:32.56931	2017-04-01 10:21:58.31498	127.0.0.1	127.0.0.1	2017-03-30 14:20:12.433194	2017-04-01 10:24:32.570276	Mamoru Chiba	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
+9	stupidho@stupidho.com	$2a$11$b9sDx80pmODM7dc4rGEb/Oy7efgo7G1TupoGlKoYBw/MxlGyKpKaK	\N	\N	\N	1	2017-04-01 10:34:51.931065	2017-04-01 10:34:51.931065	127.0.0.1	127.0.0.1	2017-04-01 10:34:04.50011	2017-04-01 10:34:51.931797	stupidho	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
+1	john@john.com	$2a$11$EYo7DgGEMF8k0d8byRaq/uCU3NrVu2lmJ6XJuy9lcHD1I/Z/Vu/Gy	\N	\N	\N	18	2017-04-01 11:15:45.508803	2017-04-01 10:45:43.355311	127.0.0.1	127.0.0.1	2017-03-30 11:31:15.23544	2017-04-01 11:15:45.50986	john	\N	\N	\N	\N	\N	\N	\N	\N	\N	t	f	\N
+2	ask@ask.com	$2a$11$AfASSCkBk1mHmZ1OZoiB1.m4yK.t82YotnsytOBqfomLQloyoaEYG	\N	\N	\N	4	2017-04-01 11:16:41.323471	2017-04-01 10:31:32.81201	127.0.0.1	127.0.0.1	2017-03-30 11:32:42.513808	2017-04-01 11:16:41.3244	Usagi Tsukino	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
+4	ryuichi@ryuichi.com	$2a$11$PDxAoOuE.Y0P.ntaO40eAejFSQd1vlnLm7uycgFdSEwYpnSzwP9qq	\N	\N	\N	2	2017-04-01 11:17:13.435592	2017-03-31 06:34:52.404111	127.0.0.1	127.0.0.1	2017-03-31 05:31:17.45707	2017-04-01 11:17:13.43678	Ryuichi Sakomoto	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
+10	dounan@dounan.com	$2a$11$.FM7OALQTEAoRnh4MifecOx7L.moQtDpkAUU5R0sZc9jyVlYsRlFO	\N	\N	\N	1	2017-04-01 11:55:51.086289	2017-04-01 11:55:51.086289	127.0.0.1	127.0.0.1	2017-04-01 11:55:51.082476	2017-04-01 11:55:51.087163	Dounan	\N	\N	\N	\N	\N	\N	\N	\N	\N	t	f	\N
+11	john3@john.com	$2a$11$AJr1wBoaJhPFawioduHLEucJlcmJ/y2l4fjUu4wrzfdPI0cgWwghq	\N	\N	\N	1	2017-04-01 11:57:41.296818	2017-04-01 11:57:41.296818	127.0.0.1	127.0.0.1	2017-04-01 11:56:28.546618	2017-04-01 11:57:41.297607	John Student	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	10
 5	k@k.com	$2a$11$fZosClWxaF9fU1iv39YOLu9JvU0bB7mjDh40oTY0dtB62I5OcOECe	\N	\N	\N	1	2017-03-31 07:06:31.281798	2017-03-31 07:06:31.281798	127.0.0.1	127.0.0.1	2017-03-31 07:05:49.128017	2017-03-31 07:06:31.282632	Kyari pamyu	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
 6	fuck@fuck.com	$2a$11$RMuT9nURhovsfrf.Kx4LB.U2tSIfH13M5NaRlQhzXpE1ac8ghpB3O	\N	\N	\N	1	2017-03-31 07:29:11.533205	2017-03-31 07:29:11.533205	127.0.0.1	127.0.0.1	2017-03-31 07:29:11.529438	2017-03-31 07:29:11.534089	fuck	\N	\N	\N	\N	\N	\N	\N	\N	\N	t	f	\N
 7	yosuke@yosuke.com	$2a$11$XGzOGtW8uMFRYNiQFoSYjOB7veH5LUAwZs3z8orwZiaeWXx4rzmJS	\N	\N	\N	1	2017-03-31 07:32:13.922671	2017-03-31 07:32:13.922671	127.0.0.1	127.0.0.1	2017-03-31 07:29:38.570748	2017-03-31 07:32:13.923436	yosuke	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	6
 8	go@go.com	$2a$11$gSkFF466Hi0NFIycQCwvlODahM02RzXKMo86dIPffVyUaJzyEDBzi	\N	\N	\N	0	\N	\N	\N	\N	2017-03-31 09:12:56.00201	2017-03-31 09:12:56.00201	gogog	\N	\N	\N	\N	\N	\N	\N	\N	\N	f	f	1
-1	john@john.com	$2a$11$EYo7DgGEMF8k0d8byRaq/uCU3NrVu2lmJ6XJuy9lcHD1I/Z/Vu/Gy	\N	\N	\N	14	2017-04-01 04:51:50.798294	2017-04-01 04:03:25.770543	127.0.0.1	127.0.0.1	2017-03-30 11:31:15.23544	2017-04-01 04:51:50.799672	john	\N	\N	\N	\N	\N	\N	\N	\N	\N	t	f	\N
 \.
 
 
@@ -502,7 +549,7 @@ COPY users (id, email, encrypted_password, reset_password_token, reset_password_
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: johnroberts
 --
 
-SELECT pg_catalog.setval('users_id_seq', 8, true);
+SELECT pg_catalog.setval('users_id_seq', 11, true);
 
 
 --
