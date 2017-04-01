@@ -9,8 +9,8 @@ pg_dump -d turtlecamp_development -f turtlecamp_dev_db.psql
 ## Import the staging DB
 
 ```bash
-sed -i -- 's/user_name/guochunzhong/g' turtlecamp_dev_db.psql
-psql
+sed -i -- 's/johnroberts/guochunzhong/g' turtlecamp_dev_db.psql
+psql -d postgres
 DROP DATABASE turtlecamp_development;
 CREATE DATABASE turtlecamp_development WITH ENCODING='UTF8' OWNER='guochunzhong';
 \q
