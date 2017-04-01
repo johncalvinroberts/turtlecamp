@@ -27,8 +27,19 @@
             <div class="name"><p><%= task.name %></p>
             <p>Due: <em><%= task&.due_date&.strftime("%A, %B %m, %Y") %></em></p>
             </div>
-            <%# document_link = task.document ? task.document : "nothing" %>
-            <div class="attachment"><%#= document_link %></div>
+
+            <% if task.no_document %>
+            <div class="attachment">
+
+              <%= form_for([@college_app, task], method: :put) do |f| %>
+              Attachment: <%= f.file_field :document %>
+              <%= f.hidden_field :document_cache %>
+              <%= f.submit %>
+            <% end %>
+            </div>
+            <% else %>
+            <div class="attachment"><%= link_to 'Download file', task.document.url %></div>
+            <% end %>
 
 
             <div class="edit">
