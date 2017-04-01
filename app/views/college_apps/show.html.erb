@@ -36,13 +36,14 @@
                 <%= f.submit %>
               <% end %>
             </div>
-            <% elsif task.no_document && current_user.is_counselor %>
-              <div class="attachment">
-              <%= form_for([@college_app, @student, task], url: student_college_app_task_path, method: :put) do |f| %>
-              <%= f.file_field :document %>
-              <%= f.hidden_field :document_cache %>
-              <%= f.submit %>
-            <% end %>
+            <%# elsif task.no_document && current_user.is_counselor %>
+              <!-- <div class="attachment"> -->
+              <%#= form_for([@college_app, @student, task], url: student_college_app_task_path, method: :put) do |f| %>
+              <%#= f.file_field :document %>
+              <%#= f.hidden_field :document_cache %>
+              <%#= f.submit %>
+            <%# end %>
+            <!-- </div> -->
             <% else %>
             <div class="attachment"><%= link_to 'Download file', task.document.url %></div>
             <% end %>
