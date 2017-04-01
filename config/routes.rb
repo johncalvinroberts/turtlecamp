@@ -10,20 +10,23 @@ Rails.application.routes.draw do
   devise_for :users
 
   post "students", to: "students#create", as: "create_student"
-
+#counselor routes
   resources :students, only: [:show, :new, :index] do
     resources :college_apps, only: [:new, :show, :create, :edit, :update, :destroy] do
       resources :tasks, only: [:new, :create, :edit, :update, :destroy] do
         member do
           post "/attach_file", to: "tasks#attach_file"
+          post :approve
         end
       end
     end
   end
-  resources :college_apps do
+#student routes
+  resources :college_apps, only: [:show, :create, :new, :index, :edit, :update, :destroy] do
     resources :tasks, only: [:new, :create, :edit, :update, :destroy] do
       member do
         post "/attach_file", to: "tasks#attach_file"
+        post :pending
       end
     end
   end

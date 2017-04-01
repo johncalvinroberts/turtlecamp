@@ -31,6 +31,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    @college_app = CollegeApp.find(params[:college_app_id])
     @task = Task.find(params[:id])
     if current_user.is_counselor
       @student = User.find_by(counselor_ref: current_user.id, id: params[:student_id])
@@ -38,12 +39,26 @@ class TasksController < ApplicationController
       @student = current_user
     end
     @task.update(task_params)
-    redirect_to college_apps
+    redirect_to college_app_path(@college_app)
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+  end
+
+  def approve
+    @task = Task.find(params[:id])
+    @task.update(status: 'approved')
+    @college_app = CollegeApp.find(params[:college_app_id])
+    @student = User.find(params[:student_id])
+  end
+
+  def pending
+    @task = Task.find(params[:id])
+    @task.update(status: 'pending')
+    @college_app = CollegeApp.find(params[:college_app_id])
+    @student = User.find(params[:student_id])
   end
 
   private

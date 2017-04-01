@@ -1,30 +1,75 @@
-<div class="wrapper-form">
-  <div class="container-form">
-    <div class="text-center">
+<!-- <div class="wrapper-form"> -->
+  <div class="container">
+    <div class="text-center padded">
       <p>College application for <%= @college_app.college.name %></p>
       <p><%= @college_app.college.address %></p>
       <p><%= @college_app.college.website %></p>
-      <p>Application deadline: <%= @college_app.deadline %></p>
+      <p>Application deadline: <%= @college_app.deadline.strftime("%A, %B %m, %Y") %></p>
       <p><%= @college_app.category %></p>
       <p><%= @college_app.status %></p>
     </div>
-    <div class="container">
+      <div class="container-tasks">
+          <div class="add_task">
+            <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
+            <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post) do |f| %>
+              Name: <%= f.text_field :name %>
+              Due date: <%= f.date_field :due_date, as: :date_time_picker%>
+              Attachment: <%= f.file_field :document %>
+              <%= f.hidden_field :document_cache %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+      <% tasks_chronological = @college_app.tasks.order(:due_date) %>
+      <% tasks_chronological.each do |task| %>
+      <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
+        <div class="task">
+          <div class="task-content">
+            <div class="name"><p><%= task.name %></p>
+            <p>Due: <em><%= task&.due_date&.strftime("%A, %B %m, %Y") %></em></p>
+            </div>
 
-    <% @college_app.tasks.each do |task| %>
-      <div class="task">
-        <p><%= task.name %></p>
-        <p><em><%= task.due_date %></em>em</p>
-         <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
+            <% if task.no_document %>
+            <div class="attachment">
 
-         <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>
+              <%= form_for([@college_app, task], method: :put) do |f| %>
+              Attachment: <%= f.file_field :document %>
+              <%= f.hidden_field :document_cache %>
+              <%= f.submit %>
+            <% end %>
+            </div>
+            <% else %>
+            <div class="attachment"><%= link_to 'Download file', task.document.url %></div>
+            <% end %>
 
-        <p><%= link_to "edit task", edit_task %></p>
-        <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
+
+            <div class="edit">
+
+            <% if task.status =="approved" %>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-green-sm", remote: true%></div>
+
+            <% elsif task.status == "pending" && current_user.is_counselor%>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-yellow", remote: true%></div>
+
+          <% elsif task.status == "pending" && !current_user.is_counselor%>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", "#", class:"btn btn-yellow", remote: true%></div>
+
+            <% elsif task.status =="not done" && current_user.is_counselor %>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small", remote: true%></div>
+
+            <% elsif task.status =="not done" && !current_user.is_counselor %>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small", remote: true%></div>
+
+            <% end %>
+            </div>
+
+            <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
+          </div>
+             <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>
+          </div>
+          <% end %>
+
         </div>
-        <% end %>
-        <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
-        <%= link_to "Add a Task", add_task, class:"" %>
-    </div>
+
     <div class="text-center padded">
       <% edit_app = current_user.is_counselor ? edit_student_college_app_path : edit_college_app_path %>
         <%= link_to "edit this application", edit_app %>
@@ -32,4 +77,4 @@
     </div>
 
   </div>
-</div>
+<!-- </div> -->
