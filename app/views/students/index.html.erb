@@ -1,3 +1,5 @@
+<small>Students-Dashboard find me at students/index.html.erb</small>
+
 <div class="container-fluid card-counselor">
   <div>
     <h1>Hello <%= current_user.name %></h1>
@@ -9,31 +11,32 @@
 </div>
 
 <div class="container">
+  <% if @students == nil %>
+   <p>nothing</p>
+  <% else %>
+    <% @students.find_in_batches(batch_size: 4) do |students| %>
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
+     <% students.each do |student| %>
+     <!-- find a way to put margins around the card -->
+    <div class="col-xs-12 col-sm-3" id="card-margin">
       <div class="card-student">
-        <% if @students == nil %>
-         <p>nothing</p>
-        <% else %>
-          <% @students.each do |student| %>
-          <div>
-            <div class="card-name">
-              <p><%= link_to "#{student.name}", student_path(student)%></p>
-            </div>
-            <div class="card-schools">
-              <img class="card-logo" src="http://placehold.it/50x50">
-              <img class="card-logo" src="http://placehold.it/50x50">
-              <img class="card-logo" src="http://placehold.it/50x50">
-            </div>
-            <div class="card-total">
-              Total 2 Schools
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-        <a href="" class="card-link"></a>
+        <div class="card-name">
+          <p><%= link_to "#{student.name}", student_path(student)%></p>
+        </div>
+        <div class="card-schools">
+          <img class="card-logo" src="http://placehold.it/50x50">
+          <img class="card-logo" src="http://placehold.it/50x50">
+          <img class="card-logo" src="http://placehold.it/50x50">
+        </div>
+        <div class="card-total">
+          Total 2 Schools
+        </div>
       </div>
+        <a href="" class="card-link"></a>
     </div>
+      <% end %>
+    <% end %>
+  <% end %>
   </div>
 </div>
 
