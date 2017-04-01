@@ -28,22 +28,28 @@
             <p>Due: <em><%= task&.due_date&.strftime("%A, %B %m, %Y") %></em></p>
             </div>
 
-            <% if task.no_document %>
-            <div class="attachment">
-
-              <%= form_for([@college_app, task], method: :put) do |f| %>
-              Attachment: <%= f.file_field :document %>
+            <% if task.no_document && !current_user.is_counselor %>
+              <div class="attachment">
+                <%= form_for([@college_app, task], method: :put) do |f| %>
+                <%= f.file_field :document %>
+                <%= f.hidden_field :document_cache %>
+                <%= f.submit %>
+              <% end %>
+            </div>
+            <% elsif task.no_document && current_user.is_counselor %>
+              <div class="attachment">
+              <%= form_for([@college_app, @student, task], url: student_college_app_task_path, method: :put) do |f| %>
+              <%= f.file_field :document %>
               <%= f.hidden_field :document_cache %>
               <%= f.submit %>
             <% end %>
-            </div>
             <% else %>
             <div class="attachment"><%= link_to 'Download file', task.document.url %></div>
             <% end %>
-
-
-            <div class="edit">
-
+    <!--         <div class="edit">
+              <%= link_to "edit task", edit_task %>
+            </div> -->
+            <div class="status">
             <% if task.status =="approved" %>
             <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-green-sm", remote: true%></div>
 
