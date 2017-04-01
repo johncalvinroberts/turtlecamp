@@ -1,43 +1,175 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="college-list">
-        <% @student.college_apps.each do |college_app| %>
-          <div>
-            <%= college_app.deadline %>
-            <%= college_app.category %>
-            <%= college_app.status %>
-            <%= college_app.college.name %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <p>here comes the circle data</p>
-    </div>
-  </div>
+<div class="wrapper">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="dashboard-todolist">
-       <h3>To-Do List</h3>
-        <div>
-          <table class="table todolist-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Due Date</th>
-                <th>School Page</th>
-              </tr>
-            </thead>
-          </table>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="text-center card-box" style="min-height: 377px;">
+          <div class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+              <i class="zmdi zmdi-more-vert"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+          <div>
+            <img src="assets/images/users/avatar-10.jpg" class="img-circle thumb-xl img-thumbnail m-b-10" alt="profile-image">
+
+            <p class="text-muted font-13 m-b-30">
+              Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+            </p>
+
+            <div class="text-left">
+              <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">Johnathan Deo</span></p>
+
+              <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">(123) 123 1234</span></p>
+
+              <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">coderthemes@gmail.com</span></p>
+
+              <p class="text-muted font-13 m-b-5"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="dashboard-notfications">
-        <h3>Notifications</h3>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-box">
+          <div class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+              <i class="zmdi zmdi-more-vert"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+
+          <h4 class="header-title m-t-0 m-b-30">Progressbars</h4>
+
+          <p class="font-600 m-b-5">College 1 <span class="text-custom pull-right">80%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-danger -->
+          </div><!-- /.progress .no-rounded -->
+
+          <p class="font-600 m-b-5">College 2 <span class="text-custom pull-right">50%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-pink -->
+          </div><!-- /.progress .no-rounded -->
+
+          <p class="font-600 m-b-5">College 3 <span class="text-custom pull-right">70%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-info -->
+          </div><!-- /.progress .no-rounded -->
+
+          <p class="font-600 m-b-5">College 4 <span class="text-custom pull-right">65%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-warning -->
+          </div><!-- /.progress .no-rounded -->
+
+          <p class="font-600 m-b-5">College 5 <span class="text-custom pull-right">65%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-warning -->
+          </div><!-- /.progress .no-rounded -->
+
+          <p class="font-600 m-b-5">College 6 <span class="text-custom pull-right">40%</span></p>
+          <div class="progress progress-bar-custom-alt progress-sm m-b-0">
+            <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; visibility: visible; animation-name: animationProgress;">
+            </div><!-- /.progress-bar .progress-bar-success -->
+          </div><!-- /.progress .no-rounded -->
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-box">
+          <div class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+              <i class="zmdi zmdi-more-vert"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+
+          <h4 class="header-title m-t-0 m-b-30"><i class="zmdi zmdi-notifications-none m-r-5"></i> Upcoming Reminders</h4>
+
+          <ul class="list-group m-b-0 user-list">
+            <li class="list-group-item">
+              <a href="#" class="user-list-item">
+                <div class="avatar text-center">
+                  <i class="zmdi zmdi-circle text-primary"></i>
+                </div>
+                <div class="user-desc">
+                  <span class="name">Meet Manager</span>
+                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="list-group-item">
+              <a href="#" class="user-list-item">
+                <div class="avatar text-center">
+                  <i class="zmdi zmdi-circle text-success"></i>
+                </div>
+                <div class="user-desc">
+                  <span class="name">Project Discussion</span>
+                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="list-group-item">
+              <a href="#" class="user-list-item">
+                <div class="avatar text-center">
+                  <i class="zmdi zmdi-circle text-pink"></i>
+                </div>
+                <div class="user-desc">
+                  <span class="name">Meet Manager</span>
+                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="list-group-item">
+              <a href="#" class="user-list-item">
+                <div class="avatar text-center">
+                  <i class="zmdi zmdi-circle text-muted"></i>
+                </div>
+                <div class="user-desc">
+                  <span class="name">Project Discussion</span>
+                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="list-group-item">
+              <a href="#" class="user-list-item">
+                <div class="avatar text-center">
+                  <i class="zmdi zmdi-circle text-danger"></i>
+                </div>
+                <div class="user-desc">
+                  <span class="name">Meet Manager</span>
+                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
