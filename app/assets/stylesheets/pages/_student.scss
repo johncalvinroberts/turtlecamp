@@ -1,0 +1,23 @@
+.student-picture {
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.student-avatar {
+    width: 85px;
+    height: 85px;
+    background-color: grey;
+  }
+
+.student-header-top {
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
