@@ -1,4 +1,4 @@
-<div class="wrapper-form">
+<!-- <div class="wrapper-form"> -->
   <div class="container">
     <div class="text-center padded">
       <p>College application for <%= @college_app.college.name %></p>
@@ -11,7 +11,7 @@
       <div class="container-tasks">
           <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
           <div class="add_task">
-            <%= render "tasks/form" %>
+            <%#= render "tasks/form" %>
             <%= link_to "Add a Task", add_task, class:"btn btn-rec-green-sm" %>
           </div>
       <% tasks_chronological = @college_app.tasks.sort_by { |i| i.due_date } %>
@@ -19,8 +19,11 @@
       <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
         <div class="task">
           <div class="task-content">
-            <div class="name"><p><%= task.name %></p></div>
-            <div class="duedate"><p>Due: <em><%= task.due_date.strftime("%A, %B %m, %Y") %></em></p></div>
+            <div class="name"><p><%= task.name %></p>
+            <p>Due: <em><%= task.due_date.strftime("%A, %B %m, %Y") %></em></p>
+            </div>
+            <%# document_link = task.document ? task.document : "nothing" %>
+            <div class="attachment"><%#= document_link %></div>
             <div class="edit"><p><%= link_to "#{task.status}", edit_task, class:"btn btn-rd-danger-small" %></p></div>
             <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
           </div>
@@ -37,4 +40,4 @@
     </div>
 
   </div>
-</div>
+<!-- </div> -->
