@@ -9,18 +9,23 @@
       <p><%= @college_app.status %></p>
     </div>
       <div class="container-tasks">
-          <% add_task = current_user.is_counselor ? new_student_college_app_task_path(@student, @college_app): new_college_app_task_path(@college_app) %>
           <div class="add_task">
-            <%#= render "tasks/form" %>
-            <%= link_to "Add a Task", add_task, class:"btn btn-rec-green-sm" %>
+            <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
+            <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post) do |f| %>
+              Name: <%= f.text_field :name %>
+              Due date: <%= f.date_field :due_date, as: :date_time_picker%>
+              Attachment: <%= f.file_field :document %>
+              <%= f.hidden_field :document_cache %>
+              <%= f.submit %>
+            <% end %>
           </div>
-      <% tasks_chronological = @college_app.tasks.sort_by { |i| i.due_date } %>
+      <% tasks_chronological = @college_app.tasks.order(:due_date) %>
       <% tasks_chronological.each do |task| %>
       <% edit_task = current_user.is_counselor ? edit_student_college_app_task_path(@student, @college_app) : edit_college_app_task_path(@college_app) %>
         <div class="task">
           <div class="task-content">
             <div class="name"><p><%= task.name %></p>
-            <p>Due: <em><%= task.due_date.strftime("%A, %B %m, %Y") %></em></p>
+            <p>Due: <em><%= task&.due_date&.strftime("%A, %B %m, %Y") %></em></p>
             </div>
             <%# document_link = task.document ? task.document : "nothing" %>
             <div class="attachment"><%#= document_link %></div>
