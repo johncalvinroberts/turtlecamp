@@ -1,11 +1,42 @@
+
 <div class="wrapper-form">
   <div class="container-form">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <% if !resource.is_counselor && resource.sign_in_count== 1 %>
+  <% flash[:notice] = "Welcome to Turtlecamp!" %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
 
       <div class="form-inputs">
+      <h2>Edit your information:</h2>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <h4>Update Password</h4>
+        <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+        <%= f.input :password_confirmation, required: false %>
+        <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+        <hr>
+        <h4>Enter Test Scores</h4>
+        <%= f.input :satm, :label => "SAT", required: false %>
+        <%= f.input :act, :label => "ACT", required: false %>
+        <%= f.input :toeflr, :label => "TOEFL", required: false %>
+        <hr>
+        <h4>Enter Contact information</h4>
+        <%= f.input :wechat_id, :label =>"WeChat ID", required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+      </div>
+      <% end %>
+
+  <% else %>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
         <%= f.input :email, required: true, autofocus: true %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,11 +52,12 @@
         <%= f.button :submit, "Update" %>
       </div>
     <% end %>
+ <% end %>
+
+
 
     <h3>Cancel my account</h3>
 
     <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
   </div>
 </div>
