@@ -29,14 +29,18 @@
             </div>
             <%# document_link = task.document ? task.document : "nothing" %>
             <div class="attachment"><%#= document_link %></div>
-            <% if task.status == "not done" %>
 
-            <div class="edit"><p><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small"%></p></div>
-            <% elsif task.status == "pending" %>
-            <p>pending button</p>
+
+            <div class="edit">
+            <% if task.status =="approved" %>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-green-sm", remote: true%></div>
+            <% elsif task.status == "pending"%>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-yellow", remote: true%></div>
             <% else %>
-            <div class="btn btn-rec-green-sm-outline">approved</div>
+            <div id="task<%=task.id -%>"><%= button_to "#{task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rd-danger-small", remote: true%></div>
             <% end %>
+            </div>
+
             <p><%#= link_to  "delete task", delete_task, method: :destroy %></p>
           </div>
              <%# delete_task =  current_user.is_counselor ? student_college_app_task_path(@college_app) : college_app_task_path(@college_app) %>

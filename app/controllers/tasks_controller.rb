@@ -49,6 +49,8 @@ class TasksController < ApplicationController
   def approve
     @task = Task.find(params[:id])
     @task.update(status: 'approved')
+    @college_app = CollegeApp.find(params[:college_app_id])
+    @student = User.find(params[:student_id])
   end
 
   private
