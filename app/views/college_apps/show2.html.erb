@@ -1,12 +1,3 @@
-
-  <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
-
-
 <div class="wrapper">
   <div class="container">
 
@@ -26,11 +17,11 @@
           <h4 class="header-title m-t-0">Tasks</h4>
           <div class="row text-center m-t-30">
             <div class="col-xs-6">
-              <h3 data-plugin="counterup">8,459</h3>
+              <h3 data-plugin="counterup"><%= @college_app.tasks.count %></h3>
               <p class="text-muted">Total Tasks</p>
             </div>
             <div class="col-xs-6">
-              <h3 data-plugin="counterup">584</h3>
+              <h3 data-plugin="counterup"><%= @college_app.incomplete_tasks %></h3>
               <p class="text-muted">Open Tasks</p>
             </div>
           </div>
@@ -49,74 +40,12 @@
 
         </div>
       </div><!-- end col -->
-
-      <div class="col-lg-4">
+      <div class="col-lg-8">
         <div class="card-box">
-          <div class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown"
-               aria-expanded="false">
-              <i class="zmdi zmdi-more-vert"></i>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-          <h4 class="header-title m-t-0">Total Work Left</h4>
-
-          <div class="row text-center m-t-30">
-            <div class="col-xs-4">
-              <h3 data-plugin="counterup">1,507</h3>
-              <p class="text-muted">Tasks To Do</p>
-            </div>
-            <div class="col-xs-4">
-              <h3 data-plugin="counterup">916</h3>
-              <p class="text-muted">Pending </p>
-            </div>
-            <div class="col-xs-4">
-              <h3 data-plugin="counterup">22</h3>
-              <p class="text-muted">Not started</p>
-            </div>
-          </div>
-
-          <div id="morris-bar-example" style="height: 280px;" class="m-t-10"></div>
+          <div><%= distance_of_time_in_words(Time.now, college_app.deadline) %></div>
         </div>
-      </div><!-- end col -->
+      </div>
 
-      <div class="col-lg-4">
-        <div class="card-box">
-          <div class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown"
-               aria-expanded="false">
-              <i class="zmdi zmdi-more-vert"></i>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-          <h4 class="header-title m-t-0">Total Progress</h4>
-
-          <div class="row text-center m-t-30">
-            <div class="col-xs-6">
-              <h3 data-plugin="counterup">7,653</h3>
-              <p class="text-muted">Total Done</p>
-            </div>
-            <div class="col-xs-6">
-              <h3 data-plugin="counterup">852</h3>
-              <p class="text-muted">Pending Tasks</p>
-            </div>
-          </div>
-
-          <div id="morris-line-example" style="height: 280px;" class="m-t-10"></div>
-        </div>
-      </div><!-- end col -->
 
     </div>
     <!-- end row -->
@@ -313,13 +242,6 @@
 
 
 <script type="text/javascript">
-
-  /**
-   * Theme: Flacto Admin Template
-   * Author: Coderthemes
-   * Dashboard
-   */
-
   !function($) {
     "use strict";
 
@@ -378,30 +300,28 @@
         Dashboard1.prototype.init = function() {
 
           //creating bar chart
-          var $barData  = [
-            { y: '2010', a: 75 },
-            { y: '2011', a: 42 },
-            { y: '2012', a: 75 },
-            { y: '2013', a: 38 },
-            { y: '2014', a: 19 },
-            { y: '2015', a: 93 },
-            { y: '2016', a: 50 }
-          ];
-          this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Statistics'], ['#fe6271']);
+          // var $barData  = [
+          //   { y: '2010', a: 75 },
+          //   { y: '2011', a: 42 },
+          //   { y: '2012', a: 75 },
+          //   { y: '2013', a: 38 },
+          //   { y: '2014', a: 19 },
+          //   { y: '2015', a: 93 },
+          //   { y: '2016', a: 50 }
+          // ];
+          // this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Statistics'], ['#fe6271']);
 
           //create line chart
-          var $data  = [
-            { y: '2008', a: 50, b: 0 },
-            { y: '2009', a: 75, b: 50 },
-            { y: '2010', a: 30, b: 80 },
-            { y: '2011', a: 50, b: 50 },
-            { y: '2012', a: 75, b: 10 },
-            { y: '2013', a: 50, b: 40 },
-            { y: '2014', a: 75, b: 50 },
-            { y: '2015', a: 100, b: 70 }
-          ];
-          this.createLineChart('morris-line-example', $data, 'y', ['a','b'], ['Series A','Series B'],['0.9'],['#ffffff'],['#999999'], ['#ddd','#fe8995']);
-
+          // var $data  = [
+          //   { y: '2008', a: 50, b: 0 },
+          //   { y: '2009', a: 75, b: 50 },
+          //   { y: '2010', a: 30, b: 80 },
+          //   { y: '2011', a: 50, b: 50 },
+          //   { y: '2012', a: 75, b: 10 },
+          //   { y: '2013', a: 50, b: 40 },
+          //   { y: '2014', a: 75, b: 50 },
+          //   { y: '2015', a: 100, b: 70 }
+          // ];
           //creating donut chart
           var $donutData = [
             <% @college_app.tasks_by_status_count.each do |type| %>
