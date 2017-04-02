@@ -74,6 +74,10 @@ class User < ApplicationRecord
     end
   end
 
+  def tasks_by_status_count
+    all_tasks = self.tasks.group(:status).count
+    all_tasks.map{ |k, v| {label: k, value: v}}
+  end
 
 end
 

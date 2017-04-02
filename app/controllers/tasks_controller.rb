@@ -38,8 +38,11 @@ class TasksController < ApplicationController
     else
       @student = current_user
     end
-    @task.update(task_params)
-    redirect_to college_app_path(@college_app)
+      if @task.update(task_params) && current_user.is_counselor
+        redirect_to student_college_app_path(@student, @college_app)
+      else
+        redirect_to college_app_path(@college_app)
+      end
   end
 
   def destroy
@@ -71,7 +74,7 @@ class TasksController < ApplicationController
                   :status,
                   :document,
                   :document_cache,
-                  :student_id)
+                  )
   end
 end
 
