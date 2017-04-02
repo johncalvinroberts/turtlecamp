@@ -38,8 +38,11 @@
   top: 2px;
 }
 .icon{
-  font-size: 30px;
+  font-size: 25px;
   color: $black;
+}
+.icon:hover{
+  color: $brand-color;
 }
 
 .app-header{
