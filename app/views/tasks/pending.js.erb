@@ -1,1 +1,1 @@
-$("#task<%= @task.id -%>").replaceWith("<%= j button_to "#{@task.status}", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: @task.id), class:'btn btn-yellow', remote: true%>")
+$("#task<%= @task.id -%>").replaceWith("<%= j button_to "#{@task.status}", '#', class:'btn btn-rec-yellow-sm', remote: true%>")

@@ -27,6 +27,25 @@
   font-weight: normal;
 }
 
+
+.btn-rec-danger-sm{
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  background-color: #F63E44;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+
+.btn-rec-danger-sm:hover {
+  opacity: 1;
+}
+
+
+
+
 .btn-rd-danger-small:hover{
   opacity:1;
 }
@@ -146,5 +165,20 @@
   transition: background 0.3s ease;
 }
 .btn-txt:hover {
+  opacity: 1;
+}
+
+
+.btn-rec-yellow-sm {
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  background-color: #FBCA35;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-yellow-sm:hover {
   opacity: 1;
 }
