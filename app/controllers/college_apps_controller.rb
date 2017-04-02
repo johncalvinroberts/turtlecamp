@@ -43,6 +43,9 @@ class CollegeAppsController < ApplicationController
     else
       @student = current_user
     end
+
+    render :show2
+
   end
 
   def edit

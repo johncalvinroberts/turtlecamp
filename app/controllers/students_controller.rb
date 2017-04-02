@@ -28,7 +28,8 @@ class StudentsController < ApplicationController
     check_counselor
     @student = User.find_by(counselor_ref: current_user.id, id: params[:id])
     @college_apps = @student.college_apps
-    @task_percentage = @student.task_percentage_by_colleges_count
+    @task_percentage_by_colleges = @student.task_percentage_by_colleges_count
+    @task_percentage_by_category = @student.tasks_percentage_by_category_count
   end
 
 
