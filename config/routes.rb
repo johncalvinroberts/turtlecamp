@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  devise_for :users
+  # devise_for :users
+
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
 
   post "students", to: "students#create", as: "create_student"
 #counselor routes
