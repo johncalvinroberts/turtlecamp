@@ -194,13 +194,24 @@
 
                 <% if task.no_document && current_user.is_counselor %>
                   <td>
-                  <%= form_for([@college_app, task], method: :put) do |f| %>
-                  <%= f.file_field :document, input_html: { hidden: true }, label: 'Upload Attachment' %>
-                  <%= f.hidden_field :document_cache %>
-                  <%= f.submit id:"upload", style: "display: none;" %>
-                  <% end %>
+                    <% task_path = "/students/#{@student.id}/college_apps/#{@college_app.id}/tasks/#{task.id}}" %>
+
+                    <%= form_for([@college_app, task], url: "#{task_path}", method: :put) do |f| %>
+                    <%= task_path %>
+                    <%= f.file_field :document %>
+                    <%= f.hidden_field :document_cache %>
+                    <%= f.submit %>
+                    <% end %>
                  </td>
-                 <% else %>
+                 <% elsif task.no_document && !current_user.is_counselor%>
+                 <td>
+                  <%= form_for([@college_app, task], method: :put) do |f| %>
+                  <%= f.file_field :document %>
+                  <%= f.hidden_field :document_cache %>
+                  <%= f.submit %>
+                  <% end %>
+                </td>
+                   <% else %>
                  <td>
                   <%= link_to '<i class="fa fa-download icon"></i>'.html_safe, task.document.url %>
                  </td>
