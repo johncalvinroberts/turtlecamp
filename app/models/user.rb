@@ -44,7 +44,7 @@ class User < ApplicationRecord
     tasks.group("tasks.due_date").count
   end
 
-  # returns percentage of tasks approved per category: {"Middlebury"=>10, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
+  # returns percentage of tasks approved per college: {"Middlebury"=>10, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
   def task_percentage_by_colleges_count
     total = tasks_by_colleges_count
     approved = tasks_by_colleges_count("approved")

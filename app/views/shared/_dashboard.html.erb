@@ -6,13 +6,27 @@
       <div class="col-lg-3 col-md-6">
         <div class="card-box">
           <h4 class="header-title m-t-0 m-b-30">Progress by College</h4>
+
           <% @student.task_percentage_by_colleges_count.keys.each do |college| %>
             <% percentage = @student.task_percentage_by_colleges_count[college] %>
-            <p class="font-600 m-b-5"> <%= college %> <span class="text-custom pull-right"><%= percentage  %>%</span></p>
-            <div class="progress progress-bar-custom-alt progress-sm m-b-20">
-              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
-              </div><!-- /.progress-bar .progress-bar-danger -->
-            </div><!-- /.progress .no-rounded -->
+            <% link = (@student.college_apps.all.where(:college == college)).first.id %>
+                <div><%= link_to link %></div>
+            <div>
+              <p class="font-600 m-b-5"> <%= college %> <span class="text-custom pull-right"><%= percentage  %>%</span></p>
+              <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+                <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
+
+
+
+                  <%# if current_user.is_counselor %>
+                    <%#= link_to student_college_app_path(@student, (CollegeApp.where(:college == college_name)).where(user_id: @student.id).first.id)%>
+                  <%# else %>
+                    <%#=link_to college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
+                  <%# end %>
+
+                </div><!-- /.progress-bar .progress-bar-danger -->
+              </div><!-- /.progress .no-rounded -->
+            </div>
           <% end %>
         </div>
       </div>
