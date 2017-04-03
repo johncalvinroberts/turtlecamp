@@ -32,6 +32,9 @@ class CollegeAppsController < ApplicationController
   def index
     @student = current_user
     @college_apps = current_user.college_apps
+    if current_user.is_counselor && @student.id == current_user.id
+      redirect_to students_path
+    end
   end
 
   def show
