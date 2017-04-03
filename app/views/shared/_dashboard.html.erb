@@ -9,20 +9,17 @@
 
           <% @student.task_percentage_by_colleges_count.keys.each do |college| %>
             <% percentage = @student.task_percentage_by_colleges_count[college] %>
-            <% link = (@student.college_apps.all.where(:college == college)).first.id %>
-                <div><%= link_to link %></div>
             <div>
               <p class="font-600 m-b-5"> <%= college %> <span class="text-custom pull-right"><%= percentage  %>%</span></p>
               <div class="progress progress-bar-custom-alt progress-sm m-b-20">
                 <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
 
 
-
-                  <%# if current_user.is_counselor %>
-                    <%#= link_to student_college_app_path(@student, (CollegeApp.where(:college == college_name)).where(user_id: @student.id).first.id)%>
-                  <%# else %>
-                    <%#=link_to college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
-                  <%# end %>
+                  <% if current_user.is_counselor %>
+                    <%= link_to student_college_app_path(@student, (CollegeApp.where(:college == college)).where(user_id: @student.id).first.id)%>
+                  <% else %>
+                    <%=link_to college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
+                  <% end %>
 
                 </div><!-- /.progress-bar .progress-bar-danger -->
               </div><!-- /.progress .no-rounded -->
@@ -31,13 +28,13 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <!-- <div class="col-lg-3 col-md-6">
         <div class="card-box">
           <h4 class="header-title m-t-0 m-b-30">Progress by Category</h4>
 
-          <% @student.tasks_percentage_by_category_count.keys.each do |college| %>
-            <% percentage = @student.tasks_percentage_by_category_count[college] %>
-            <p class="font-600 m-b-5"> <%= college %> <span class="text-custom pull-right"><%= percentage %>%</span></p>
+          <% @student.tasks_percentage_by_category_count.keys.each do |task| %>
+            <% percentage = @student.tasks_percentage_by_category_count[task] %>
+            <p class="font-600 m-b-5"> <%= task %> <span class="text-custom pull-right"><%= percentage %>%</span></p>
             <div class="progress progress-bar-custom-alt progress-sm m-b-20">
               <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
@@ -46,102 +43,41 @@
           <% end %>
 
         </div>
-      </div>
+      </div> -->
 
       <div class="col-lg-3 col-md-6">
         <div class="card-box">
-          <h4 class="header-title m-t-0 m-b-30">Application Deadlines</h4>
-
+          <h4 class="header-title m-t-0 m-b-30">Upcoming Deadlines</h4>
+          <% college_apps_chronological = @student.college_apps.order(:deadline) %>
+          <% college_apps_chronological.each do |app| %>
           <ul class="list-group m-b-0 user-list">
             <li class="list-group-item">
-              <a href="#" class="user-list-item">
-                <div class="avatar text-center">
-                  <i class="zmdi zmdi-circle text-primary"></i>
-                </div>
+            <%= link_to student_college_app_path(app.user_id, app) do %>
+              <div class="user-list-item">
                 <div class="user-desc">
-                  <span class="name">Meet Manager</span>
-                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
+                  <span class="name"><%= app.college.name %></span>
+                  <span class="desc"><%= app.deadline.strftime("%d / %m / %Y") %></span>
                 </div>
-              </a>
-            </li>
-
-            <li class="list-group-item">
-              <a href="#" class="user-list-item">
-                <div class="avatar text-center">
-                  <i class="zmdi zmdi-circle text-success"></i>
-                </div>
-                <div class="user-desc">
-                  <span class="name">Project Discussion</span>
-                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
-                </div>
-              </a>
-            </li>
-
-            <li class="list-group-item">
-              <a href="#" class="user-list-item">
-                <div class="avatar text-center">
-                  <i class="zmdi zmdi-circle text-pink"></i>
-                </div>
-                <div class="user-desc">
-                  <span class="name">Meet Manager</span>
-                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
-                </div>
-              </a>
-            </li>
-
-            <li class="list-group-item">
-              <a href="#" class="user-list-item">
-                <div class="avatar text-center">
-                  <i class="zmdi zmdi-circle text-muted"></i>
-                </div>
-                <div class="user-desc">
-                  <span class="name">Project Discussion</span>
-                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
-                </div>
-              </a>
-            </li>
-
-            <li class="list-group-item">
-              <a href="#" class="user-list-item">
-                <div class="avatar text-center">
-                  <i class="zmdi zmdi-circle text-danger"></i>
-                </div>
-                <div class="user-desc">
-                  <span class="name">Meet Manager</span>
-                  <span class="desc">February 29, 2016 - 10:30am to 12:45pm</span>
-                </div>
-              </a>
+              </div>
+              <% end %>
             </li>
           </ul>
+          <% end %>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6">
         <div class="card-box">
-          <div class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown"
-               aria-expanded="false">
-              <i class="zmdi zmdi-more-vert"></i>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
 
           <h4 class="header-title m-t-0">Tasks</h4>
 
-
           <div class="row text-center m-t-30">
             <div class="col-xs-6">
-              <h3 data-plugin="counterup">8,459</h3>
+              <h3 data-plugin="counterup"><%= @student.tasks.count %></h3>
               <p class="text-muted">Total Tasks</p>
             </div>
             <div class="col-xs-6">
-              <h3 data-plugin="counterup">584</h3>
+              <h3 data-plugin="counterup"><%= @student.incomplete_tasks %></h3>
               <p class="text-muted">Open Tasks</p>
             </div>
           </div>
@@ -150,10 +86,10 @@
             <div id="total-tasks-donut" style="height: 245px;"></div>
             <ul class="list-inline chart-detail-list m-b-0">
               <li>
-                <h5><i class="fa fa-circle m-r-5" style="color: #da5461;"></i>Not Started</h5>
+                <h5><i class="fa fa-circle m-r-5" style="color: #FE6271;"></i>Not Done</h5>
               </li>
               <li>
-                <h5><i class="fa fa-circle m-r-5" style="color: #fe8995;"></i>Pending</h5>
+                <h5><i class="fa fa-circle m-r-5" style="color: #FBD04D;"></i>Pending</h5>
               </li>
             </ul>
           </div>
@@ -166,12 +102,22 @@
 
 <script type="text/javascript">
 
+  var data = [
+      <% @student.tasks_by_status_count.each do |type| %>
+        {label: '<%=type[:label]%>', value: <%=type[:value]%>},
+      <% end %>
+  ];
+
+  var colors = [ "#FBD04D", "#fe6271", "#4DDE7B"];
+
   Morris.Donut({
     element: 'total-tasks-donut',
-      data: [
-        {label: "Open Tasks", value: 12},
-        {label: "Pending Tasks", value: 30},
-        {label: "Approved Tasks", value: 20}
-      ]
-    });
+      data: data,
+      resize: true, //defaulted to true
+      colors: colors,
+      backgroundColor: '#fff'
+  });
+
+
+
 </script>

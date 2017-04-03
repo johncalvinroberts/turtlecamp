@@ -24,14 +24,15 @@
           </ul>
           </div>
           <div>
-            <p class="font-600 m-b-5"> <span class="text-custom pull-right">15%</span></p>
+            <p class="font-600 m-b-5"> <span class="text-custom pull-right"><%= @college_app.app_completion_percentage %>%</span></p>
             <div class="progress progress-bar-custom-alt progress-sm m-b-20">
-              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%; visibility: visible; animation-name: animationProgress;">
+              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- morris donut right here -->
       <div class="col-lg-4">
         <div class="card-box">
           <h4 class="header-title m-t-0">Tasks Overview</h4>
@@ -287,7 +288,7 @@
               {label: '<%=type[:label]%>', value: <%=type[:value]%>},
             <% end %>
           ];
-          this.createDonutChart('morris-donut-example', $donutData, ["#FBD04D", "#4DDE7B","#fe6271"]);
+          this.createDonutChart('morris-donut-example', $donutData, ["#fe6271", "#4DDE7B", "#FBD04D"]);
         },
       //init
         $.Dashboard1 = new Dashboard1, $.Dashboard1.Constructor = Dashboard1

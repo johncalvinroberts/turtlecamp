@@ -5,10 +5,3 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-$(function () {
-    $('.form_datetime').datetimepicker({ format: 'YYYY-MM-DD HH:mm' });
-});
-
-$('.input-daterange').datetimepicker({
-});
-

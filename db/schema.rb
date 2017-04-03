@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402064758) do
+ActiveRecord::Schema.define(version: 20170403070924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(version: 20170402064758) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.datetime "due_date",                            null: false
+    t.datetime "due_date",                                 null: false
     t.string   "status",         default: "not done"
     t.integer  "college_app_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "document"
+    t.string   "category",       default: "Uncategorized"
     t.index ["college_app_id"], name: "index_tasks_on_college_app_id", using: :btree
   end
 
