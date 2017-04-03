@@ -1,16 +1,34 @@
 <div class="wrapper-form">
   <div class="container-form">
-    <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
-    <%= form_for([@student, @college_app], url:"#{apps_path}" ) do |f| %>
-      <%= f.select(:college_id) do %>
-        <% @colleges.each do |c| -%>
-          <%= content_tag(:option, c.name, value: c.id) %>
-        <% end %>
+    <div class="container text-center">
+      <h1>Start a college application for <%= @student.name %></h1>
+      <p>Your future begins here</p>
+    </div>
+    <div class="new-app-form-container">
+      <div class="form-groups">
+        <div class="form-field">
+        <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
+        <%= form_for([@student, @college_app], url:"#{apps_path}", class: "form-input-box" ) do |f| %>
+          <%= f.select(:college_id) do %>
+            <% @colleges.each do |c| -%>
+              <%= content_tag(:option, c.name, value: c.id) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-groups">
+        <div class="form-field">
+          <%= f.date_field :deadline, as: :date_time_picker, class: "form-input-box" %>
+        </div>
+      </div>
+       <div class="form-groups">
+          <div class="form-field-last">
+          <%= f.select :category, ["REACH", "TARGET", "SAFETY"], class: "form-input-box" %>
+          </div>
+        </div>
+        <%= f.submit class:"btn btn-rec-green" %>
       <% end %>
-      <%= f.date_field :deadline, as: :date_time_picker%>
-      <%= f.select :category, ["REACH", "TARGET", "SAFETY"]%>
-      <%= f.submit %>
-    <% end %>
+    </div>
   </div>
 </div>
 
