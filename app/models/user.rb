@@ -82,19 +82,22 @@ class User < ApplicationRecord
     not_started = self.tasks.where(status: "not done").count
     total = pending + not_started
   end
+
   def not_done_tasks
     self.tasks.where(status: "not done").count
 
   end
+
   def pending_tasks
     self.tasks.where(status: "pending").count
   end
 
   def finished_tasks
     self.tasks.where(status: "approved").count
+  end
 
   def college_emblems
-    college_apps.map { |college_app| college_app.college.emblem }
+      college_apps.map { |college_app| college_app.college.emblem }
 
   end
 

@@ -32,9 +32,8 @@
                 <h3><%= "#{student.name}" %></h3>
               </div>
               <div class="card-schools">
-                <% student.college_emblems.each do |emblem| %>
-                  <%= image_tag emblem, class: "card-logo" %>
-                <% end %>
+                <%# student.college_emblems.each do |emblem| %>
+                  <%#= image_tag emblem, class: "card-logo" %>
               </div>
               <div class="card-total">
                 Total <%= student.college_apps.count %> Schools
