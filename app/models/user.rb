@@ -29,10 +29,10 @@ class User < ApplicationRecord
   # returns number of tasks per college: {"Middlebury"=>6, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
   # scoped by task status: ["not done", "pending", "approved"]
   def tasks_by_colleges_count(status = nil)
-    tasks = college_apps.joins(:tasks).joins("join colleges on college_apps.college_id = colleges.id")
+    tasks = college_apps.joins(:tasks)
     tasks = tasks.where("tasks.status = '#{status}'") if status
 
-    tasks.group("colleges.name").count
+    tasks.group("college_id").count
   end
 
   # returns number of tasks per date: {"Middlebury"=>6, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
@@ -44,23 +44,21 @@ class User < ApplicationRecord
     tasks.group("tasks.due_date").count
   end
 
-  # returns percentage of tasks approved per category: {"Middlebury"=>10, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
+  # returns percentage of tasks approved per college: {"Middlebury"=>10, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
   def task_percentage_by_colleges_count
     total = tasks_by_colleges_count
     approved = tasks_by_colleges_count("approved")
 
     total.keys.inject( {} ) do |result, college|
-      result.merge!(college => (approved.fetch(college, 0).to_f / total[college]) * 100 )
+      result.merge!(college => ((approved.fetch(college, 0).to_f / total[college]) * 100 ).to_d.truncate(2).to_f)
     end
   end
 
   # returns number of tasks per category: {"Middlebury"=>6, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
   # scoped by task status: ["not done", "pending", "approved"]
   def tasks_by_category_count(status = nil)
-    ts = tasks
-    ts = ts.where("tasks.status = '#{status}'") unless status.nil?
-    tasks_by_category = ts.group_by{ |t| t.category }
-
+    tasks_by_category = self.tasks
+    tasks_by_category = tasks.group("tasks.category").count
     tasks_by_category.each { |k, v| tasks_by_category[k] = v.size }
   end
 
@@ -70,7 +68,7 @@ class User < ApplicationRecord
     approved = tasks_by_category_count("approved")
 
     total.keys.inject( {} ) do |result, college|
-      result.merge!(college => (approved.fetch(college, 0).to_f / total[college]) * 100 )
+      result.merge!(college => ((approved.fetch(college, 0).to_f / total[college]) * 100 ).to_d.truncate(2).to_f)
     end
   end
 
@@ -79,8 +77,25 @@ class User < ApplicationRecord
     all_tasks.map{ |k, v| {label: k, value: v}}
   end
 
+  def incomplete_tasks
+    pending = self.tasks.where(status: "pending").count
+    not_started = self.tasks.where(status: "not done").count
+    total = pending + not_started
+  end
+  def not_done_tasks
+    self.tasks.where(status: "not done").count
+
+  end
+  def pending_tasks
+    self.tasks.where(status: "pending").count
+  end
+
+  def finished_tasks
+    self.tasks.where(status: "approved").count
+
   def college_emblems
     college_apps.map { |college_app| college_app.college.emblem }
+
   end
 
 end
