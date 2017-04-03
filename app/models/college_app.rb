@@ -25,7 +25,11 @@ class CollegeApp < ApplicationRecord
     else
       percentage = 100 * (tasks.where(status: "approved").count.to_f / (tasks.count)).to_d.truncate(2).to_f
     end
+  end
 
+  def categories
+    cats = self.tasks.group(:category).count
+    output = cats.map{ |k, v| {label: k, value: v}}
   end
 
 end
