@@ -1,4 +1,4 @@
-
+<div class="wrapper-form">
   <div class="container-form">
     <%= form_for :user, url: create_student_path do |f| %>
     <div class="text-center">
@@ -7,15 +7,26 @@
       <p>Student will be prompted to enter a new password when they login for the first time</p>
     </div>
       <%#= f.error_notification %>
-      <div class="form-inputs">
-        Name: <%= f.text_field :name, require: true, autofocus:true %>
-        Email: <%= f.text_field :email, type: 'email', required: true %>
-        Pswd: <%= f.text_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-        Pswd: <%= f.text_field :password_confirmation, required: true %>
+      <div class="container-new-student-form">
+        <div class="form-inputs">
+          <div class="form-groups">
+            Name <%= f.text_field :name, class:"form-input-box", require: true, autofocus: true%>
+          </div>
+          <div class="form-groups">
+            Email <%= f.text_field :email, class:"form-input-box", type: 'email', required: true %>
+          </div>
+          <div class="form-groups">
+            Password <%= f.text_field :password, class:"form-input-box", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          </div>
+          <div class="form-groups">
+            Retype Password <%= f.text_field :password_confirmation, class:"form-input-box", required: true %>
+          </div>
+        </div>
       </div>
-
-      <div class="form-actions">
-        <%= f.submit %>
+          <div class="form-actions">
+            <%= f.submit class:"btn btn-rec-green"%>
+            <% end %>
+          </div>
       </div>
-    <% end %>
   </div>
+</div>
