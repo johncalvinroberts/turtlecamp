@@ -267,7 +267,7 @@
           // creating bar chart
           var $barData  = [
           <% @college_app.categories.each do |type| %>
-          {label: '<%= type[:label] %>', value: '<%= type[:value] %>'},
+          {y: '<%= type[:label] %>', a: '<%= type[:value] %>'},
           <% end %>
           ];
           this.createBarChart('morris-bar-stacked', $barData, 'y', ['a'], ['#fe6271']);
