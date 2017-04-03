@@ -74,6 +74,7 @@ class TasksController < ApplicationController
                   :status,
                   :document,
                   :document_cache,
+                  :category
                   )
   end
 end

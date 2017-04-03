@@ -26,14 +26,18 @@
           <div>
           app completion
             <p class="font-600"> <span class="text-custom pull-right"><%= @college_app.app_completion_percentage %>%</span></p>
-            <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+            <div class="progress">
               <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
             </div>
+          <div class="app-header">
           </div>
-          Task categories
+          </div>
+          <div class="top-margined">
+          Categories
+          </div>
         <div class="header-title m-t-0 m-b-30">
-            <div id="morris-bar-stacked" style="height: 300px;"></div>
+            <div id="morris-bar-stacked" style="height: 179px;"></div>
         </div>
         </div>
       </div>
@@ -78,14 +82,19 @@
         <!-- add a task card -->
           <h4 class="header-title m-t-0 m-b-30">Add a task</h4>
 
-          <div class="inbox-widget nicescroll" style="height: 315px;">
+          <div class="inbox-widget nicescroll" >
               <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
               <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post) do |f| %>
               <div class="inbox-item">
               <%= f.text_area :name, placeholder: "describe a task", class:"form-control" %>
               </div>
+              <div class="inbox-item text-center">
+                <% collection = [ ['Essay',], ['Documents'], ['Application'], ['Transcript'], ['Letter of recommendation'], ['Test prep'], ['Other'] ] %>
+                <%= f.select :category, collection, include_blank: '-select-', class: "form-control" %>
+              <p>Due date:</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline" %>
+
+              </div>
               <div class="inbox-item">
-              <p>Due date:</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline", placeholder:"enter a due date" %>
               </div>
               <div class="inbox-item">
                 <label class="btn btn-transparent">
