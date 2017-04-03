@@ -11,7 +11,7 @@
 
 .task{
   border-radius: 1px solid black;
-  border: 1px solid $black;
+  border: 1px solid $gray;
   margin: 5px 0;
   padding: 5px;
 
@@ -38,6 +38,13 @@
   top: 2px;
 }
 .icon{
-  font-size: 30px;
+  font-size: 25px;
   color: $black;
+}
+.icon:hover{
+  color: $brand-color;
+}
+
+.app-header{
+  border-bottom: 3px solid #F5F5F5;
 }

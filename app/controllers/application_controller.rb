@@ -25,4 +25,12 @@ class ApplicationController < ActionController::Base
       college_apps_path
     end
   end
+
+  def distance_of_time_in(unit, from, to)
+    if 1.respond_to? unit
+      ((to - from) / 1.send(unit)).abs.round
+    else
+      raise ArgumentError, "#{unit} is not supported as unit"
+    end
+  end
 end
