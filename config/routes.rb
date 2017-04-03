@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   # devise_for :users
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-
-
   post "students", to: "students#create", as: "create_student"
 #counselor routes
   resources :students, only: [:show, :new, :index] do

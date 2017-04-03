@@ -43,9 +43,11 @@ class CollegeAppsController < ApplicationController
     else
       @student = current_user
     end
-
+    if current_user.id != @college_app.user_id
+      redirect_to college_apps_path
+    else
     render :show2
-
+    end
   end
 
   def edit
@@ -90,5 +92,10 @@ class CollegeAppsController < ApplicationController
     @college_app = CollegeApp.find(params[:id])
   end
 
+  # def authorize_student
+  #    if current_user.id != @college_app.user_id
+  #     redirect_to college_apps_path
+  #   end
+  # end
 end
 
