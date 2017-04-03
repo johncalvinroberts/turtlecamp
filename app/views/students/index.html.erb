@@ -26,9 +26,9 @@
           <h3><%= "#{student.name}" %></h3>
         </div>
         <div class="card-schools">
-          <img class="card-logo" src="http://placehold.it/50x50">
-          <img class="card-logo" src="http://placehold.it/50x50">
-          <img class="card-logo" src="http://placehold.it/50x50">
+        <% student.college_emblems.each do |emblem| %>
+          <%= image_tag emblem, class: "card-logo" %>
+        <% end %>
         </div>
         <div class="card-total">
           Total 2 Schools
