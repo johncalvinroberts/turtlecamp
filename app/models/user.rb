@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :college_apps
-  has_many :colleges, through: :college_apps
-  has_many :tasks, through: :college_apps
-  has_many :attachments, through: :tasks
+  has_many :college_apps, dependent: :destroy
+  has_many :colleges, through: :college_apps, dependent: :destroy
+  has_many :tasks, through: :college_apps, dependent: :destroy
+  has_many :attachments, through: :tasks, dependent: :destroy
 
   def students
     if self.is_counselor
@@ -92,6 +92,10 @@ class User < ApplicationRecord
 
   def finished_tasks
     self.tasks.where(status: "approved").count
+
+  def college_emblems
+    college_apps.map { |college_app| college_app.college.emblem }
+
   end
 
 end

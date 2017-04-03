@@ -7,11 +7,9 @@
 }
 
 .container-form {
-  width: 40%;
   padding: 20px;
   border-radius: 6px;
   margin: 20px;
-  margin-top: 100px;
   background-color: white;
 }
 .container-form ul, .container-form ol {
@@ -20,4 +18,109 @@
     & a {
       text-decoration: none;
     }
+}
+
+.container-new-student-form{
+  width: 300px;
+  // height: 0 auto;
+  padding: 0px;
+  margin : 0px auto;
+}
+
+
+.form-inputs{
+  text-align: left;
+}
+
+.form-input-box {
+  width: 100%;
+  border-radius: 5px;
+  height: 38px;
+  border: solid 1px #d3d5dc;
+  margin-top: 5px;
+  padding: 7px 12px
+}
+
+.form-input-box:hover {
+  border: solid 1px #4EDE7B
+}
+
+
+.form-groups{
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
+.form-actions{
+  text-align: center;
+
+  input{
+  margin-top: 20px
+  }
+}
+
+.submit-login{
+  border: 2px;
+  border-color: white;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #35DA69;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+  width: 100%
+}
+
+.submit-login:hover{
+  opacity: 1;
+}
+
+.devise-form-input{
+  width: 100%
+}
+
+.devise-form-container{
+  width: 300px;
+  padding: 0px;
+  margin: 0px auto
+}
+
+.edit-form-button{
+  border: 2px;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #35DA69;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+  width: 100%;
+  &:hover{
+    color: black;
+    background-color: #35DA69;
+  }
+}
+
+#button-edit-user:hover {
+  background-color: #35DA69;
+}
+
+
+.new-app-form-container{
+  width: 190px;
+  padding: 0px;
+  margin: 0px auto;
+}
+
+.form-field{
+padding-bottom: 10px;
+}
+
+.form-field-last{
+padding-top: 5px;
+padding-bottom: 10px;
 }

@@ -1,6 +1,6 @@
 class CollegeApp < ApplicationRecord
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   belongs_to :college
   validates :college_id, uniqueness: {scope: :user_id, message: "One college at a time"}
   after_create :seed_tasks

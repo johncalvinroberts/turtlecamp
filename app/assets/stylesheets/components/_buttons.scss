@@ -84,7 +84,6 @@
 
 .btn-rec-green {
   border: 2px;
-  border-color: white;
   border-radius: 5px;
   color: white;
   padding: 12px 20px;
@@ -93,10 +92,11 @@
   opacity: 0.88;
   transition: background 0.3s ease;
   font-weight: normal;
-}
-.btn-rec-green:hover {
-  opacity: 1;
-  color: white;
+  &:hover {
+    opacity: 1;
+    color: black;
+    background-color: #35DA69;
+  }
 }
 
 .btn-rec-blue {
@@ -140,16 +140,6 @@
   transition: background 0.3s ease;
   font-weight: normal;
 }
-.btn-rec-green:hover {
-  opacity: 1;
-}
-
-.btn-rec-green-sm-outline {
-
-}
-.btn-rec-green:hover {
-  opacity: 1;
-}
 
 .btn-txt {
   padding: 0px 2px;
@@ -181,4 +171,23 @@
 }
 .btn-rec-yellow-sm:hover {
   opacity: 1;
+}
+
+.btn-rec-signup {
+  border: 2px;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #35DA69;
+  margin: 15px;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+  width: 100%;
+  margin-left: 0px;
+  &:hover {
+    opacity: 1;
+    color: black;
+    background-color: #35DA69;
+  }
 }
