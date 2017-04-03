@@ -32,6 +32,9 @@ class CollegeAppsController < ApplicationController
   def index
     @student = current_user
     @college_apps = current_user.college_apps
+    if current_user.is_counselor && @student.id == current_user.id
+      redirect_to students_path
+    end
   end
 
   def show
@@ -43,8 +46,10 @@ class CollegeAppsController < ApplicationController
     else
       @student = current_user
     end
-    if current_user.id != @college_app.user_id
+    if !current_user.is_counselor && current_user.id != @college_app.user_id
       redirect_to college_apps_path
+    elsif current_user.is_counselor && !current_user.students.include?(User.find(@college_app.user_id))
+      redirect_to students_path
     else
     render :show2
     end
