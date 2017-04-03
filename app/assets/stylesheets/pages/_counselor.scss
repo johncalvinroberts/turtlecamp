@@ -12,19 +12,21 @@
   margin-right:25px;
 }
 .card-student {
-  height: 400px;
-  color: white;
-  width: 300px;
-  background-color: #E6E6E6;
-  margin: 10px;
-  border-radius: 7px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 42px 0 rgba(0, 0, 0, 0.08);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  position: relative;
 }
 .card-name {
   text-align: center;
-  padding:20px;
 }
 .card-schools {
-  height: 260px;
+  min-height: 260px;
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -42,19 +44,23 @@
 .card-total {
   text-align: center;
   padding:20px;
-  background-color: #A7E0EF;
+  opacity: 0.5;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 .card-link {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
+  left: 0;
   width: 100%;
   z-index:2;
-  background: grey;
+  background: #F2F2F2;
   opacity: 0;
+  cursor: pointer;
 }
 .card-link:hover{
-  opacity: 0.1;
+  opacity: 0.3;
 }
 

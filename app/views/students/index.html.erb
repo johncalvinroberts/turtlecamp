@@ -18,10 +18,11 @@
   <div class="row">
      <% students.each do |student| %>
      <!-- find a way to put margins around the card -->
-    <div class="col-xs-12 col-sm-3" id="card-margin">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
       <div class="card-student">
+      <%= link_to "", student_path(student), class: "card-link"%>
         <div class="card-name">
-          <p><%= link_to "#{student.name}", student_path(student)%></p>
+          <h3><%= "#{student.name}" %></h3>
         </div>
         <div class="card-schools">
           <img class="card-logo" src="http://placehold.it/50x50">
@@ -32,11 +33,11 @@
           Total 2 Schools
         </div>
       </div>
-        <a href="" class="card-link"></a>
     </div>
       <% end %>
     <% end %>
   <% end %>
   </div>
 </div>
+
 
