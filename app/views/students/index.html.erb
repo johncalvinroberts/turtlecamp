@@ -1,14 +1,15 @@
-<small>Students-Dashboard find me at students/index.html.erb</small>
 
-<div class="container-fluid card-counselor">
-  <div>
-    <h1>Hello <%= current_user.name %></h1>
-    <h4>here are your students</h4>
-  </div>
-  <div class="actions">
-    <%= link_to "add a student", new_student_path, class:"btn-rd-out-black" %>
-  </div>
-</div>
+  <div class="container-form">
+    <div class="container-fluid card-counselor">
+      <div>
+        <h1>Hello <%= current_user.name %></h1>
+        <h4>Here are your students</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "Add new student", new_student_path, class:"btn btn-rec-green" %>
+      </div>
+    </div>
+
 
 <div class="container">
   <% if @students == nil %>
@@ -32,12 +33,10 @@
         <div class="card-total">
           Total 2 Schools
         </div>
+          <% end %>
+        <% end %>
+      <% end %>
       </div>
     </div>
-      <% end %>
-    <% end %>
-  <% end %>
   </div>
 </div>
-
-
