@@ -92,6 +92,7 @@ class User < ApplicationRecord
 
   def finished_tasks
     self.tasks.where(status: "approved").count
+  end
 
   def college_emblems
     college_apps.map { |college_app| college_app.college.emblem }
