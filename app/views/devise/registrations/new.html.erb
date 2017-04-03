@@ -7,14 +7,14 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :name, require: true, autofocus:true %>
-      <%= f.input :email, required: true %>
-      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      <%= f.input :password_confirmation, required: true %>
+      <%= f.input :name, class:"form-input-box", require: true, autofocus:true %>
+      <%= f.input :email, class:"form-input-box", required: true %>
+      <%= f.input :password, class:"form-input-box", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.input :password_confirmation, class:"form-input-box", required: true %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "btn btn-rec-signup" %>
     </div>
   <% end %>
 

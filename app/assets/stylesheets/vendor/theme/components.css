@@ -87,7 +87,6 @@ File: Components
 .btn-default:focus,
 .btn-default:hover,
 .open > .dropdown-toggle.btn-default {
-  background-color: #ffffff !important;
   border: 1px solid #ebebec !important;
 }
 .btn-primary {
