@@ -1,42 +1,36 @@
-
-  <div class="container-form">
-    <div class="container-fluid card-counselor">
-      <div>
-        <h1>Hello <%= current_user.name %></h1>
-        <h4>Here are your students</h4>
-      </div>
-      <div class="actions">
-        <%= link_to "Add new student", new_student_path, class:"btn btn-rec-green" %>
-      </div>
-    </div>
-
+<div class="container-fluid card-counselor">
+    <ul class="list-inline">
+      <li><h2>Hello <%= current_user.name %></h2></li>
+      <li><%= link_to "Add new student", new_student_path, class:"btn-rec-out-black" %></li>
+    </ul>
+</div>
 
 <div class="container">
   <% if @students == nil %>
    <p>nothing</p>
   <% else %>
     <% @students.find_in_batches(batch_size: 4) do |students| %>
-  <div class="row">
-     <% students.each do |student| %>
-     <!-- find a way to put margins around the card -->
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <div class="card-student">
-      <%= link_to "", student_path(student), class: "card-link"%>
-        <div class="card-name">
-          <h3><%= "#{student.name}" %></h3>
-        </div>
-        <div class="card-schools">
-        <% student.college_emblems.each do |emblem| %>
-          <%= image_tag emblem, class: "card-logo" %>
+      <div class="row">
+        <% students.each do |student| %>
+           <!-- find a way to put margins around the card -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="card-student">
+              <%= link_to "", student_path(student), class: "card-link"%>
+              <div class="card-name">
+                <h3><%= "#{student.name}" %></h3>
+              </div>
+              <div class="card-schools">
+                <% student.college_emblems.each do |emblem| %>
+                  <%= image_tag emblem, class: "card-logo" %>
+                <% end %>
+              </div>
+              <div class="card-total">
+                Total <%= student.college_apps.count %> Schools
+              </div>
+            </div>
+          </div>
         <% end %>
-        </div>
-        <div class="card-total">
-          Total 2 Schools
-        </div>
-          <% end %>
-        <% end %>
-      <% end %>
       </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>
