@@ -1,3 +1,13 @@
+<% if user_signed_in? && current_user.is_counselor %>
+    <script type="text/javascript">
+    window.location.href="/students"
+    </script>
+<% elsif user_signed_in? && !current_user.is_counselor%>
+    <script type="text/javascript">
+    window.location.href="/college_apps"
+    </script>
+<% else %>
+
 <div class="banner" id="banner-1">
   <div class="banner-content">
     <h2>You do the college counseling, and we'll take care of the paperwork</h2>
@@ -28,3 +38,4 @@
     <p>Our detailed progress bars keep students aware of their tasks, and motivated to meet their deadlines</p>
   </div>
 </div>
+<% end %>

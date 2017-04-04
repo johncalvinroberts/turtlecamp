@@ -20,6 +20,11 @@ class RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   # def update
   #   super
+  #   if current_user.is_counselor
+  #     students_path
+  #   else
+  #     college_apps_path
+  #   end
   # end
 
   # DELETE /resource
