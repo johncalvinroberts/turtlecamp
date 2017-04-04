@@ -1,16 +1,10 @@
 .card-counselor {
-  text-align: left;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 8px 42px 0 rgba(0, 0, 0, 0.08);
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  text-align: center;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
   background-clip: padding-box;
-  margin-top: 90px;
-  margin-bottom: 20px;
-  position: relative;
-  border-top: 1px solid #E4E4E4;
+  padding: 50px;
   a:hover {
     color: #404040;
   }
@@ -62,7 +56,6 @@
   justify-content: space-between;
   align-items: center;
   display: flex;
-  margin-top: 15px;
 }
 
 .card-link {
@@ -80,4 +73,3 @@
 .card-link:hover{
   opacity: 0.3;
 }
-
