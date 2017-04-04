@@ -1,28 +1,58 @@
 <div class="container-fluid student-header">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-2">
-      <div class="student-picture">
-        <img class="student-avatar img-circle" alt="">
-        <h4><%= @student.name %></h4>
-        <small>2016-2017</small>
+
+    <div class="container-header-studentprofile">
+      <div class="container-profile-content">
+
+          <div class="student-header-top-content" style="display:inline-block">
+            <div class="container-student-information">
+            <h5>Current School:</h5>
+            <small><%= @student.current_school %></small>
+            <h5>SAT:</h5>
+            <small><%= @student.satm %></small>
+            <h5>TOEFL:</h5>
+            <small><%= @student.toeflr %></small>
+            <h5>WeChat:</h5>
+            <small><%= @student.wechat_id %></small>
+            </div>
+            <% if current_user.is_counselor %>
+            <div class="button-add-school">
+            <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
+            <% else %>
+            <%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
+            <% end %>
+            </div>
+          </div>
+
+          <div class="student-picture">
+          <div class="container-student-information" style="display:inline-block">
+          <img class="student-avatar img-circle" alt="">
+          <h4><%= @student.name %></h4>
+          <small>Class of 2017</small>
+          </div>
+          </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="col-xs-12 col-sm-10">
+
+
+<!--     <div class="col-xs-12 col-sm-10">
       <div class="student-header-top">
         <div class="student-header-top-content">
           <div class ="student-header-top-name">
           <h5> Current School </h5>
-          <small><%= @student.current_school %></small>
+          <small><#%= @student.current_school %></small>
           </div>
           <div class ="student-header-top-name">
           <h5> SAT </h5>
-          <small><%= @student.satm %></small>
+          <small><#%= @student.satm %></small>
           </div>
           <div class ="student-header-top-name">
           <h5> TOEFL </h5>
-          <small><%= @student.toeflr%></small>
+          <small><#%= @student.toeflr%></small>
           </div>
         </div>
       </div>
@@ -30,20 +60,21 @@
       <div class="student-header-bottom-content">
         <div class ="student-header-bottom-name">
           <h5>WeChat ID</h5>
-          <small><%= @student.name%></small>
+          <small><#%= @student.name%></small>
         </div>
         <div class ="student-header-bottom-name">
-        </div>
-        <div>
-          <% if current_user.is_counselor %>
-          <%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
-          <% else %>
-          <%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
-          <% end %>
-        </div>
+        </div> -->
+       <!--  <div>
+          <#% if current_user.is_counselor %>
+          <#%= link_to "Add a school", new_student_college_app_path(student_id: @student.id), class: "btn-rd-out-black" %>
+          <#% else %>
+          <#%= link_to "Add a school", new_college_app_path, class: "btn-rd-out-black" %>
+          <#% end %>
+        </div> -->
+    <!--   </div>
       </div>
-      </div>
-    </div>
-  </div>
+    </div> -->
+<!--   </div>
 </div>
 
+ -->

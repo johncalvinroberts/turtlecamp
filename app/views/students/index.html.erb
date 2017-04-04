@@ -13,7 +13,6 @@
     <% @students.find_in_batches(batch_size: 4) do |students| %>
       <div class="row">
         <% students.each do |student| %>
-           <!-- find a way to put margins around the card -->
 
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-student">
@@ -36,6 +35,6 @@
           </div>
         <% end %>
       </div>
-    <% end %>
+      <% end %>
   <% end %>
 </div>

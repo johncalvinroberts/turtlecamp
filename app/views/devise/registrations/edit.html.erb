@@ -18,7 +18,9 @@
         <%= f.input :password_confirmation, required: false %>
         <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
         <hr>
-        <h4>Enter Test Scores</h4>
+        <h4>Enter Academic Information</h4>
+        <%= f.input :app_year, :label => "Application Year", :collection => ["2016-2017", "2017-2018", "2018-2019"], required: false %>
+        <%= f.input :current_school, :label => "Current High School", required: false %>
         <%= f.input :satm, :label => "SAT", required: false %>
         <%= f.input :act, :label => "ACT", required: false %>
         <%= f.input :toeflr, :label => "TOEFL", required: false %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403072310) do
+ActiveRecord::Schema.define(version: 20170403215843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170403072310) do
     t.boolean  "admin",                  default: false, null: false
     t.integer  "counselor_ref"
     t.string   "wechat_id"
+    t.string   "app_year"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
