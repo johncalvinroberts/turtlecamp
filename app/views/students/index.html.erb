@@ -1,9 +1,11 @@
-<div class="container-fluid card-counselor">
-    <ul class="list-inline">
-      <li><strong><h3><%= current_user.name %></h3></strong></li>
-      <li><h4>Here is a list of your students</h4></li>
-      <li><%= link_to "Add a student", new_student_path, class:"btn-rec-out-black" %></li>
-    </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="container card-counselor text-center">
+        <h4><%= current_user.name %> Here is a list of your students</h4>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
@@ -26,10 +28,7 @@
                 <% end %>
               </div>
               <div class="card-total">
-                <ul class="list-inline">
-                  <li><p><%= student.college_apps.count %> Application</p></li>
-                  <li><p>Pending Tasks <%= student.pending_tasks %></p></li>
-                </ul>
+                <p>Pending Tasks <%= student.pending_tasks %></p>
               </div>
             </div>
           </div>
