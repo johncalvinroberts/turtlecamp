@@ -15,18 +15,26 @@
           <div class="form-groups">
             Email <%= f.text_field :email, class:"form-input-box", type: 'email', required: true %>
           </div>
-          <div class="form-groups">
-            Password <%= f.text_field :password, class:"form-input-box", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          </div>
-          <div class="form-groups">
-            Retype Password <%= f.text_field :password_confirmation, class:"form-input-box", required: true %>
-          </div>
+          <div class="container text-center">
+            <div class="btn btn-rec-green" id="pass_gen">Generate password</div>
+
+          </h1></div>
+          <%= f.hidden_field :password, as: :hidden, value: @password %>
+          <%= f.hidden_field :password_confirmation, as: :hidden, value: @password %>
         </div>
       </div>
-          <div class="form-actions">
+          <div class="form-actions hidden" id ="submit_button">
             <%= f.submit class:"btn btn-rec-green"%>
             <% end %>
           </div>
       </div>
   </div>
 </div>
+<script>
+  $("#pass_gen").click(function(){
+    $( this ).replaceWith("<div class='text-center'><p>Password:</p><h1><%= @password %></h1></div>");
+    $( "#submit_button" ).fadeIn("slow", function(){
+      $( this ).removeClass("hidden");
+    });
+});
+</script>
