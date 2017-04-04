@@ -41,6 +41,7 @@ class CollegeApp < ApplicationRecord
     end
 
     final_array << ["Deadline", self.deadline&.strftime("%Y-%m-%d"), self.deadline&.strftime("%Y-%m-%d")]
+    final_array.delete_at(-2)
     return final_array
   end
 

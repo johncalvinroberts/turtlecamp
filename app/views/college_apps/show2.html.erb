@@ -25,7 +25,7 @@
           </div>
           <div>
           app completion
-            <p class="font-600"> <span class="text-custom pull-right"><%= @college_app.app_completion_percentage %>%</span></p>
+            <p class="font-600"> <span class="text-custom pull-right" style="color: black"><%= @college_app.app_completion_percentage %>%</span></p>
             <div class="progress">
               <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
@@ -34,25 +34,10 @@
           </div>
           </div>
           <div class="top-margined">
-          Categories
+          Application timeline
           </div>
         <div class="header-title m-t-0 m-b-30">
-             <%#= timeline @college_app.app_timings, adapter: "google" %>
-        <% the_timings = @college_app.app_timings %>
-      <%= timeline the_timings, adapter: "google" %>
-
-             <%= timeline [
-  ["Washington", "1789-04-29", "1797-03-03"],
-  ["Adams", "1797-03-03", "1801-03-03"],
-  ["Jefferson", "1801-03-03", "1809-03-03"]], adapter: "google" %>
-
-
-
-
-
-
-
-
+          <%= timeline @college_app.app_timings, adapter: "google" %>
       <%#= line_chart @college_app.tasks.group_by_day(:due_date).count %>
      <!--      <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
         </div>

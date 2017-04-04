@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
-@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
-@import 'https://fonts.googleapis.com/css?family=Mitr:600';
 /*
 Template Name: Flacto Dashboard
 Author: CoderThemes
@@ -23,7 +20,7 @@ File: Core
 ============= */
 body {
   background: #f5f5f5;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   margin: 0;
   padding-bottom: 60px;
   overflow-x: hidden;
@@ -126,7 +123,7 @@ a:focus {
   margin-bottom: 0px;
   margin-top: 0px;
   line-height: 80px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 .page-header {
   border-bottom: 1px solid #DBDDDE;
@@ -136,7 +133,7 @@ a:focus {
   font-weight: 600;
   line-height: 16px;
   margin-bottom: 8px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 .wrapper {
   margin-top: 62px;
@@ -536,7 +533,7 @@ a:focus {
 }
 /* Text colors */
 .text-custom {
-  color: #fe6271 !important;
+  color: $black !important;
 }
 .text-white {
   color: #ffffff !important;
