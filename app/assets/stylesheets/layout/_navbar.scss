@@ -149,18 +149,18 @@
 }
 .navbar-thing-container{
   transition: all 1s ease;
+   border-right: 1px solid $black;
 }
 
 .navbar-thing-container:hover{
-  border-bottom: 2px solid #233142;
+  border-bottom: 1px solid #233142;
   background: #dedddd;
 }
 .navbar-thing {
-  padding: 0px 4px;
+  padding: 0px 19px;
   text-decoration: none;
   color: black;
   text-transform: uppercase;
-  margin: 0px 2px;
   font-size: 16px;
   opacity: 0.78;
   transition: all 1s ease;
@@ -170,4 +170,5 @@
 }
 .navbar-line{
   display:flex;
+  justify-content: flex-start;
 }
