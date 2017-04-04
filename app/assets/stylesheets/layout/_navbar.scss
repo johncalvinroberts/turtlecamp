@@ -134,7 +134,9 @@
 
 .navbar-text{
   color: $brand-color;
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: 2px;
   margin-right: 0px;
   transition: font-size 3s ease;
 }
