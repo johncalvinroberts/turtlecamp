@@ -37,13 +37,24 @@
           Categories
           </div>
         <div class="header-title m-t-0 m-b-30">
-        <%= timeline [
+             <%#= timeline @college_app.app_timings, adapter: "google" %>
+        <% the_timings = @college_app.app_timings %>
+      <%= timeline the_timings, adapter: "google" %>
+
+             <%= timeline [
   ["Washington", "1789-04-29", "1797-03-03"],
   ["Adams", "1797-03-03", "1801-03-03"],
-  ["Jefferson", "1801-03-03", "1809-03-03"]
-] %>
-      <!--   <%= line_chart @college_app.tasks.group_by_day(:due_date).count %> -->
-  <!--         <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
+  ["Jefferson", "1801-03-03", "1809-03-03"]], adapter: "google" %>
+
+
+
+
+
+
+
+
+      <%#= line_chart @college_app.tasks.group_by_day(:due_date).count %>
+     <!--      <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
         </div>
         </div>
       </div>
@@ -134,8 +145,7 @@
               </tr>
               </thead>
               <tbody>
-              <% tasks_chronological = @college_app.tasks.order(:due_date) %>
-              <% tasks_chronological.each do |task| %>
+              <% @college_app.tasks_chronological.each do |task| %>
                 <tr>
                   <td><%= task.name %></td>
                   <td><%= task.due_date.strftime("%d / %m / %Y") %></td>
