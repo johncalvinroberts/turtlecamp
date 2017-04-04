@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
 
   def new
       @user = User.new
+      @password = ((0..6).map { ('a'..'z').to_a[rand(26)] }.join)
   end
 
   def create
