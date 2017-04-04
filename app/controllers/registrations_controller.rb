@@ -20,6 +20,11 @@ class RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   # def update
   #   super
+  #   if current_user.is_counselor
+  #     students_path
+  #   else
+  #     college_apps_path
+  #   end
   # end
 
   # DELETE /resource
@@ -65,6 +70,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, :satm, :act, :toeflr, :wechat_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, :satm, :act, :toeflr, :wechat_id, :app_year, :current_school)
   end
 end

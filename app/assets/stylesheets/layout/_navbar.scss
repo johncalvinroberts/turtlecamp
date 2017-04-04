@@ -99,7 +99,7 @@
 
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
-  margin-top: 15px;
+  margin-top: 55px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
@@ -126,4 +126,51 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+.navbar-logo{
+  width: 150px;
+  border-radius: 0px;
+}
+
+.navbar-text{
+  color: $brand-color;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin-right: 0px;
+  transition: font-size 3s ease;
+}
+
+.down{
+  color: $black;
+  size: 15px;
+}
+
+.white{
+  opacity:0;
+}
+.navbar-thing-container{
+  transition: all 1s ease;
+   border-right: 1px solid $black;
+}
+
+.navbar-thing-container:hover{
+  border-bottom: 1px solid #233142;
+  background: #dedddd;
+}
+.navbar-thing {
+  padding: 0px 19px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  opacity: 0.78;
+  transition: all 1s ease;
+}
+.navbar-thing:hover {
+  opacity: 1;
+}
+.navbar-line{
+  display:flex;
+  justify-content: flex-start;
 }
