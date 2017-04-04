@@ -13,35 +13,48 @@
 }
 
 .student-header-top-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items:center
 }
 
-.student-header-top-name {
-  align-items: left;
+
+.container-student-information{
+  padding: 10px;
+  margin: 0 auto;
 }
 
-.student-header-bottom-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
 .student-header-bottom-name {
-  align-items: left;
 }
 
 
 .student-picture {
-  padding: 55px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  height: 300px;
+  padding-left: 70px;
+  padding-top: 13px;
+  margin: 0 auto;
 }
 
 .student-avatar {
-    width: 85px;
-    height: 85px;
-    background-color: grey;
+  width: 85px;
+  height: 85px;
+  background-color: gray;
+}
+
+.container-profile-content{
+  display: flex
+}
+
+
+.container-header-studentprofile{
+  padding: 30px;
+  height: 300px;
+  align-items: center;
+}
+
+.button-add-school{
+   margin-top: 15px;
+   padding-right: 40px;
+   a{
+    margin-left: 3px;
+
+   }
 }
