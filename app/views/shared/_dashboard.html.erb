@@ -14,13 +14,14 @@
               <div class="progress progress-bar-custom-alt progress-sm m-b-20">
                 <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
 
-
+                  <div>
                   <% if current_user.is_counselor %>
-                    <%= link_to student_college_app_path(@student, (CollegeApp.where(:college == college)).where(user_id: @student.id).first.id)%>
-                  <% else %>
-                    <%=link_to college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
-                  <% end %>
+                    <%= link_to "", student_college_app_path(@student, (CollegeApp.where(:college == college)).where(user_id: @student.id).first.id)%>
 
+                  <% else %>
+                    <%=link_to "", college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
+                  <% end %>
+                  </div>
                 </div><!-- /.progress-bar .progress-bar-danger -->
               </div><!-- /.progress .no-rounded -->
             </div>
@@ -56,7 +57,7 @@
               <div class="user-list-item">
                 <div class="user-desc">
                   <span class="name"><%= app.college.name %></span>
-                  <span class="desc"><%= app.deadline.strftime("%d / %m / %Y") %></span>
+                  <span class="desc"><%= app.deadline&.strftime("%d / %m / %Y")  %></span>
                 </div>
               </div>
               <% end %>
