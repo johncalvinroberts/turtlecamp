@@ -29,67 +29,41 @@
         </div>
       </div>
 
-
-
-
       <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="card-box widget-user">
               <div>
-                  <img src="assets/images/portrait_square.jpg" class="img-responsive img-circle" alt="user">
-                  <div class="wid-u-info">
+                <img src="assets/images/portrait_square.jpg" class="img-responsive img-circle" alt="user">
+                <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
-                      <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
-                      <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
-                      <small class="text-custom"><b>Application year <%= @student.app_year %></b></small>
+                    <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
+                    <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
+                    <small class="text-custom"><b>Application year <%= @student.app_year %></b></small>
                 <% else %>
-                      <h4 class="header-title m-t-0">Your Counselor:</h4>
-                       <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
-                      <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
+                    <h4 class="header-title m-t-0">Your Counselor:</h4>
+                     <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
+                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
                       <!-- need to seed data -->
                 <% end %>
-                  </div>
+                </div>
               </div>
           </div>
       </div>
 
       <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="card-box widget-user">
-              <div>
-                  <h4 class="header-title m-t-0">Student's next assignment:</h4>
-                      <!-- need to seed data -->
-                  </div>
-              </div>
+            <div>
+              <h4 class="header-title m-t-0">Next assignment:</h4>
+              <%= @student.tasks.first.name %>
+            </div>
           </div>
       </div>
 
-      <!-- <div class="col-lg-3 col-md-6">
-        <div class="card-box">
-          <h4 class="header-title m-t-0 m-b-30">Progress by Category</h4>
-
-          <% @student.tasks_percentage_by_category_count.keys.each do |task| %>
-            <% percentage = @student.tasks_percentage_by_category_count[task] %>
-            <p class="font-600 m-b-5"> <%= task %> <span class="text-custom pull-right"><%= percentage %>%</span></p>
-            <div class="progress progress-bar-custom-alt progress-sm m-b-20">
-              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
-              </div>
-            </div>
-
-          <% end %>
-
-        </div>
-      </div> -->
 
       <div class="col-md-8 col-sm-12">
-          <div class="card-box">
-
-            <h4 class="header-title m-t-0">Place Gatt Here SEXY BOY</h4>
-
-
-          </div>
+        <div class="card-box">
+          <h4 class="header-title m-t-0">Place Gatt Here SEXY BOY</h4>
+        </div>
       </div>
-
-
-
 
       <div class="col-lg-3 col-md-3 col-sm-12">
         <div class="card-box">
@@ -124,7 +98,7 @@
     </div>
 
   </div>
-</div>
+
 
 <script type="text/javascript">
 
