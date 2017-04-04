@@ -56,7 +56,7 @@
               <div class="user-list-item">
                 <div class="user-desc">
                   <span class="name"><%= app.college.name %></span>
-                  <span class="desc"><%= app.deadline.strftime("%d / %m / %Y") %></span>
+                  <span class="desc"><%= app.deadline&.strftime("%d / %m / %Y")  %></span>
                 </div>
               </div>
               <% end %>

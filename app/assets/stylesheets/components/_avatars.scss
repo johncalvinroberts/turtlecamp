@@ -18,3 +18,17 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.navbar-logo{
+  width: 150px;
+  border-radius: 0px;
+}
+
+.navbar-text{
+  color: $brand-color;
+  size: 25px;
+  margin-right: 0px;
+}
+.navbar-text:hover{
+  font-size: 30px;
+}

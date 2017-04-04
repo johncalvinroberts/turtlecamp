@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # College.destroy_all
 
-College.new({name:"Amherst", address:"Cambridge, MA", emblem: "Amherst_College.png"}).save!
-College.new({name:"Yale", address:"New Haven, CT", emblem: "Yale_University.png"}).save!
-College.new({name:"Williams", address:"345 Boyer Ave, Walla Walla, WA", emblem: "Williams_College.png"}).save!
-College.new({name:"Middlebury", address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Middlebury_College.png"}).save!
-College.new({name:"Bowdoin", address:"New Haven, CT", emblem: "Bowdoin_College.png"}).save!
-College.new({name:"CIT", address:"345 Boyer Ave, Walla Walla, WA", emblem: "California_Institute_of_Technology.png"}).save!
-College.new({name:"Carleton", address:"345 Boyer Ave, Walla Walla, WA", emblem: "Carleton_College.png"}).save!
-College.new({name:"Claremont McKenna", address:"Cambridge, MA", emblem: "Claremont_McKenna_College.png"}).save!
-College.new({name:"Duke", address:"New Haven, CT", emblem: "Duke_University.png"}).save!
-College.new({name:"MIT", address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Massachusetts_Institute_of_Technology.png"}).save!
-College.new({name:"Stanford", address:"Cambridge, MA", emblem: "Stanford_University.png"}).save!
+College.find_or_create_by(name:"Amherst"){ |c| c.assign_attributes({address:"Cambridge, MA", emblem: "Amherst_College.png"})}.save
+College.find_or_create_by(name:"Yale"){ |c| c.assign_attributes({address:"New Haven, CT", emblem: "Yale_University.png"})}.save
+College.find_or_create_by(name:"Williams"){ |c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "Williams_College.png"})}.save
+College.find_or_create_by(name:"Middlebury"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Middlebury_College.png"})}.save
+College.find_or_create_by(name:"Bowdoin"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Bowdoin_College.png"})}.save
+College.find_or_create_by(name:"CIT"){|c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "California_Institute_of_Technology.png"})}.save
+College.find_or_create_by(name:"Carleton"){|c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "Carleton_College.png"})}.save
+College.find_or_create_by(name:"Claremont McKenna"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Claremont_McKenna_College.png"})}.save
+College.find_or_create_by(name:"Duke"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Duke_University.png"})}.save
+College.find_or_create_by(name:"MIT"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Massachusetts_Institute_of_Technology.png"})}.save
+College.find_or_create_by(name:"Stanford"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Stanford_University.png"})}.save
