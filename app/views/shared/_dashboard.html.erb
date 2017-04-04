@@ -29,6 +29,20 @@
         </div>
       </div>
 
+      <div class="col-lg-3 col-md-6">
+          <div class="card-box widget-user">
+              <div>
+                  <img src="assets/images/portrait_square.jpg" class="img-responsive img-circle" alt="user">
+                  <div class="wid-u-info">
+                      <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
+                      <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
+                      <small class="text-custom"><b>Application year <%= @student.app_year %></b></small>
+                      <!-- need to seed data -->
+                  </div>
+              </div>
+          </div>
+      </div>
+
       <!-- <div class="col-lg-3 col-md-6">
         <div class="card-box">
           <h4 class="header-title m-t-0 m-b-30">Progress by Category</h4>
@@ -99,6 +113,7 @@
         </div>
       </div><!-- end col -->
     </div>
+
   </div>
 </div>
 
