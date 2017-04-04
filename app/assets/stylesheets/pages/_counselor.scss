@@ -9,7 +9,10 @@
   background-clip: padding-box;
   margin-bottom: 20px;
   position: relative;
-  border-top: 1px solid grey;
+  border-top: 1px solid #CCCCCC;
+  a:hover {
+    color: #404040;
+  }
 }
 
 .actions {
@@ -54,8 +57,8 @@
   text-align: center;
   padding:20px;
   opacity: 0.5;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 .card-link {
   position: absolute;

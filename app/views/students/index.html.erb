@@ -1,20 +1,9 @@
 <div class="container-fluid card-counselor">
     <ul class="list-inline">
       <li><h2>Hello <%= current_user.name %></h2></li>
-      <li><%= link_to "Add new student", new_student_path, class:"btn-rec-out-black" %></li>
+      <li><%= link_to "Add a student", new_student_path, class:"btn-rec-out-black" %></li>
     </ul>
 </div>
-
-  <div class="container-form">
-    <div class="container-fluid card-counselor">
-      <div>
-        <h1>Hello <%= current_user.name %></h1>
-        <h4>Here are your students</h4>
-      </div>
-      <div class="actions">
-        <%= link_to "Add new student", new_student_path, class:"btn-rec-green" %>
-      </div>
-    </div>
 
 
 <div class="container">
