@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'chartkick', '~> 1.2.4'
+gem 'groupdate', '~>2.1.0'
 
 gem 'cloudinary'
 

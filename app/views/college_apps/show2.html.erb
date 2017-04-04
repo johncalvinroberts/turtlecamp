@@ -37,7 +37,13 @@
           Categories
           </div>
         <div class="header-title m-t-0 m-b-30">
-            <div id="morris-bar-stacked" style="height: 179px;"></div>
+        <%= timeline [
+  ["Washington", "1789-04-29", "1797-03-03"],
+  ["Adams", "1797-03-03", "1801-03-03"],
+  ["Jefferson", "1801-03-03", "1809-03-03"]
+] %>
+      <!--   <%= line_chart @college_app.tasks.group_by_day(:due_date).count %> -->
+  <!--         <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
         </div>
         </div>
       </div>
@@ -274,12 +280,12 @@
         Dashboard1.prototype.init = function() {
 
           // creating bar chart
-          var $barData  = [
-          <% @college_app.categories.each do |type| %>
-          {y: '<%= type[:label] %>', a: '<%= type[:value] %>'},
-          <% end %>
-          ];
-          this.createBarChart('morris-bar-stacked', $barData, 'y', ['a'], ['#fe6271']);
+          // var $barData  = [
+          // <% @college_app.categories.each do |type| %>
+          // {y: '<%= type[:label] %>', a: '<%= type[:value] %>'},
+          // <% end %>
+          // ];
+          // this.createBarChart('morris-bar-stacked', $barData, 'y', ['a'], ['#fe6271']);
 
           //creating donut chart
           var $donutData = [
