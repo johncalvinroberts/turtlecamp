@@ -1,10 +1,10 @@
 <div class="container-fluid card-counselor">
     <ul class="list-inline">
-      <li><h2>Hello <%= current_user.name %></h2></li>
+      <li><strong><h3><%= current_user.name %></h3></strong></li>
+      <li><h4>Here is a list of your students</h4></li>
       <li><%= link_to "Add a student", new_student_path, class:"btn-rec-out-black" %></li>
     </ul>
 </div>
-
 
 <div class="container">
   <% if @students == nil %>
@@ -14,6 +14,7 @@
       <div class="row">
         <% students.each do |student| %>
            <!-- find a way to put margins around the card -->
+
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="card-student">
               <%= link_to "", student_path(student), class: "card-link"%>
@@ -23,9 +24,13 @@
               <div class="card-schools">
                 <% student.college_emblems.each do |emblem| %>
                   <%= image_tag emblem, class: "card-logo" %>
+                <% end %>
               </div>
               <div class="card-total">
-                Total <%= student.college_apps.count %> Schools
+                <ul class="list-inline">
+                  <li><p><%= student.college_apps.count %> Application</p></li>
+                  <li><p>Pending Tasks <%= student.pending_tasks %></p></li>
+                </ul>
               </div>
             </div>
           </div>

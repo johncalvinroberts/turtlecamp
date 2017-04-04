@@ -1,17 +1,21 @@
 .card-counselor {
-  text-align: center;
-  padding: 20px;
   background-color: #ffffff;
-  box-shadow: 0 8px 42px 0 rgba(0, 0, 0, 0.08);
+  text-align: left;
   -webkit-border-radius: 0px;
   border-radius: 0px;
   -moz-border-radius: 0px;
   background-clip: padding-box;
+  padding: 20px;
+  padding-left: 15px;
   margin-bottom: 20px;
+  margin-left: auto;
   position: relative;
   border-top: 1px solid #CCCCCC;
   a:hover {
     color: #404040;
+  }
+  h3 {
+    font-weight: bolder;
   }
 }
 
@@ -40,11 +44,10 @@
 .card-schools {
   min-height: 260px;
   padding: 20px;
-  display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .card-logo {
   border-radius:50%;
@@ -55,11 +58,15 @@
 }
 .card-total {
   text-align: center;
-  padding:20px;
-  opacity: 0.5;
+  padding: 10px 10px 3px 10px;
+  opacity: 0.7;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
+
 .card-link {
   position: absolute;
   top: 0;
