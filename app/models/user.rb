@@ -50,7 +50,7 @@ class User < ApplicationRecord
     approved = tasks_by_colleges_count("approved")
 
     total.keys.inject( {} ) do |result, college|
-      result.merge!(college => ((approved.fetch(college, 0).to_f / total[college]) * 100 ).to_d.truncate(2).to_f)
+      result.merge!(college => ((approved.fetch(college, 0).to_f / total[college]) * 100 ).floor)
     end
   end
 
