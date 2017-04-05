@@ -20,7 +20,7 @@
       <div class="row">
         <% students.each do |student| %>
 
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="card-student">
               <%= link_to "", student_path(student), class: "card-link"%>
               <div class="card-name">
@@ -31,10 +31,8 @@
                   <%= image_tag emblem, class: "card-logo" %>
                 <% end %>
               </div>
-              <div class="card-total">
-                <ul class="list-inline">
-                  <li><p>Pending Tasks <%= student.pending_tasks %></p></li>
-                </ul>
+              <div class="card-task">
+               <p>Pending Tasks <%= student.pending_tasks %></p>
               </div>
             </div>
           </div>

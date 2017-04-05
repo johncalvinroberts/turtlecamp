@@ -47,15 +47,15 @@
   height:75px;
   padding: 5px;
 }
-.card-total {
+.card-task {
   text-align: center;
-  padding: 10px 10px 3px 10px;
+  padding: 10px 0px;
   opacity: 0.7;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
+  p {
+    margin: 10px;
+  }
 }
 
 .card-link {
