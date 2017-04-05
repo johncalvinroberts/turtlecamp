@@ -55,14 +55,15 @@ class User < ApplicationRecord
   end
 
   def task_percentage_by_college
-    final_hash ={}
+    final_array = []
     self.college_apps.each do |college_app|
+      final_hash ={}
       final_hash[:name] = College.find(college_app.college_id).name
       final_hash[:percentage] = college_app.app_completion_percentage
       final_hash[:college_app_id] = college_app.id
-      return final_hash
+      final_array << final_hash
     end
-
+    return final_array
   end
 
   # returns number of tasks per category: {"Middlebury"=>6, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
