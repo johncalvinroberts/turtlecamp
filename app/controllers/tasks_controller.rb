@@ -38,9 +38,9 @@ class TasksController < ApplicationController
     else
       @student = current_user
     end
-    byebug
+    # byebug
       respond_to do |format|
-        if current_user.is_counselor
+        if @task.update(task_params) && current_user.is_counselor
           format.html{student_college_app_path(@student, @college_app)}
           # redirect_to student_college_app_path(@student, @college_app)
         else
