@@ -37,11 +37,37 @@
           Application timeline
           </div>
         <div class="header-title m-t-0 m-b-30">
-        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", legend: false %>
+        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", adapter:'google' %>
         </div>
         </div>
       </div>
       <!-- morris donut right here -->
+    <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="card-box widget-user">
+
+              <!-- Avater -->
+              <div class="avatar-container">
+                <% if user_signed_in? && current_user.is_counselor  %>
+                <%= cl_image_tag @student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"fill", :radius=>"max" %>
+                <% else %>
+                <%= cl_image_tag current_user.counselor.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
+                <% end %>
+                </div>
+              <!-- Counsler or Student information -->
+                <div class="wid-u-info">
+                <% if user_signed_in? && current_user.is_counselor  %>
+                    <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
+                    <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
+                    <small class="text-custom">Enrollment Year: <%= @student.app_year %></small>
+                <% else %>
+                    <h4 class="header-title m-t-0">Your Counselor:</h4>
+                     <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
+                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
+              <!-- Need to seed data -->
+                <% end %>
+                </div>
+          </div>
+      </div>
       <div class="col-lg-4">
         <div class="card-box">
           <h4 class="header-title m-t-0">Tasks Overview</h4>
@@ -62,7 +88,6 @@
 
         </div>
       </div><!-- end col -->
-
 
     </div>
     <!-- end row -->
@@ -180,7 +205,7 @@
                 </td>
                    <% else %>
                  <td class="text-center">
-                  <%= link_to '<i class="fa fa-download icon"></i>'.html_safe, task.document.url %>
+                  <%= link_to '<i class="fa fa-cloud-download icon"></i>'.html_safe, task.document.url %>
                  </td>
                 </tr>
                 <% end %>
