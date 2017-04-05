@@ -25,6 +25,7 @@ class CollegeAppsController < ApplicationController
     elsif @college_app.save
       redirect_to college_app_path(@college_app)
     else
+      flash[:alert] = "You already have that college"
       render :new
     end
   end

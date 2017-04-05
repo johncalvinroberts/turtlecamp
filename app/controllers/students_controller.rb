@@ -21,6 +21,7 @@ class StudentsController < ApplicationController
     if @user.save
       redirect_to student_path(@user)
     else
+      flash[:alert] = "invalid username"
       render 'new'
     end
   end
