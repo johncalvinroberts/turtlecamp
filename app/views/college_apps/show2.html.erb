@@ -172,11 +172,12 @@
                     <% end %>
                  </td>
                  <% elsif task.no_document && !current_user.is_counselor%>
+                 <!-- student task upload a doc -->
                  <td class="text-center">
                     <label class="btn btn-rec-green-sm">
                     upload
-                      <span style="display:none;">
-                  <%= form_for([@college_app, task], method: :put) do |f| %>
+                      <span style="display:none;" >
+                  <%= form_for([@college_app, task], method: :put, remote: true) do |f| %>
                         <%= f.file_field :document %>
                         <%= f.hidden_field :document_cache %>
                         <%= f.submit %>
