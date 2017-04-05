@@ -8,51 +8,60 @@
     </script>
 <% else %>
 
-<div class="banner" id="banner-1">
+<div class="banner-cover" id="banner-1">
   <div class="banner-content">
     <h2>You do the college counseling, and we'll take care of the paperwork</h2>
-    <p>Use TurtleCamp to track deadlines and documents, communicate with students and parents and better manage the college application process</p>
+    <h4>Use TurtleCamp to track deadlines and documents, communicate with students and parents and better manage the college application process</h4>
     <br>
     <%= link_to "SIGN UP", new_user_registration_path, class:"btn btn-rec-green" %>
   </div>
 </div>
 
-<div class="banner" id="solid-banner">
+<div class="banner-paper">
   <div class="banner-content">
     <h2>One place, instead of all over the place</h2>
-    <p>Centralize all of your tasks, deadlines and documents, so you and your clients are always on the same page</p>
+    <h4>Centralize all of your tasks, deadlines and documents, so you and your clients are always on the same page</h4>
   </div>
 </div>
 
-<div class="banner" id="banner-3">
+<div class="banner-cover" id="banner-3">
   <div class="banner-content">
     <h2>Keep parents and students in the know</h2>
-    <p>Improve communication and transparency through our easy-to-read dashboards and message center</p>
+    <h4>Improve communication and transparency through our easy-to-read dashboards and message center</h4>
   </div>
 </div>
 
-<div class="banner" id="solid-banner">
+<div class="banner-cover" id="solid-banner">
   <div class="banner-content">
     <h2>Motivate your students to achieve their goals</h2>
-    <p>Our detailed progress bars keep students aware of their tasks, and motivated to meet their deadlines</p>
+    <%= image_tag "Asset 3.png" %>
+    <h4>Our detailed progress bars keep students aware of their tasks, and motivated to meet their deadlines</h4>
   </div>
 </div>
 
-<div class="wrapper-form">
-<h2>Schedule a Demo</h2>
-  <div class="container-form">
-  <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, we’d love to set up an online demo at a time convenient for you.</h4>
 
-<%= simple_form_for(@booking) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-
-  <%= f.button :submit %>
-  <% end %>
+<div class="wrapper-white">
+  <div class="container-demo-title">
+    <h1>Schedule a demo now!</h1>
   </div>
-</div>
+  <div class="container-demo">
+    <div class="container-form-intro">
+      <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, <br>we’d love to set up an online demo at a time convenient for you.</h4>
+    </div>
 
+    <div class="container-demo-form">
+
+      <%= simple_form_for(@booking) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+
+      <%= f.button :submit, class: "btn-rec-out-black btn-block"%>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 
 <% end %>
