@@ -100,6 +100,13 @@ class User < ApplicationRecord
       college_apps.map { |college_app| college_app.college.emblem }
   end
 
+  def college_timings
+    final_array = []
+    today = Date.today.strftime("%Y-%m-%d")
+    self.college_apps.each{ |app| final_array << [College.find(app.college_id).name, today, app.deadline&.strftime("%Y-%m-%d")] }
+    return final_array
+  end
+
 end
 
 
