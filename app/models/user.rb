@@ -98,7 +98,6 @@ class User < ApplicationRecord
 
   def college_emblems
       college_apps.map { |college_app| college_app.college.emblem }
-
   end
 
 end

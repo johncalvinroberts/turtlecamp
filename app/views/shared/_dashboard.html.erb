@@ -1,5 +1,15 @@
 <div class="wrapper">
   <div class="container">
+  <% if @student.colleges.count.zero? %>
+  <div class="container-fluid card-counselor">
+  <h4><%= @student.name %> has not started any college applications yet</h4>
+      <% if current_user.is_counselor %>
+        <%= link_to "Start an application", new_student_college_app_path(@student), class: "btn btn-rec-green" %>
+      <% else %>
+        <%= link_to "Start an application", new_college_app_path, class: "btn btn-rec-green" %>
+      <% end %>
+</div>
+  <% else %>
 
     <div class="row">
 
@@ -53,11 +63,8 @@
           <div class="card-box widget-user">
             <div>
               <h4 class="header-title m-t-0">Next assignment:</h4>
-              <% if @student.tasks.first != nil %>
-              <%= @student.tasks.first.name %>
-              <% else %>
-              <%= "" %>
-              <% end %>
+
+              <%= @student.tasks.first&.name %>
             </div>
           </div>
       </div>
@@ -99,6 +106,7 @@
           </div>
         </div>
       </div> <!-- end col -->
+  <% end %>
     </div>
 
   </div>
