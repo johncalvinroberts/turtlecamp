@@ -15,7 +15,16 @@
 
       <div class="col-md-8 col-sm-12">
         <div class="card-box">
-          <h4 class="header-title m-t-0 m-b-30">Progress by College</h4>
+          <div class="header-box">
+            <h4 class="header-title m-t-0 m-b-30">Progress by College</h4>
+            <div class="add_button">
+              <% if current_user.is_counselor %>
+              <%= link_to "Add a school", new_student_college_app_path(@student), class: "btn btn-rec-green-sm" %>
+              <% else %>
+                <%= link_to "Add a school", new_college_app_path, class: "btn btn-rec-green" %>
+              <% end %>
+            </div>
+          </div>
 
           <% @student.task_percentage_by_colleges_count.keys.each do |college| %>
             <% percentage = @student.task_percentage_by_colleges_count[college] %>
@@ -47,7 +56,7 @@
                 <% if user_signed_in? && current_user.is_counselor  %>
                     <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
-                    <small class="text-custom"><b>Application year <%= @student.app_year %></b></small>
+                    <small class="text-custom">Enrollment Year: <%= @student.app_year %></small>
                 <% else %>
                     <h4 class="header-title m-t-0">Your Counselor:</h4>
                      <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
@@ -60,11 +69,12 @@
       </div>
 
       <div class="col-lg-3 col-md-3 col-sm-12">
-          <div class="card-box widget-user">
+          <div class="card-box widget-user text-center">
             <div>
-              <h4 class="header-title m-t-0">Next assignment:</h4>
+              <h4 class="header-title m-t-0">Next assignment</h4>
 
               <%= @student.tasks.first&.name %>
+              <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
             </div>
           </div>
       </div>
@@ -72,9 +82,9 @@
 
       <div class="col-md-8 col-sm-12">
         <div class="card-box">
-          <h4 class="header-title m-t-0">Place Gatt Here SEXY BOY</h4>
+          <h4 class="header-title m-t-0 m-b-30">Application Timelines</h4>
           <div>
-            <%= timeline @student.college_timings, adapter: "google" %>
+            <%= timeline @student.college_timings, adapter: "google", label:"Time remaining" %>
           </div>
         </div>
       </div>

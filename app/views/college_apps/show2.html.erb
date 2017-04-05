@@ -37,9 +37,7 @@
           Application timeline
           </div>
         <div class="header-title m-t-0 m-b-30">
-          <%#= timeline @college_app.app_timings, adapter: "google" %>
         <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due" %>
-     <!--      <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
         </div>
         </div>
       </div>
