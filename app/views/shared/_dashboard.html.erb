@@ -76,7 +76,7 @@
               <% if current_user.is_counselor %>
 
               <%= link_to student_college_app_path (@student.tasks.first&.college_app_id) do %>
-                <div class="">
+                <div class="user-list-item">
                 <%= @student.tasks.first&.name %>
               <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
                 <% end %>
