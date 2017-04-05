@@ -1,0 +1,8 @@
+  var newTask = $("<tr><td><%= @task.name %></td><td><%= @task.due_date.strftime('%d / %m / %Y') %>"+
+    "</td><td></td>"+
+    "<td></td></tr>").hide();
+  $('#tasks_table').prepend(newTask);
+  newTask.slideDown();
+
+
+

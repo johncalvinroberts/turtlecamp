@@ -13,11 +13,17 @@ class TasksController < ApplicationController
     @college_app = CollegeApp.find(params[:college_app_id])
       @task = @college_app.tasks.new(task_params)
     if @task.save && current_user.is_counselor
-      redirect_to student_college_app_path(@student, @college_app)
-    elsif @college_app.save
+      respond_to do |format|
+        format.html {redirect_to student_college_app_path(@student, @college_app)}
+        format.js
+      end
+    elsif @college_app.save && !current_user.is_counselor
       redirect_to college_app_path(@college_app)
     else
-      render :new
+      respond_to do |format|
+        format.html {render :new}
+        format.js
+      end
     end
   end
 
