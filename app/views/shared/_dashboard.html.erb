@@ -26,7 +26,6 @@
             </div>
           </div>
 
-              <%# raise %>
             <% @student.task_percentage_by_college.each do |app| %>
             <div class="outside">
             <% if current_user.is_counselor %>
@@ -55,13 +54,15 @@
 
       <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="card-box widget-user">
-              <div>
+
               <!-- Avater -->
+              <div class="avatar-container">
                 <% if user_signed_in? && current_user.is_counselor  %>
-                <%= cl_image_tag student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
+                <%= cl_image_tag @student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"fill", :radius=>"max" %>
                 <% else %>
-                <%= cl_image_tag user.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
+                <%= cl_image_tag current_user.counselor.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
                 <% end %>
+                </div>
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
@@ -75,7 +76,7 @@
               <!-- Need to seed data -->
                 <% end %>
                 </div>
-              </div>
+
           </div>
       </div>
 

@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170405085659) do
     t.string   "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "emblem"
   end
 
   create_table "notifications", force: :cascade do |t|
