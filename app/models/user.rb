@@ -54,6 +54,17 @@ class User < ApplicationRecord
     end
   end
 
+  def task_percentage_by_college
+    final_hash ={}
+    self.college_apps.each do |college_app|
+      final_hash[:name] = College.find(college_app.college_id).name
+      final_hash[:percentage] = college_app.app_completion_percentage
+      final_hash[:college_app_id] = college_app.id
+      return final_hash
+    end
+
+  end
+
   # returns number of tasks per category: {"Middlebury"=>6, "Harvard"=>19, "Yale"=>17, "Whitman"=>14}
   # scoped by task status: ["not done", "pending", "approved"]
   def tasks_by_category_count(status = nil)
