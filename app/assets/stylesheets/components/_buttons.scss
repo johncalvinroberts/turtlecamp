@@ -98,6 +98,21 @@
     background-color: #35DA69;
   }
 }
+.btn-rec-green-special{
+  border: 2px;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 20px;
+  background-color: #35DA69;
+  opacity: 0.88;
+  transition: background 0.3s ease;
+  font-weight: normal;
+  &:hover {
+    opacity: 1;
+    color: black;
+    background-color: #35DA69;
+  }
+}
 
 .btn-rec-blue {
   border: 2px;
