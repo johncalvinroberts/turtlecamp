@@ -103,7 +103,9 @@ class User < ApplicationRecord
   def college_timings
     final_array = []
     today = Date.today.strftime("%Y-%m-%d")
-    self.college_apps.each{ |app| final_array << [College.find(app.college_id).name, today, app.deadline&.strftime("%Y-%m-%d")] }
+    self.college_apps.each do |app|
+        final_array << [College.find(app.college_id).name, today, app.deadline&.strftime("%Y-%m-%d")]
+    end
     return final_array
   end
 
