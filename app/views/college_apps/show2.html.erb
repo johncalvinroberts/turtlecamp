@@ -37,9 +37,7 @@
           Application timeline
           </div>
         <div class="header-title m-t-0 m-b-30">
-          <%= timeline @college_app.app_timings, adapter: "google" %>
-      <%#= line_chart @college_app.tasks.group_by_day(:due_date).count %>
-     <!--      <%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %> -->
+        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due" %>
         </div>
         </div>
       </div>
@@ -60,14 +58,14 @@
 
           <div class="text-center m-t-10">
             <div id="morris-donut-example" style="height: 245px;"></div>
-            <ul class="list-inline chart-detail-list m-b-0">
+<!--             <ul class="list-inline chart-detail-list m-b-0">
               <li>
                 <h5><i class="fa fa-circle m-r-5" style="color: #FE6271;"></i>Not Done</h5>
               </li>
               <li>
                 <h5><i class="fa fa-circle m-r-5" style="color: #FBD04D;"></i>Pending</h5>
               </li>
-            </ul>
+            </ul> -->
           </div>
 
         </div>
@@ -288,7 +286,7 @@
               {label: '<%=type[:label]%>', value: <%=type[:value]%>},
             <% end %>
           ];
-          this.createDonutChart('morris-donut-example', $donutData, ["#fe6271", "#4DDE7B", "#FBD04D"]);
+          this.createDonutChart('morris-donut-example', $donutData, ["#fe6271", "#FC6F7D", "#FB8792"]);
         },
       //init
         $.Dashboard1 = new Dashboard1, $.Dashboard1.Constructor = Dashboard1
