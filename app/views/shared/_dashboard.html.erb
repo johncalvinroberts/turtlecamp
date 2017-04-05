@@ -28,6 +28,7 @@
 
               <%# raise %>
             <% @student.task_percentage_by_college.each do |app| %>
+            <div class="outside">
             <% if current_user.is_counselor %>
               <% app_link = student_college_app_path(@student, app[:college_app_id])%>
             <% else %>
@@ -44,6 +45,7 @@
               </li>
             </ul>
             <% end %>
+            </div>
           <% end %>
 
 
