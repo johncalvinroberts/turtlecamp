@@ -74,19 +74,28 @@
               <h4 class="header-title m-t-0">Next assignment</h4>
 
               <% if current_user.is_counselor %>
-
-              <%= link_to student_college_app_path (@student.tasks.first&.college_app_id) do %>
-                <div class="user-list-item">
-                <%= @student.tasks.first&.name %>
-              <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
-                <% end %>
-              </div>
-
+              <ul class="list-group m-b-0 user-list">
+              <li class="list-group-item">
+              <%= link_to student_college_app_path(@student, @student.tasks.first&.college_app_id) do %>
+                  <div class="user-list-item">
+                  <%= @student.tasks.first&.name %>
+                  <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
+                  <% end %>
+                </div>
+                </li>
+              </ul>
               <% else %>
-
+              <ul class="list-group m-b-0 user-list">
+              <li class="list-group-item">
+              <%= link_to college_app_path(@student.tasks.first&.college_app_id) do %>
+                  <div class="user-list-item">
+                  <%= @student.tasks.first&.name %>
+                  <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
+                  <% end %>
+                </div>
+                </li>
+              </ul>
               <% end %>
-
-
             </div>
           </div>
       </div>
@@ -119,7 +128,6 @@
             <div class="text-center m-t-10">
               <div id="total-tasks-donut" style="height: 245px;"></div>
             </div>
-
           </div>
         </div>
       </div> <!-- end col -->

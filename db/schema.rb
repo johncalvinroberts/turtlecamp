@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403215843) do
+ActiveRecord::Schema.define(version: 20170405044352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170403215843) do
   end
 
   create_table "college_apps", force: :cascade do |t|
-    t.datetime "deadline"
+    t.datetime "deadline",   null: false
     t.string   "category"
     t.boolean  "status"
     t.integer  "user_id"
