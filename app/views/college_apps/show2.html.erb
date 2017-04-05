@@ -37,7 +37,7 @@
           Application timeline
           </div>
         <div class="header-title m-t-0 m-b-30">
-        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due" %>
+        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", legend: false %>
         </div>
         </div>
       </div>

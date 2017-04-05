@@ -26,25 +26,28 @@
             </div>
           </div>
 
-          <% @student.task_percentage_by_colleges_count.keys.each do |college| %>
+            <% @student.task_percentage_by_colleges_count.keys.each do |college| %>
             <% percentage = @student.task_percentage_by_colleges_count[college] %>
-            <div>
-              <p class="font-600 m-b-5"> <%= college %> <span class="text-custom pull-right"><%= percentage  %>%</span></p>
+            <% if current_user.is_counselor %>
+              <% app_link = student_college_app_path(@student, (CollegeApp.where(:college == college)).where(user_id: @student.id).first.id)%>
+            <% else %>
+              <%app_link = college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
+            <% end %>
+            <%= link_to app_link do %>
+            <ul class="list-group m-b-0 user-list">
+              <li class="list-group-item">
+              <p class="font-600"> <%= College.find(college).name %> <span class="text-custom pull-right"><%= percentage  %>%</span></p>
               <div class="progress progress-bar-custom-alt progress-sm m-b-20">
                 <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>%; visibility: visible; animation-name: animationProgress;">
-
-                  <div>
-                  <% if current_user.is_counselor %>
-                    <%= link_to "", student_college_app_path(@student, (CollegeApp.where(:college == college)).where(user_id: @student.id).first.id)%>
-
-                  <% else %>
-                    <%=link_to "", college_app_path(CollegeApp.where(:college == college).where(user_id: @student.id).first.id) %>
-                  <% end %>
-                  </div>
-                </div><!-- /.progress-bar .progress-bar-danger -->
-              </div><!-- /.progress .no-rounded -->
-            </div>
+                </div>
+              </div>
+            </li>
+            <% end %>
           <% end %>
+          </ul>
+
+
+
         </div>
       </div>
 
