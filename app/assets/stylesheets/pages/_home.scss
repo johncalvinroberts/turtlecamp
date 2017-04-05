@@ -1,12 +1,31 @@
-.banner {
-  color: white;
-  text-align: center;
+.banner-paper {
   height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
+  background-repeat: repeat;
+  background-image: url('checkpaper-blue35.png');
+  padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  h4 {
+  line-height: 32px;
+  }
+}
+
+.banner-cover {
+  height: 100vh;
+  background-size: cover !important;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h4 {
+  line-height: 32px;
+  }
+}
+
+.banner-content {
+  color: white;
+  text-align: center;
   h2 {
   font-size: 40px;
   font-weight: bold;
@@ -30,10 +49,12 @@
 }
 .container-demo {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   padding-top: 50px;
 }
+
 .container-form-intro {
   max-width: 500px;
   align-self: flex-start;
@@ -43,6 +64,7 @@
 }
 
 .container-demo-form {
+  min-width: 500px;
   padding: 0px 20px;
   border-radius: 4px;
   margin: 10px;
@@ -75,17 +97,14 @@
 }
 
 #banner-1 {
-  background-image: linear-gradient(-225deg, rgba(0,36,61,0.6)0%, rgba(69,226,132,0.6) 100%), url('grass_students.jpeg');
+  background-image: url('grass_students.jpeg');
 }
 #solid-banner {
-  background-color: #455D7A;
+  background-color: #F95959;
 }
-
 #banner-3 {
-  background-image: linear-gradient(-225deg, rgba(0,36,61,0.6)0%, rgba(69,226,132,0.6) 100%), url('counselor_discussion.jpeg');
+  background-image: url('counselor_discussion.jpeg');
 }
-
-
 
 
 // this is for the sticky footer //
