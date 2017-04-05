@@ -134,9 +134,9 @@
 
 .navbar-text{
   color: $brand-color;
-  font-weight: 600;
-  font-size: 23px;
-  letter-spacing: 2px;
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 1px;
   margin-right: 0px;
   transition: font-size 3s ease;
 }
@@ -173,4 +173,7 @@
 .navbar-line{
   display:flex;
   justify-content: flex-start;
+}
+.navbar-turtlelogo h1 {
+  font-size: 33px;
 }
