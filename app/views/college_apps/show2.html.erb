@@ -24,7 +24,7 @@
           </ul>
           </div>
           <div>
-          app completion
+          Application progress
             <p class="font-600"> <span class="text-custom pull-right" style="color: black"><%= @college_app.app_completion_percentage %>%</span></p>
             <div class="progress">
               <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
@@ -58,14 +58,6 @@
 
           <div class="text-center m-t-10">
             <div id="morris-donut-example" style="height: 245px;"></div>
-<!--             <ul class="list-inline chart-detail-list m-b-0">
-              <li>
-                <h5><i class="fa fa-circle m-r-5" style="color: #FE6271;"></i>Not Done</h5>
-              </li>
-              <li>
-                <h5><i class="fa fa-circle m-r-5" style="color: #FBD04D;"></i>Pending</h5>
-              </li>
-            </ul> -->
           </div>
 
         </div>
@@ -84,21 +76,18 @@
 
           <div class="inbox-widget nicescroll" >
               <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
-              <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post) do |f| %>
+              <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post, remote: true) do |f| %>
               <div class="inbox-item">
-              <%= f.text_area :name, placeholder: "describe a task", class:"form-control" %>
+              <%= f.text_area :name, placeholder: "Describe a task", class:"form-control" %>
               </div>
-              <div class="inbox-item text-center">
-                <% collection = [ ['Essay',], ['Documents'], ['Application'], ['Transcript'], ['Letter of recommendation'], ['Test prep'], ['Other'] ] %>
-                <%= f.select :category, collection, include_blank: '-select-', class: "form-control" %>
-              <p>Due date:</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline" %>
-
+              <div class="inbox-item">
+              <p>Set a duedate for the task</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline", required: true %>
               </div>
               <div class="inbox-item">
               </div>
               <div class="inbox-item">
                 <label class="btn btn-transparent">
-                  <i class="fa fa-upload icon"></i>
+                  <i class="fa fa-paperclip icon"></i>
                   <span style="display:none;">
                   <%= f.file_field :document %>
                   </span>
@@ -127,7 +116,7 @@
                 <th class="text-center">Attachment</th>
               </tr>
               </thead>
-              <tbody>
+              <tbody id="tasks_table">
               <% @college_app.tasks_chronological.each do |task| %>
                 <tr>
                   <td><%= task.name %></td>
@@ -135,49 +124,54 @@
                   <!-- task status buttons -->
 
                   <% if task.status =="approved" %>
-                  <td><div id="task<%=task.id -%>" class="text-center"><span class="btn btn-rec-green-sm">Approved</span></div></td>
+                  <td class="text-center"><div id="task<%=task.id -%>" class="text-center"><span class="btn btn-rec-green-sm">Approved</span></div></td>
 
                   <% elsif task.status == "pending" && current_user.is_counselor %>
-                  <td><div id="task<%=task.id -%>" class="text-center">
+                  <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
                     <%= button_to "Pending", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-yellow-sm", remote: true%>
                     </div></td>
 
                   <% elsif task.status == "pending" && !current_user.is_counselor %>
-                  <td><div id="task<%=task.id -%>" class="text-center"><span class="btn btn-rec-yellow-sm">Pending</span></div></td>
+                  <td class="text-center"><div id="task<%=task.id -%>" class="text-center"><span class="btn btn-rec-yellow-sm">Pending</span></div></td>
 
                   <% elsif task.status =="not done" && current_user.is_counselor %>
-                  <td><div id="task<%=task.id -%>" class="text-center">
+                  <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
                     <%= button_to "Not started", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
 
                   <% elsif task.status =="not done" && !current_user.is_counselor %>
-                  <td><div id="task<%=task.id -%>" class="text-center">
+                  <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
                     <%= button_to "Not started", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
                   <% end %>
-
+                <!-- Upload an attachment to an existing task -->
                 <% if task.no_document && current_user.is_counselor %>
                   <td class="text-center">
                     <% task_path = "/students/#{@student.id}/college_apps/#{@college_app.id}/tasks/#{task.id}}" %>
-
-                    <%= form_for([@college_app, task], url: "#{task_path}", method: :put) do |f| %>
-                    <label class="btn btn-rec-green-sm">
-                    button
-                    <span style="display:none;">
-                    <%= f.file_field :document %>
-                    <%= f.hidden_field :document_cache %>
-                    </span>
-                    <%= f.submit %>
+                    <label class="btn btn-transparent">
+                    <i class="fa fa-paperclip icon"></i>
+                      <span style="display:none;" >
+                    <%= form_for([@college_app, task], url: "#{task_path}", method: :put, remote: true, :multipart => true, html: {'data-type'=>'script'}) do |f| %>
+                      remote: true, :multipart => true, html: {'data-type'=>'script'}) do |f| %>
+                        <%= token_tag %>
+                        <%= f.file_field :document, class: 'auto_uploading' %>
+                        <%= f.hidden_field :document_cache %>
+                        <%= f.submit %>
+                      </span>
                     </label>
+
+
                     <% end %>
                  </td>
                  <% elsif task.no_document && !current_user.is_counselor%>
+                 <!-- student task upload a doc -->
                  <td class="text-center">
-                    <label class="btn btn-rec-green-sm">
-                    upload
-                      <span style="display:none;">
-                  <%= form_for([@college_app, task], method: :put) do |f| %>
-                        <%= f.file_field :document %>
+                    <label class="btn btn-transparent">
+                    <i class="fa fa-paperclip icon"></i>
+                      <span style="display:none;" >
+                  <%= form_for([@college_app, task], method: :put, remote: true, :multipart => true, html: {'data-type'=>'script'}) do |f| %>
+                        <%= token_tag %>
+                        <%= f.file_field :document, class: 'auto_uploading' %>
                         <%= f.hidden_field :document_cache %>
                         <%= f.submit %>
                       </span>
@@ -215,6 +209,7 @@
 
 
 <script type="text/javascript">
+
   !function($) {
     "use strict";
 
@@ -296,5 +291,12 @@
       function($) {
         "use strict";
         $.Dashboard1.init();
+        $("input:file.auto_uploading").change(function (eventData){
+          debugger;
+          $(this).parent().submit();
+         });
       }(window.jQuery);
 </script>
+
+
+
