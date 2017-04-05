@@ -5,7 +5,7 @@
       <p>Your future begins here</p>
     </div>
     <div class="new-app-form-container text-center">
-      <div class="form-groups">
+      <div class="form-groups-font-light">
         <div class="form-field">
         <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
         <%= form_for([@student, @college_app], url:"#{apps_path}", class: "form-input-box" ) do |f| %>
@@ -16,16 +16,16 @@
           <% end %>
         </div>
       </div>
-      <div class="form-groups">
+      <div class="form-groups-font-light">
         <div class="form-field">
-          <p>Application deadline</p>
+          <p><strong>Application deadline</strong></p>
           <%= f.date_field :deadline, as: :date_time_picker, class: "form-input-box", required: true %>
         </div>
       </div>
-       <div class="form-groups">
+       <div class="form-groupsfont-light">
           <div class="form-field-last">
-          <p>Application category</p>
-          <%= f.select :category, ["REACH", "TARGET", "SAFETY"], class: "form-input-box" %>
+          <p><strong>Application category</strong></p>
+            <%= f.select :category, ["REACH", "TARGET", "SAFETY"], class: "form-input-box" %>
           </div>
         </div>
         <%= f.submit class:"btn btn-rec-green-special" %>
