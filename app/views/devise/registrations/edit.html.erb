@@ -1,5 +1,5 @@
 
-<div class="wrapper-form-add-student">
+<div class="wrapper-form-onboarding-student">
   <div class="container-form">
   <% if !resource.is_counselor && resource.sign_in_count== 1 %>
   <% flash[:notice] = "Welcome to Turtlecamp!" %>
@@ -60,6 +60,6 @@
  <% end %>
 
 
-    <p class="text-center"><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p><%= link_to "Cancel my account", registration_path(resource_name), class: "for-form-cancel-account", data: { confirm: "Are you sure?" }, method: :delete %></p>
   </div>
 </div>

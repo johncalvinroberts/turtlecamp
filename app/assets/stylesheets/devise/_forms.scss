@@ -7,14 +7,54 @@
   padding-bottom: 30px
 }
 
+.wrapper-form-log-in{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 80px;
+  padding: 60px
+}
+
+.wrapper-form-add-app{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+  padding: 20px
+}
+
+.wrapper-form-forgot-password{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 140px;
+  padding: 50px
+
+}
+
+
+.wrapper-form-new-counselor {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 80px;
+  padding: 20px
+}
+
 .wrapper-form-add-student {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  background-color: $white;
-  margin-top: 10px;
-  padding-bottom: 30px
+  align-items: center;
+  margin-top: 80px;
+  padding: 20px
+}
+
+.wrapper-form-onboarding-student {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  padding: 20px
 }
 
 .container-form {
@@ -22,7 +62,6 @@
   border-radius: 6px;
   margin: 20px;
   background-color: white;
-  margin-bottom: 50px;
 }
 .container-form ul, .container-form ol {
     margin-top: 0;
@@ -135,4 +174,41 @@ padding-bottom: 10px;
 .form-field-last{
 padding-top: 5px;
 padding-bottom: 10px;
+}
+
+#devise-sign-up {
+  float: right;
+  color: gray;
+  &:hover {
+    color: #4EDE7B;
+    text-decoration: none;
+  }
+}
+
+#devise-forgot {
+  float: left;
+    color: gray;
+  &:hover {
+    color: #4EDE7B;
+    text-decoration: none;
+  }
+}
+
+#devise-log-in {
+  color: gray;
+  float: leftt;
+  &:hover {
+    color: #4EDE7B;
+    text-decoration: none;
+  }
+}
+
+
+.for-form-cancel-account{
+float: left;
+color: gray;
+&:hover {
+color: #4EDE7B;
+text-decoration: none
+  }
 }
