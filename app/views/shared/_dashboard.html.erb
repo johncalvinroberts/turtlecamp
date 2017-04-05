@@ -73,8 +73,20 @@
             <div>
               <h4 class="header-title m-t-0">Next assignment</h4>
 
-              <%= @student.tasks.first&.name %>
+              <% if current_user.is_counselor %>
+
+              <%= link_to student_college_app_path (@student.tasks.first&.college_app_id) do %>
+                <div class="">
+                <%= @student.tasks.first&.name %>
               <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
+                <% end %>
+              </div>
+
+              <% else %>
+
+              <% end %>
+
+
             </div>
           </div>
       </div>
