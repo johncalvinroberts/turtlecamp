@@ -38,21 +38,33 @@
   </div>
 </div>
 
-<div class="wrapper-form">
-<h2>Schedule a Demo</h2>
-  <div class="container-form">
-  <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, we’d love to set up an online demo at a time convenient for you.</h4>
 
-<%= simple_form_for(@booking) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
 
-  <%= f.button :submit %>
-  <% end %>
+<div class="wrapper-white">
+
+  <div class="container-demo-title">
+    <h1>Schedule a Demo</h1>
   </div>
-</div>
 
+  <div class="container-demo">
+
+    <div class="container-form-intro">
+    <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, <br>we’d love to set up an online demo at a time convenient for you.</h4>
+    </div>
+
+    <div class="container-demo-form">
+
+      <%= simple_form_for(@booking) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+
+      <%= f.button :submit, class: "btn-rec-out-black btn-block"%>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 
 <% end %>
