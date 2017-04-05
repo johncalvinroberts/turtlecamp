@@ -56,7 +56,13 @@
       <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="card-box widget-user">
               <div>
-                <img src="assets/images/portrait_square.jpg" class="img-responsive img-circle" alt="user">
+              <!-- Avater -->
+                <% if user_signed_in? && current_user.is_counselor  %>
+                <%= cl_image_tag student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
+                <% else %>
+                <%= cl_image_tag user.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
+                <% end %>
+              <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
                     <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
@@ -66,7 +72,7 @@
                     <h4 class="header-title m-t-0">Your Counselor:</h4>
                      <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
                     <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
-                      <!-- need to seed data -->
+              <!-- Need to seed data -->
                 <% end %>
                 </div>
               </div>
