@@ -177,8 +177,9 @@
                     <label class="btn btn-rec-green-sm">
                     upload
                       <span style="display:none;" >
-                  <%= form_for([@college_app, task], method: :put, remote: true) do |f| %>
-                        <%= f.file_field :document %>
+                  <%= form_for([@college_app, task], method: :put, remote: true, :multipart => true, html: {'data-type'=>'script'}) do |f| %>
+                        <%= token_tag %>
+                        <%= f.file_field :document, class: 'auto_uploading' %>
                         <%= f.hidden_field :document_cache %>
                         <%= f.submit %>
                       </span>
@@ -216,6 +217,7 @@
 
 
 <script type="text/javascript">
+
   !function($) {
     "use strict";
 
@@ -297,5 +299,9 @@
       function($) {
         "use strict";
         $.Dashboard1.init();
+        $("input:file.auto_uploading").change(function (eventData){
+          debugger;
+          $(this).parent().submit();
+         });
       }(window.jQuery);
 </script>
