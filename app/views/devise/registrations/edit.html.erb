@@ -27,6 +27,8 @@
         <hr>
         <h4>Enter Contact information</h4>
         <%= f.input :wechat_id, :label =>"WeChat ID", required: true %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
       </div>
 
       <div class="form-actions">

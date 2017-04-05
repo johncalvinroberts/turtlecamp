@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  mount_uploader :photo, PhotoUploader
 
   has_many :college_apps, dependent: :destroy
   has_many :colleges, through: :college_apps, dependent: :destroy
