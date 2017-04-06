@@ -32,7 +32,7 @@
 </div>
 <script>
   $("#pass_gen").click(function(){
-    $( this ).replaceWith("<div class='text-center'><p>Password:</p><h1><%= @password %></h1></div>");
+    $( this ).replaceWith("<div class='text-center'><p>Temporary password:</p><h1><%= @password %></h1></div>");
     $( "#submit_button" ).fadeIn("slow", function(){
       $( this ).removeClass("hidden");
     });

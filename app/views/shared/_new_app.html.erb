@@ -2,10 +2,9 @@
   <div class="container-form">
     <div class="container text-center">
     <div class="container-header-content">
-      <h3>Create college application</h3>
+      <h1>Add a school</h1>
     </div>
-      <h3>for <%= @student.name %></h3>
-      <p>Your future begins here</p>
+      <p>Start a new application for <%= @student.name %></p>
     </div>
 
     <div class="new-app-form-container text-center">
@@ -13,7 +12,7 @@
         <div class="form-field">
         <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
         <%= form_for([@student, @college_app], url:"#{apps_path}") do |f| %>
-          <%= f.select(:college_id, class: "colleges-box") do %>
+          <%= f.select(:college_id, class: "colleges-box form-control") do %>
             <% @colleges.each do |c| -%>
               <%= content_tag(:option, c.name, value: c.id) %>
             <% end %>
