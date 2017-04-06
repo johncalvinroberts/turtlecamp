@@ -1,15 +1,19 @@
 <div class="wrapper-form-add-app">
   <div class="container-form">
     <div class="container text-center">
-      <h1>Start a college application for <%= @student.name %></h1>
+    <div class="container-header-content">
+      <h3>Create college application</h3>
+    </div>
+      <h3>for <%= @student.name %></h3>
       <p>Your future begins here</p>
     </div>
+
     <div class="new-app-form-container text-center">
       <div class="form-groups-font-light">
         <div class="form-field">
         <% apps_path = current_user.is_counselor ? student_college_apps_path: college_apps_path %>
-        <%= form_for([@student, @college_app], url:"#{apps_path}", class: "form-input-box" ) do |f| %>
-          <%= f.select(:college_id) do %>
+        <%= form_for([@student, @college_app], url:"#{apps_path}") do |f| %>
+          <%= f.select(:college_id, class: "colleges-box") do %>
             <% @colleges.each do |c| -%>
               <%= content_tag(:option, c.name, value: c.id) %>
             <% end %>
@@ -19,17 +23,19 @@
       <div class="form-groups-font-light">
         <div class="form-field">
           <p><strong>Application deadline</strong></p>
-          <%= f.date_field :deadline, as: :date_time_picker, class: "form-input-box", required: true %>
+          <%= f.date_field :deadline, as: :date_time_picker, class: "form-input-box-app", required: true %>
         </div>
       </div>
        <div class="form-groupsfont-light">
           <div class="form-field-last">
           <p><strong>Application category</strong></p>
-            <%= f.select :category, ["REACH", "TARGET", "SAFETY"], class: "form-input-box" %>
+            <%= f.select :category, ["REACH", "TARGET", "SAFETY"], class: "form-input-box-category" %>
           </div>
         </div>
+        <div class="btn-submit-padding">
         <%= f.submit class:"btn btn-rec-green-special" %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
