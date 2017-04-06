@@ -7,18 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # College.destroy_all
 
-College.find_or_create_by(name:"Amherst College"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Amherst_College.png", website: "www.amherst.edu"})}.save
+College.find_or_create_by(name:"Amherst College"){|c| c.assign_attributes({address:"Amherst, MA", emblem: "Amherst_College.png", website: "www.amherst.edu"})}.save
 College.find_or_create_by(name:"Yale University"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Yale_University.png", website: "www.yale.edu"})}.save
-College.find_or_create_by(name:"Williams College"){|c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "Williams_College.png", website: "www.williams.edu"})}.save
+College.find_or_create_by(name:"Williams College"){|c| c.assign_attributes({address:"Williamstown, MA", emblem: "Williams_College.png", website: "www.williams.edu"})}.save
 College.find_or_create_by(name:"Middlebury College"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Middlebury_College.png", website: "www.middlebury.edu"})}.save
-College.find_or_create_by(name:"Bowdoin College"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Bowdoin_College.png", website: "www.bowdoin.edu"})}.save
-College.find_or_create_by(name:"CalTech"){|c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "California_Institute_of_Technology.png", website: "www.caltech.edu"})}.save
-College.find_or_create_by(name:"Carleton College"){|c| c.assign_attributes({address:"345 Boyer Ave, Walla Walla, WA", emblem: "Carleton_College.png", website: "www.carleton.edu"})}.save
-College.find_or_create_by(name:"Claremont McKenna College"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Claremont_McKenna_College.png", website: "www.cmc.edu"})}.save
-College.find_or_create_by(name:"Duke University"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Duke_University.png", website: "www.duke.edu"})}.save
-College.find_or_create_by(name:"Massachusetts Institute of Technology"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Massachusetts_Institute_of_Technology.png", website: "www.mit.edu"})}.save
+College.find_or_create_by(name:"Bowdoin College"){|c| c.assign_attributes({address:"Brunswick, ME", emblem: "Bowdoin_College.png", website: "www.bowdoin.edu"})}.save
+College.find_or_create_by(name:"CalTech"){|c| c.assign_attributes({address:"Pasadena, CA", emblem: "California_Institute_of_Technology.png", website: "www.caltech.edu"})}.save
+College.find_or_create_by(name:"Carleton College"){|c| c.assign_attributes({address:"Northfield, MN", emblem: "Carleton_College.png", website: "www.carleton.edu"})}.save
+College.find_or_create_by(name:"Claremont McKenna College"){|c| c.assign_attributes({address:"Claremont, CA", emblem: "Claremont_McKenna_College.png", website: "www.cmc.edu"})}.save
+College.find_or_create_by(name:"Duke University"){|c| c.assign_attributes({address:"Raleigh, NC", emblem: "Duke_University.png", website: "www.duke.edu"})}.save
+College.find_or_create_by(name:"Massachusetts Institute of Technology"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Massachusetts_Institute_of_Technology.png", website: "www.mit.edu"})}.save
 College.find_or_create_by(name:"Stanford University"){|c| c.assign_attributes({
-                            address:"Cambridge, MA",
+                            address:"Palo Alto, CA",
                             emblem: "Stanford_University.png",
                             website: "www.stanford.edu"})}.save
 College.find_or_create_by(name:"Brown University"){|c| c.assign_attributes({
@@ -57,7 +57,7 @@ students = %w[Eunice Joyce Andrew Kevin David Joy Jazz Bernard Grace Bob Jason B
 students.each do |student|
 User.create(name: "#{student}",
             is_counselor: false,
-            email: "#{student}@qq.com",
+            email: "#{student}@test.com",
             password: "password",
             counselor_ref: rand(1..4),
             current_school: ["Chengdu Foreign Languages School",
