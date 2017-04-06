@@ -69,3 +69,31 @@
 .college-category{
   float: right;
 }
+
+.college-website-link a{
+  text-decoration:none;
+  color: #797979;
+}
+.chart-container{
+  position: relative;
+}
+
+.tasks-due{
+  font-weight: lighter;
+  font-size:14px;
+}
+
+.tasks-due{
+  font-weight: lighter;
+  font-size:14px;
+  position:absolute;
+  transform: rotate(-90deg);
+  top: 129px;
+}
+
+.due-date{
+  font-weight: lighter;
+  font-size:14px;
+  position:absolute;
+  right: 45%;
+}

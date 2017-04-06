@@ -16,7 +16,7 @@
           <ul class="list-inline">
             <li><h1><strong><%= @college_app.college.name %></strong></h1></li>
             <li><p><%= @college_app.college.address %></p></li>
-            <li><p><%= link_to @college_app.college.website %></p></li>
+            <li><p class="college-website-link"><%= link_to "#{@college_app.college.website}", @college_app.college.website %></p></li>
           </ul>
           <ul class="list-inline app-header">
             <li><h4><strong>Application Deadline:</strong></h4></li>
@@ -37,8 +37,12 @@
           <div class="top-margined">
           Application timeline
           </div>
-        <div class="header-title m-t-0 m-b-30">
-        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", adapter:'google' %>
+        <div class="chart-container">
+          <div class="header-title m-t-0 m-b-30">
+          <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", adapter:'google' %>
+          <div class="tasks-due">number of tasks</div>
+          <div class="due-date">due date</div>
+          </div>
         </div>
         </div>
       </div>
@@ -108,30 +112,10 @@
         <!-- add a task card -->
           <h4 class="header-title m-t-0 m-b-30">Add a task</h4>
 
-          <div class="inbox-widget nicescroll" >
-              <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
-              <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post, remote: true) do |f| %>
-              <div class="inbox-item">
-              <%= f.text_area :name, placeholder: "Describe a task", class:"form-control" %>
-              </div>
-              <div class="inbox-item">
-              <p>Set a duedate for the task</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline", required: true %>
-              </div>
-              <div class="inbox-item">
-              </div>
-              <div class="inbox-item">
-                <label class="btn btn-transparent">
-                  <i class="fa fa-paperclip icon"></i>
-                  <span style="display:none;">
-                  <%= f.file_field :document %>
-                  </span>
-                </label>
-                    <%= f.hidden_field :document_cache %>
-              </div>
-              <div class="inbox-item">
-              <%= f.submit class: "btn btn-rec-green-sm" %>
-              </div>
-            <% end %>
+          <div class="inbox-widget nicescroll">
+            <div id="new-task">
+            <%= render 'shared/add_task_form' %>
+            </div>
           </div>
         </div>
       </div><!-- end col -->
