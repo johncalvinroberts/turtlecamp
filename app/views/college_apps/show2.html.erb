@@ -55,7 +55,9 @@
               <!-- Avater -->
               <div class="avatar-container">
                 <% if user_signed_in? && current_user.is_counselor  %>
+                  <%= link_to student_path(@student) do %>
                 <%= cl_image_tag @student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"fill", :radius=>"max" %>
+                  <% end %>
                 <% else %>
                 <%= cl_image_tag current_user.counselor.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
                 <% end %>
@@ -63,7 +65,9 @@
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
+                  <%= link_to student_path(@student) do %>
                     <h3 class="m-t-0 m-b-5"> <strong><%= @student.name %></strong></h3>
+                  <% end %>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
                     <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
                     <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
