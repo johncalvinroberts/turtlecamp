@@ -1,7 +1,7 @@
 .banner-paper {
   height: 100vh;
   background-repeat: repeat;
-  background-image: url('checkpaper-blue35.png');
+  background-image: image-url('checkpaper-blue35.png');
   padding: 50px;
   display: flex;
   align-items: center;
@@ -100,13 +100,13 @@
 }
 
 #banner-1 {
-  background-image: url('grass_students.jpeg');
+  background-image: image-url('grass_students.jpeg');
 }
 #solid-banner {
   background-color: #F95959;
 }
 #banner-3 {
-  background-image: url('counselor_discussion.jpeg');
+  background-image: image-url('counselor_discussion.jpeg');
 }
 
 
