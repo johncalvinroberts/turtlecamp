@@ -89,11 +89,42 @@
   height: 38px;
   border: solid 1px #d3d5dc;
   margin-top: 5px;
-  padding: 7px 12px
+  padding: 7px 12px;
 }
+
+.btn-submit-padding{
+  padding-top: 20px;
+}
+
+.form-input-box-app {
+  width: 50%;
+  border-radius: 5px;
+  height: 38px;
+  border: solid 1px #d3d5dc;
+  margin-top: 5px;
+  text-align: center;
+  padding-left: 50px
+}
+
+.container-header-content{
+  width: 450px
+
+}
+
 
 .form-input-box:hover {
   border: solid 1px #4EDE7B
+}
+
+.colleges-box {
+  width: 100%;
+  border-radius: 5px;
+  height: 80px;
+  border: solid 1px #d3d5dc;
+  margin-top: 5px;
+  padding: 7px 12px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 
@@ -105,7 +136,8 @@
 
 .form-groups-font-light{
   margin-bottom: 10px;
-  font-weight: light
+  font-weight: light;
+  text-align: center
 
 }
 
@@ -168,7 +200,7 @@
 
 
 .new-app-form-container{
-  width: 190px;
+  width: 0px auto;
   padding: 0px;
   margin: 0px auto;
 }
