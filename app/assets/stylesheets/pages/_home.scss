@@ -4,8 +4,11 @@
   background-image: image-url('checkpaper-blue35.png');
   padding: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: right;
+  justify-content: space-around;
+  flex-direction: row;
+  z-index: 0;
+  position: relative;
   h4 {
   line-height: 32px;
   }
@@ -17,7 +20,21 @@
   padding: 50px;
   display: flex;
   align-items: center;
+  h4 {
+  line-height: 32px;
+  }
+}
+
+.banner-red {
+  height: 100vh;
+  background-color: #F95959;
+  background-size: cover !important;
+  padding: 50px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  z-index: 0;
+  position: relative;
   h4 {
   line-height: 32px;
   }
@@ -26,12 +43,13 @@
 .banner-content {
   color: white;
   text-align: center;
-  h2 {
-  font-size: 40px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  margin: 10px 10px;
+  h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 50px;
   color: #020621;
-  margin: 10px 250px;
+  margin: 0px;
   }
   p {
     font-size: 20px;
@@ -40,12 +58,44 @@
     margin: 20px 250px;
   }
 }
+
+.banner-content-red {
+  text-align: center;
+  margin: 10px 10px;
+  display: flex;
+  align-items: right;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 0 20px;
+}
+
+.content-left {
+  color: black;
+  text-align: left;
+  margin: 10px 10px;
+}
+.content-center {
+  color: black;
+  text-align: center;
+  margin: 10px 10px;
+}
+.content-right {
+  color: black;
+  text-align: right;
+  margin: 10px 10px;
+}
+
 .wrapper-white {
   background-color: white;
   padding: 90px 200px;
 }
 .container-demo-title {
   text-align: center;
+  h1 {
+    color: #F95959;
+    font-weight: 600;
+    font-size: 42px;
+  }
 }
 .container-demo {
   display: flex;
@@ -90,7 +140,6 @@
   text-align: left;
 }
 
-
 .container-demo-form ul, .container-demo-form ol {
     margin-top: 0;
     margin-bottom: -5px;
@@ -98,17 +147,28 @@
       text-decoration: none;
     }
 }
+#icon-size {
+  width: 790px;
+}
+#logo-outline {
+  padding: 0 20px;
+}
+
+#position-bottom {
+  align-self: flex-end;
+}
+
+#call-to-action-btn {
+  margin: -10px 0px 0px 0px;
+}
 
 #banner-1 {
-  background-image: image-url('grass_students.jpeg');
+  background-image: linear-gradient(90deg, rgb(255, 255, 255) 40%, rgba(255, 255, 255, 0) 80%), url('broken-pencils.svg');
 }
-#solid-banner {
-  background-color: #F95959;
-}
+
 #banner-3 {
   background-image: image-url('counselor_discussion.jpeg');
 }
-
 
 // this is for the sticky footer //
 .site {
