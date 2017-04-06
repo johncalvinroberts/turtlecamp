@@ -5,15 +5,7 @@
   newTask.slideDown();
 
 
- $('#new_task').html("j <div class='inbox-item'><%= f.text_area :name, placeholder: 'Describe a task', class:'form-control' %></div><div class='inbox-item'><p>Set a duedate for the task</p> <%= f.date_field :due_date, class: 'form-control', id: 'datepicker-inline', required: true %></div>"+
-              "<div class='inbox-item'></div>"+
-              "<div class='inbox-item'><label class='btn btn-transparent'>"+
-                  "<i class='fa fa-paperclip icon'></i>"+
-                  "<span style='display:none;'>"+
-                  "<%= f.file_field :document %>"+
-                  "</span>"+
-                "</label>"+
-                "<%= f.hidden_field :document_cache %></div><div class='inbox-item'><%= f.submit class: 'btn btn-rec-green-sm' %> </div><% end %>")
+ $('#new_task').html("<%= j render 'shared/add_task_form'")
 
 
 
