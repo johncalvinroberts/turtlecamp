@@ -9,48 +9,35 @@
 <% else %>
 
 <div class="banner-cover" id="banner-1">
-  <div class="banner-content">
-    <h2>You do the college counseling, and we'll take care of the paperwork</h2>
-    <h4>Use TurtleCamp to track deadlines and documents, communicate with students and parents and better manage the college application process</h4>
+  <div class="banner-content content-left">
+    <h1>Do the college<br>counseling, we take care <br>of the paperwork.</h1>
+    <h4>Use TurtleCamp to track deadlines and documents,<br>communicate with students and parents,<br>and better manage the college application process.</h4>
     <br>
-    <%= link_to "SIGN UP", new_user_registration_path, class:"btn btn-rec-green" %>
+    <%= link_to "SIGN UP", new_user_registration_path, class:"btn btn-rec-green", id:"call-to-action-btn"%>
   </div>
 </div>
 
 <div class="banner-paper">
-  <div class="banner-content">
-    <h2>Motivate your students to achieve their goals</h2>
-    <h4>Our detailed progress bars keep students aware of their tasks, and motivated to meet their deadlines</h4>
+  <div class="banner-content content-center">
+    <div>
+      <h1>Motivate your students to achieve their goals.</h1>
+      <h4>Our detailed progress bars keep students aware of their tasks,<br>and motivated to meet their deadlines.</h4>
+    </div>
+    <div id="position-bottom" class="hidden-xs">
+      <%= image_tag "studentpage_screen.png" %>
+    </div>
   </div>
 </div>
 
-<div class="banner-cover" id="banner-3">
-  <div class="banner-content">
-    <h2>Keep parents and students in the know</h2>
-    <h4>Improve communication and transparency through our easy-to-read dashboards and message center</h4>
-  </div>
-</div>
-
-<div class="banner-cover" id="solid-banner">
-  <div class="banner-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <%= image_tag "icon-outline-white1.png" %>
-        </div>
-        <div class="col-xs-12 col-md-6">
-          <%= image_tag "icon-outline-white2.png" %>
-        </div>
-        <div class="col-xs-12 col-md-6">
-          <%= image_tag "icon-outline-white3.png" %>
-        </div>
-        <div class="col-xs-12 col-md-6">
-          <div class="content-feature-one">
-            <h2>One place, instead of all over the place</h2>
-            <h4>Centralize all of your tasks, deadlines and documents, so you and your clients are always on the same page</h4>
-          </div>
-        </div>
-      </div>
+<div class="banner-red">
+  <div class="banner-content-red">
+    <div id="logo-outline" class="hidden-xs">
+      <%= image_tag "icon-outline-complete.svg", id:"icon-size" %>
+    </div>
+    <div class="banner-content content-right">
+      <h1>One place,<br>instead of all<br>over the place.</h1>
+      <h4>Centralize all of your tasks, deadlines<br>and documents, so you and your clients<br>are always on the same page.</h4>
+      <br>
     </div>
   </div>
 </div>
@@ -65,20 +52,15 @@
     </div>
 
     <div class="container-demo-form">
-
       <%= simple_form_for(@booking) do |f| %>
       <%= f.input :name %>
       <%= f.input :email %>
       <%= f.input :phone %>
-
       <%= f.button :submit, class: "btn-rec-out-black btn-block"%>
       <% end %>
     </div>
   </div>
-
 </div>
-
-
 <% end %>
 
 
