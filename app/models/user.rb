@@ -104,6 +104,9 @@ class User < ApplicationRecord
     self.tasks.where(status: "pending").count
   end
 
+  def pending_tasks_objects
+    self.tasks.where(status: "pending")
+  end
   def finished_tasks
     self.tasks.where(status: "approved").count
   end
@@ -116,11 +119,20 @@ class User < ApplicationRecord
     final_array = []
     today = Date.today.strftime("%Y-%m-%d")
     self.college_apps.each do |app|
-        final_array << [College.find(app.college_id).name, today, app.deadline&.strftime("%Y-%m-%d")]
+        final_array << [College.find(app.college_id).name, today, app.try(:deadline).try(:strftime, "%Y-%m-%d")]
     end
     return final_array
   end
 
+  # def college_timings_line_chart
+  #   self.colege_apps.map do |app|
+  #     {name: app.college.name, data: app.tasks}
+  #   end
+  # end
+
 end
+
+
+
 
 

@@ -4,6 +4,8 @@ class CollegeApp < ApplicationRecord
   belongs_to :college
   validates :college_id, uniqueness: {scope: :user_id, message: "One college at a time"}
   after_create :seed_tasks
+  include PublicActivity::Model
+  tracked
 
   def tasks_by_status_count
     all_tasks = self.tasks.group(:status).count
@@ -23,7 +25,7 @@ class CollegeApp < ApplicationRecord
     if total == self.incomplete_tasks
       return 0
     else
-      percentage = 100 * (tasks.where(status: "approved").count.to_f / (tasks.count)).to_d.truncate(2).to_f
+      percentage = 100 * (tasks.where(status: "approved").count.to_f / (tasks.count)).to_d.truncate(2)
     end
   end
 
@@ -37,16 +39,20 @@ class CollegeApp < ApplicationRecord
     today = ["Today", Date.today.strftime("%Y-%m-%d"), Date.today.strftime("%Y-%m-%d")]
     final_array << today
     self.tasks.each do |task|
-      final_array << [task.name, task.due_date&.strftime("%Y-%m-%d"), task.due_date&.strftime("%Y-%m-%d")]
+      final_array << [task.name, task.due_date.try(:strftime, "%Y-%m-%d"), task.due_date.try(:strftime, "%Y-%m-%d")]
     end
 
-    final_array << ["Deadline", self.deadline&.strftime("%Y-%m-%d"), self.deadline&.strftime("%Y-%m-%d")]
+    final_array << ["Deadline", self.deadline.try(:strftime, "%Y-%m-%d"), self.deadline.try(:strftime, "%Y-%m-%d")]
     final_array.delete_at(-2)
     return final_array
   end
 
   def tasks_chronological
     self.tasks.order(:due_date)
+  end
+
+  def task_duedates
+    self.tasks.map{ |task| task.due_date }
   end
 
 end

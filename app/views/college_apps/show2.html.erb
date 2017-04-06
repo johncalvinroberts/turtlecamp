@@ -12,11 +12,11 @@
       <div class="col-lg-8">
         <div class="card-box">
           <div>
-          <div class="college-category"><%= @college_app.category %> SCHOOL</div>
+          <div class="college-category"><%= @college_app.category.upcase %> SCHOOL</div>
           <ul class="list-inline">
             <li><h1><strong><%= @college_app.college.name %></strong></h1></li>
             <li><p><%= @college_app.college.address %></p></li>
-            <li><p><%= @college_app.college.website %></p></li>
+            <li><p class="college-website-link"> <a href="<%= @college_app.college.website %>"></a></p></li>
           </ul>
           <ul class="list-inline app-header">
             <li><h4><strong>Application Deadline:</strong></h4></li>
@@ -37,19 +37,27 @@
           <div class="top-margined">
           Application timeline
           </div>
-        <div class="header-title m-t-0 m-b-30">
-        <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", adapter:'google' %>
+        <div class="chart-container">
+          <div class="header-title m-t-0 m-b-30">
+            <div class="chart-container-inside">
+              <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due" %>
+            </div>
+          <div class="tasks-due">Number of Tasks</div>
+          <div class="due-date">Due Date</div>
+          </div>
         </div>
         </div>
       </div>
       <!-- morris donut right here -->
-    <div class="col-lg-3 col-md-3 col-sm-12">
+    <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="card-box widget-user">
 
               <!-- Avater -->
               <div class="avatar-container">
                 <% if user_signed_in? && current_user.is_counselor  %>
+                  <%= link_to student_path(@student) do %>
                 <%= cl_image_tag @student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"fill", :radius=>"max" %>
+                  <% end %>
                 <% else %>
                 <%= cl_image_tag current_user.counselor.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
                 <% end %>
@@ -57,13 +65,23 @@
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
-                    <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
+                  <%= link_to student_path(@student) do %>
+                    <h3 class="m-t-0 m-b-5"> <strong><%= @student.name %></strong></h3>
+                  <% end %>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
-                    <small class="text-custom">Enrollment Year: <%= @student.app_year %></small>
+                    <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
+                    <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
+                    <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
+                    <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
                 <% else %>
-                    <h4 class="header-title m-t-0">Your Counselor:</h4>
+                    <h3 class="header-title m-t-0">Your Counselor:</h3>
                      <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
-                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
+                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p><br>
+                    <h3 class="header-title m-t-0">Your Information:</h3>
+                    <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
+                    <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
+                    <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
+                    <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
               <!-- Need to seed data -->
                 <% end %>
                 </div>
@@ -100,30 +118,10 @@
         <!-- add a task card -->
           <h4 class="header-title m-t-0 m-b-30">Add a task</h4>
 
-          <div class="inbox-widget nicescroll" >
-              <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
-              <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post, remote: true) do |f| %>
-              <div class="inbox-item">
-              <%= f.text_area :name, placeholder: "Describe a task", class:"form-control" %>
-              </div>
-              <div class="inbox-item">
-              <p>Set a duedate for the task</p> <%= f.date_field :due_date, class: "form-control", id: "datepicker-inline", required: true %>
-              </div>
-              <div class="inbox-item">
-              </div>
-              <div class="inbox-item">
-                <label class="btn btn-transparent">
-                  <i class="fa fa-paperclip icon"></i>
-                  <span style="display:none;">
-                  <%= f.file_field :document %>
-                  </span>
-                </label>
-                    <%= f.hidden_field :document_cache %>
-              </div>
-              <div class="inbox-item">
-              <%= f.submit class: "btn btn-rec-green-sm" %>
-              </div>
-            <% end %>
+          <div class="inbox-widget nicescroll">
+            <div id="new_task">
+            <%= render 'shared/add_task_form' %>
+            </div>
           </div>
         </div>
       </div><!-- end col -->
@@ -162,12 +160,12 @@
 
                   <% elsif task.status =="not done" && current_user.is_counselor %>
                   <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
-                    <%= button_to "Not started", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
+                    <%= button_to "Not Done", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
 
                   <% elsif task.status =="not done" && !current_user.is_counselor %>
                   <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
-                    <%= button_to "Not started", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
+                    <%= button_to "Not Done", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
                   <% end %>
                 <!-- Upload an attachment to an existing task -->

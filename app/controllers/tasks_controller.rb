@@ -15,14 +15,17 @@ class TasksController < ApplicationController
     if @task.save && current_user.is_counselor
       respond_to do |format|
         format.html {redirect_to student_college_app_path(@student, @college_app)}
-        format.js
+        # format.js
       end
-    elsif @college_app.save && !current_user.is_counselor
-      redirect_to college_app_path(@college_app)
+    elsif @task.save && !current_user.is_counselor
+      respond_to do |format|
+      format.html {redirect_to college_app_path(@college_app)}
+      # format.js
+      end
     else
       respond_to do |format|
         format.html {render :new}
-        format.js
+        # format.js
       end
     end
   end

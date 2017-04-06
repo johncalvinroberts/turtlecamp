@@ -69,3 +69,43 @@
 .college-category{
   float: right;
 }
+
+.college-website-link a{
+  text-decoration:none;
+  color: #797979;
+}
+
+.tasks-due{
+  font-weight: lighter;
+  font-size:14px;
+}
+
+.tasks-due{
+  font-weight: lighter;
+  font-size:14px;
+  position:absolute;
+  transform: rotate(-90deg);
+  top: 129px;
+  left: -36px;
+}
+
+.due-date{
+  font-weight: lighter;
+  font-size:14px;
+  position:absolute;
+  right: 45%;
+  bottom: -10px;
+}
+
+.chart-container{
+  position: relative;
+}
+
+.chart-container-inside{
+}
+.chart-container>tspan{
+  display:none;
+}
+.highcharts-yaxis-labels{
+  display:none;
+}

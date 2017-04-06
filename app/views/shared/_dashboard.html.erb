@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="card-box widget-user">
 
               <!-- Avater -->
@@ -66,13 +66,21 @@
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
-                    <h4 class="m-t-0 m-b-5"><%= @student.name %></h4>
+                    <h3 class="m-t-0 m-b-5"> <strong><%= @student.name %></strong></h3>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
-                    <small class="text-custom">Enrollment Year: <%= @student.app_year %></small>
+                    <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
+                    <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
+                    <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
+                    <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
                 <% else %>
-                    <h4 class="header-title m-t-0">Your Counselor:</h4>
+                    <h3 class="header-title m-t-0">Your Counselor:</h3>
                      <h4 class="m-t-0 m-b-5"><%= @student.counselor.name %></h4>
-                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p>
+                    <p class="text-muted m-b-5 font-13"><%= @student.counselor.email %></p><br>
+                    <h3 class="header-title m-t-0">Your Information:</h3>
+                    <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
+                    <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
+                    <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
+                    <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
               <!-- Need to seed data -->
                 <% end %>
                 </div>
@@ -80,7 +88,7 @@
           </div>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="card-box widget-user text-center">
             <div>
               <h4 class="header-title m-t-0">Next assignment</h4>
@@ -117,12 +125,13 @@
         <div class="card-box">
           <h4 class="header-title m-t-0 m-b-30">Application Timelines</h4>
           <div>
-            <%= timeline @student.college_timings, adapter: "google", label:"Time remaining" %>
+            <%= line_chart @student.college_apps.map{ |app| {name: app.college.name, data: app.tasks.group_by_day(:due_date).count}}, colors:[ "#fe6271", "#FC6F7D", "#FB8792"] %>
+            <%#= timeline @student.college_timings, adapter: "google", label:"Time remaining" %>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="card-box">
            <h4 class="header-title m-t-0">Tasks</h4>
 

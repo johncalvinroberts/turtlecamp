@@ -19,6 +19,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'chartkick', '~> 2.2.3'
 gem 'groupdate', '~>2.1.0'
+gem 'public_activity'
 
 gem 'cloudinary'
 
@@ -31,6 +32,10 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
 
 

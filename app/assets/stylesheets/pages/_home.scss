@@ -1,7 +1,7 @@
 .banner-paper {
   height: 100vh;
   background-repeat: repeat;
-  background-image: url('checkpaper-blue35.png');
+  background-image: image-url('checkpaper-blue35.png');
   padding: 50px;
   display: flex;
   align-items: right;
@@ -85,11 +85,6 @@
   margin: 10px 10px;
 }
 
-
-
-
-
-
 .wrapper-white {
   background-color: white;
   padding: 90px 200px;
@@ -141,10 +136,6 @@
   }
 }
 
-
-
-
-
 .content-feature-one {
   text-align: left;
 }
@@ -156,7 +147,6 @@
       text-decoration: none;
     }
 }
-
 #icon-size {
   width: 790px;
 }
@@ -177,7 +167,7 @@
 }
 
 #banner-3 {
-  background-image: url('counselor_discussion.jpeg');
+  background-image: image-url('counselor_discussion.jpeg');
 }
 
 // this is for the sticky footer //
