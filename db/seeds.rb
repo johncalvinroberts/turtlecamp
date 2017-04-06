@@ -55,7 +55,7 @@ students = %w[Eunice Joyce Andrew Kevin David Joy Jazz Bernard Grace Bob Jason B
               Candy Sherry Lisa]
 
 students.each do |student|
-User.create(name: "#{student}",
+User.find_or_create_by(name: "#{student}"){|c| c.assign_attributes({
             is_counselor: false,
             email: "#{student}@test.com",
             password: "password",
@@ -65,8 +65,10 @@ User.create(name: "#{student}",
               "Beijing #4 High School"].sample,
             app_year: ["2016-2017", "2017-2018", "2018-2019"].sample,
             satm: [1880,1970,2000,2050,2070,2200, 2220,2280,2370].sample,
-            toeflr: rand(99..119))
+            toeflr: rand(99..119),
+            photo: "turtle.png"})}.save
 end
+
 
 50.times do |n|
   CollegeApp.create(category: ["Reach", "Target", "Safety"].sample,
