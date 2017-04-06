@@ -1,3 +1,19 @@
+.btn-rec-out-green {
+  border: 1px #35DA69 solid;
+  border-radius: 5px;
+  color: #35DA69;
+  padding: 12px 20px;
+  background-color: transparent;
+  margin: 15px;
+  opacity: 0.78;
+  transition: background 0.3s ease;
+  font-weight: normal;
+}
+.btn-rec-out-green:hover {
+  color: #35DA69;
+  opacity: 1;
+}
+
 .btn-rd-danger {
   border: 2px;
   border-color: white;
@@ -42,9 +58,6 @@
 .btn-rec-danger-sm:hover {
   opacity: 1;
 }
-
-
-
 
 .btn-rd-danger-small:hover{
   opacity:1;
