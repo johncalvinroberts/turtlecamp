@@ -125,7 +125,8 @@
         <div class="card-box">
           <h4 class="header-title m-t-0 m-b-30">Application Timelines</h4>
           <div>
-            <%= timeline @student.college_timings, adapter: "google", label:"Time remaining" %>
+            <%= line_chart @student.college_apps.map{ |app| {name: app.college.name, data: app.tasks.group_by_day(:due_date).count}}, colors:[ "#fe6271", "#FC6F7D", "#FB8792"] %>
+            <%#= timeline @student.college_timings, adapter: "google", label:"Time remaining" %>
           </div>
         </div>
       </div>

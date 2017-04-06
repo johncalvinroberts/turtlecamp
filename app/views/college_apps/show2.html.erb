@@ -12,11 +12,11 @@
       <div class="col-lg-8">
         <div class="card-box">
           <div>
-          <div class="college-category"><%= @college_app.category %> SCHOOL</div>
+          <div class="college-category"><%= @college_app.category.upcase %> SCHOOL</div>
           <ul class="list-inline">
             <li><h1><strong><%= @college_app.college.name %></strong></h1></li>
             <li><p><%= @college_app.college.address %></p></li>
-            <li><p class="college-website-link"><%= link_to "#{@college_app.college.website}", @college_app.college.website %></p></li>
+            <li><p class="college-website-link"> <a href="<%= @college_app.college.website %>"></a></p></li>
           </ul>
           <ul class="list-inline app-header">
             <li><h4><strong>Application Deadline:</strong></h4></li>
@@ -39,9 +39,11 @@
           </div>
         <div class="chart-container">
           <div class="header-title m-t-0 m-b-30">
-          <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due", adapter:'google' %>
-          <div class="tasks-due">number of tasks</div>
-          <div class="due-date">due date</div>
+            <div class="chart-container-inside">
+              <%= line_chart @college_app.tasks.group_by_day(:due_date).count,label: "Tasks due" %>
+            </div>
+          <div class="tasks-due">Number of Tasks</div>
+          <div class="due-date">Due Date</div>
           </div>
         </div>
         </div>
@@ -154,12 +156,12 @@
 
                   <% elsif task.status =="not done" && current_user.is_counselor %>
                   <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
-                    <%= button_to "Not started", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
+                    <%= button_to "Not Done", approve_student_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
 
                   <% elsif task.status =="not done" && !current_user.is_counselor %>
                   <td class="text-center"><div id="task<%=task.id -%>" class="text-center">
-                    <%= button_to "Not started", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
+                    <%= button_to "Not Done", pending_college_app_task_path(student_id: @student.id, college_app_id: @college_app.id, id: task.id), class:"btn btn-rec-danger-sm", remote: true%>
                   </div></td>
                   <% end %>
                 <!-- Upload an attachment to an existing task -->
