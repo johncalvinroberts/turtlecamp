@@ -39,10 +39,10 @@ class CollegeApp < ApplicationRecord
     today = ["Today", Date.today.strftime("%Y-%m-%d"), Date.today.strftime("%Y-%m-%d")]
     final_array << today
     self.tasks.each do |task|
-      final_array << [task.name, task.due_date&.strftime("%Y-%m-%d"), task.due_date&.strftime("%Y-%m-%d")]
+      final_array << [task.name, task.due_date.try(:strftime, "%Y-%m-%d"), task.due_date.try(:strftime, "%Y-%m-%d")]
     end
 
-    final_array << ["Deadline", self.deadline&.strftime("%Y-%m-%d"), self.deadline&.strftime("%Y-%m-%d")]
+    final_array << ["Deadline", self.deadline.try(:strftime, "%Y-%m-%d"), self.deadline.try(:strftime, "%Y-%m-%d")]
     final_array.delete_at(-2)
     return final_array
   end
