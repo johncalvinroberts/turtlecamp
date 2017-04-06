@@ -4,6 +4,8 @@ class CollegeApp < ApplicationRecord
   belongs_to :college
   validates :college_id, uniqueness: {scope: :user_id, message: "One college at a time"}
   after_create :seed_tasks
+  include PublicActivity::Model
+  tracked
 
   def tasks_by_status_count
     all_tasks = self.tasks.group(:status).count
