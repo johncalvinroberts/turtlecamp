@@ -104,6 +104,9 @@ class User < ApplicationRecord
     self.tasks.where(status: "pending").count
   end
 
+  def pending_tasks_objects
+    self.tasks.where(status: "pending")
+  end
   def finished_tasks
     self.tasks.where(status: "approved").count
   end
@@ -120,6 +123,12 @@ class User < ApplicationRecord
     end
     return final_array
   end
+
+  # def college_timings_line_chart
+  #   self.colege_apps.map do |app|
+  #     {name: app.college.name, data: app.tasks}
+  #   end
+  # end
 
 end
 

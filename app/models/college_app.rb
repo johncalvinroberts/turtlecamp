@@ -25,7 +25,7 @@ class CollegeApp < ApplicationRecord
     if total == self.incomplete_tasks
       return 0
     else
-      percentage = 100 * (tasks.where(status: "approved").count.to_f / (tasks.count)).to_d.truncate(2).to_f
+      percentage = 100 * (tasks.where(status: "approved").count.to_f / (tasks.count)).to_d.truncate(2)
     end
   end
 
@@ -49,6 +49,10 @@ class CollegeApp < ApplicationRecord
 
   def tasks_chronological
     self.tasks.order(:due_date)
+  end
+
+  def task_duedates
+    self.tasks.map{ |task| task.due_date }
   end
 
 end
