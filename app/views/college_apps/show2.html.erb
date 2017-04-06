@@ -108,7 +108,7 @@
         <!-- add a task card -->
           <h4 class="header-title m-t-0 m-b-30">Add a task</h4>
 
-          <div class="inbox-widget nicescroll" >
+          <div class="inbox-widget nicescroll">
               <% apps_path = current_user.is_counselor ? student_college_app_tasks_path(college_app_id: @college_app.id) : college_app_tasks_path(college_app_id: @college_app.id) %>
               <%= form_for([@college_app, @new_task], url:"#{apps_path}", method: :post, remote: true) do |f| %>
               <div class="inbox-item">
