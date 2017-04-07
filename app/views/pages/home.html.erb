@@ -51,12 +51,16 @@
       <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, we’d love to set up an online demo at a time convenient for you.</h4>
     </div>
 
+    <div id="conf_msg">
+
+    </div>
+
     <div class="container-demo-form">
       <%= simple_form_for(@booking) do |f| %>
       <%= f.input :name %>
       <%= f.input :email %>
       <%= f.input :phone %>
-      <%= f.button :submit, class: "btn-rec-out-black btn-block"%>
+      <%= f.button :submit, class: "btn-rec-out-black btn-block", id:"create_booking"%>
       <% end %>
     </div>
   </div>
