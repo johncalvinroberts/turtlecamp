@@ -7,40 +7,40 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # College.destroy_all
 
-College.find_or_create_by(name:"Amherst College"){|c| c.assign_attributes({address:"Amherst, MA", emblem: "Amherst_College.png", website: "www.amherst.edu"})}.save
-College.find_or_create_by(name:"Yale University"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Yale_University.png", website: "www.yale.edu"})}.save
-College.find_or_create_by(name:"Williams College"){|c| c.assign_attributes({address:"Williamstown, MA", emblem: "Williams_College.png", website: "www.williams.edu"})}.save
-College.find_or_create_by(name:"Middlebury College"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Middlebury_College.png", website: "www.middlebury.edu"})}.save
-College.find_or_create_by(name:"Bowdoin College"){|c| c.assign_attributes({address:"Brunswick, ME", emblem: "Bowdoin_College.png", website: "www.bowdoin.edu"})}.save
-College.find_or_create_by(name:"CalTech"){|c| c.assign_attributes({address:"Pasadena, CA", emblem: "California_Institute_of_Technology.png", website: "www.caltech.edu"})}.save
-College.find_or_create_by(name:"Carleton College"){|c| c.assign_attributes({address:"Northfield, MN", emblem: "Carleton_College.png", website: "www.carleton.edu"})}.save
-College.find_or_create_by(name:"Claremont McKenna College"){|c| c.assign_attributes({address:"Claremont, CA", emblem: "Claremont_McKenna_College.png", website: "www.cmc.edu"})}.save
-College.find_or_create_by(name:"Duke University"){|c| c.assign_attributes({address:"Raleigh, NC", emblem: "Duke_University.png", website: "www.duke.edu"})}.save
-College.find_or_create_by(name:"Massachusetts Institute of Technology"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Massachusetts_Institute_of_Technology.png", website: "www.mit.edu"})}.save
+College.find_or_create_by(name:"Amherst College"){|c| c.assign_attributes({address:"Amherst, MA", emblem: "Amherst_College.png", website: "http://www.amherst.edu"})}.save
+College.find_or_create_by(name:"Yale University"){|c| c.assign_attributes({address:"New Haven, CT", emblem: "Yale_University.png", website: "http://www.yale.edu"})}.save
+College.find_or_create_by(name:"Williams College"){|c| c.assign_attributes({address:"Williamstown, MA", emblem: "Williams_College.png", website: "http://www.williams.edu"})}.save
+College.find_or_create_by(name:"Middlebury College"){|c| c.assign_attributes({address:"14 Old Chapel Rd, Middlebury, VT", emblem: "Middlebury_College.png", website: "http://www.middlebury.edu"})}.save
+College.find_or_create_by(name:"Bowdoin College"){|c| c.assign_attributes({address:"Brunswick, ME", emblem: "Bowdoin_College.png", website: "http://www.bowdoin.edu"})}.save
+College.find_or_create_by(name:"CalTech"){|c| c.assign_attributes({address:"Pasadena, CA", emblem: "California_Institute_of_Technology.png", website: "http://www.caltech.edu"})}.save
+College.find_or_create_by(name:"Carleton College"){|c| c.assign_attributes({address:"Northfield, MN", emblem: "Carleton_College.png", website: "http://www.carleton.edu"})}.save
+College.find_or_create_by(name:"Claremont McKenna College"){|c| c.assign_attributes({address:"Claremont, CA", emblem: "Claremont_McKenna_College.png", website: "http://www.cmc.edu"})}.save
+College.find_or_create_by(name:"Duke University"){|c| c.assign_attributes({address:"Raleigh, NC", emblem: "Duke_University.png", website: "http://www.duke.edu"})}.save
+College.find_or_create_by(name:"Massachusetts Institute of Technology"){|c| c.assign_attributes({address:"Cambridge, MA", emblem: "Massachusetts_Institute_of_Technology.png", website: "http://www.mit.edu"})}.save
 College.find_or_create_by(name:"Stanford University"){|c| c.assign_attributes({
                             address:"Palo Alto, CA",
                             emblem: "Stanford_University.png",
-                            website: "www.stanford.edu"})}.save
+                            website: "http://www.stanford.edu"})}.save
 College.find_or_create_by(name:"Brown University"){|c| c.assign_attributes({
                             address:"Providence, RI",
                             emblem: "Brown_University_174405.png",
-                            website: "www.brown.edu"})}.save
+                            website: "http://www.brown.edu"})}.save
 College.find_or_create_by(name:"Columbia University"){|c| c.assign_attributes({
                             address:"New York, NY",
                             emblem: "Columbia.png",
-                            website: "www.columbia.edu"})}.save
+                            website: "http://www.columbia.edu"})}.save
 College.find_or_create_by(name:"Dartmouth College"){|c| c.assign_attributes({
                             address:"Dartmouth, VT",
                             emblem: "Dartmouth.png",
-                            website: "www.dartmouth.edu"})}.save
+                            website: "http://www.dartmouth.edu"})}.save
 College.find_or_create_by(name:"Harvard University"){|c| c.assign_attributes({
                             address:"Cambridge, MA",
                             emblem: "Harvard_University_170686.png",
-                            website: "www.harvard.edu"})}.save
+                            website: "http://www.harvard.edu"})}.save
 College.find_or_create_by(name:"Johns Hopkins"){|c| c.assign_attributes({
                             address:"Baltimore, MD",
                             emblem: "JHU.png",
-                            website: "www.jhu.edu"})}.save
+                            website: "http://www.jhu.edu"})}.save
 
 counselors = %w[John Stephane Jason Allen]
 
