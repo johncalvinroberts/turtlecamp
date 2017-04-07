@@ -36,7 +36,18 @@
               <%= link_to app_link do %>
               <ul class="list-group m-b-0 user-list">
                 <li class="list-group-item">
-                <p class="font-600"> <%= app[:name] %> <span class="text-custom pull-right"><%= app[:percentage] %>%</span></p>
+
+                <div class="college-header-bar-outside">
+                  <div class="college-header-bar">
+                    <p class="font-600 college-header-bar-item"> <%= app[:name] %></p>
+                    <div class="college-header-bar-item"><p>|</p></div>
+                    <p><span class="tasks-pending college-header-bar-item"><%= CollegeApp.where(id: (app[:college_app_id])).first.tasks.count %> pending tasks</span></p>
+                    <div class="college-header-bar-item"><p>|</p></div>
+                    <div class="college-header-bar-item"><p><%= CollegeApp.where(id: (app[:college_app_id])).first.category %></p></div>
+
+                  </div>
+                  <p><span class="text-custom pull-right college-header-bar-item font-600"><%= app[:percentage] %>%</span></p>
+                </div>
                 <div class="progress progress-bar-custom-alt progress-sm m-b-20">
                   <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= app[:percentage] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= app[:percentage] %>%; visibility: visible; animation-name: animationProgress;">
                   </div>

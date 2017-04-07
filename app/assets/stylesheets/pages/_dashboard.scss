@@ -44,3 +44,30 @@
 #total-tasks-donut text{
   color: #505458;
 }
+
+
+.college-header-bar{
+  display:flex;
+  justify-content: flex-start;
+}
+
+.college-header-bar-outside{
+  display:flex;
+  justify-content: space-between;
+}
+
+.college-header-bar-item{
+  margin: 0px 5px;
+}
+
+.tasks-pending{
+  font-weight:400;
+  // position: absolute;
+}
+
+// .college-category{
+//   padding: 2px;
+//   border: 1px solid $black;
+//   border-radius: 2px;
+// }
+
