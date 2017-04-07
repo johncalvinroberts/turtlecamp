@@ -24,7 +24,7 @@
       <h4>Our detailed progress bars keep students aware of their tasks,<br>and motivated to meet their deadlines.</h4>
     </div>
     <div id="position-bottom" class="hidden-xs">
-      <%= image_tag "studentpage_screen.png" %>
+      <%= image_tag "studentpage_screen.png", class: "animate", id: "animationscroll"%>
     </div>
   </div>
 </div>
@@ -68,5 +68,21 @@
   </div>
 </div>
 <% end %>
+
+
+<script>
+$('#animationscroll').hide();
+  $(window).scroll(function() {
+    $('#animationscroll').each(function(){
+    var imagePos = $(this).offset().top;
+
+    var topOfWindow = $(window).scrollTop();
+      if (imagePos < topOfWindow+50) {
+        $(this).show();
+        $(this).addClass("slideUp");
+      }
+    });
+  });
+</script>
 
 
