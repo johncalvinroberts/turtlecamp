@@ -51,13 +51,8 @@
       <h4>If you’re in Shanghai or Beijing, we can schedule an in-person demo for you and your entire team. If you’re outside of these cities, don’t worry, we’d love to set up an online demo at a time convenient for you.</h4>
     </div>
 
-    <div id="conf_msg">
-      <div id="conf_msg_content">
-        <h4>Thank you<br>we'll be in touch shortly</h4>
-      </div>
-    </div>
-
     <div class="container-demo-form">
+      <h4 id="conf_msg">Thank you,<br>we'll be in touch shortly!</h4>
       <%= simple_form_for(@booking) do |f| %>
       <%= f.input :name %>
       <%= f.input :email %>
