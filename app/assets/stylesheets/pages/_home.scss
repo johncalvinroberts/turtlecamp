@@ -87,8 +87,12 @@
 
 .wrapper-white {
   background-color: white;
-  padding: 90px 200px;
+  width: auto;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
+
 .container-demo-title {
   text-align: center;
   h1 {
@@ -114,7 +118,7 @@
 }
 
 .container-demo-form {
-  min-width: 500px;
+  min-width: 350px;
   padding: 0px 20px;
   border-radius: 4px;
   margin: 10px;
