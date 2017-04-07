@@ -66,6 +66,7 @@
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
+
                     <h3 class="m-t-0 m-b-5"> <strong><%= @student.name %></strong></h3>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
                     <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
@@ -81,6 +82,7 @@
                     <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
                     <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
                     <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
+
               <!-- Need to seed data -->
                 <% end %>
                 </div>

@@ -28,7 +28,7 @@
           Application progress
             <p class="font-600"> <span class="text-custom pull-right" style="color: black"><%= @college_app.app_completion_percentage %>%</span></p>
             <div class="progress">
-              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
+              <div id="progressbar-college" class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
             </div>
           <div class="app-header">

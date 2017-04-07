@@ -533,7 +533,7 @@ a:focus {
 }
 /* Text colors */
 .text-custom {
-  color: $black !important;
+  color: #505458 !important;
 }
 .text-white {
   color: #ffffff !important;
