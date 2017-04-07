@@ -4,16 +4,17 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 ```bash
 pg_dump -d turtlecamp_development -f turtlecamp_dev_db.psql
+pg_dump -d turtlecamp_production -f turtlecamp_prod_db.psql
 ```
 
 ## Import the staging DB
 
 ```bash
-sed -i -- 's/johnroberts/guochunzhong/g' turtlecamp_dev_db.psql
+sed -i -- 's/OWNER\ TO\ turtlecamp/OWNER\ TO\ guochunzhong/g' turtlecamp_prod_db.psql
 psql -d postgres
 DROP DATABASE turtlecamp_development;
 CREATE DATABASE turtlecamp_development WITH ENCODING='UTF8' OWNER='guochunzhong';
 \q
-psql -d turtlecamp_development -f turtlecamp_dev_db.psql
+psql -d turtlecamp_development -f turtlecamp_prod_db.psql
 ```
 
