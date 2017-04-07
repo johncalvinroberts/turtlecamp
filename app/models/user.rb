@@ -100,15 +100,20 @@ class User < ApplicationRecord
 
   end
 
+  def finished_tasks
+    self.tasks.where(status: "approved").count
+  end
+
   def pending_tasks
-    self.tasks.where(status: "pending").count
+    if self.finished_tasks == self.tasks
+      return 0
+    else
+      self.tasks.where(status: "pending").count
+    end
   end
 
   def pending_tasks_objects
     self.tasks.where(status: "pending")
-  end
-  def finished_tasks
-    self.tasks.where(status: "approved").count
   end
 
   def college_emblems

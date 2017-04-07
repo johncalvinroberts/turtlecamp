@@ -49,11 +49,13 @@
 .college-header-bar{
   display:flex;
   justify-content: flex-start;
+  align-items: baseline;
 }
 
 .college-header-bar-outside{
   display:flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .college-header-bar-item{
@@ -63,6 +65,10 @@
 .tasks-pending{
   font-weight:400;
   // position: absolute;
+}
+
+.college-name-dashboard{
+  font-size: 22px !important;
 }
 
 // .college-category{

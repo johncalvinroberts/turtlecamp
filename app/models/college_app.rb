@@ -16,6 +16,10 @@ class CollegeApp < ApplicationRecord
     self.tasks.count - self.tasks.where(status:"approved").count
   end
 
+  def pending_tasks
+    self.tasks.where(status: "pending").count
+  end
+
   def seed_tasks
     self.tasks << Task.create(name: "Upload high school transcript", due_date: 1.week.from_now)
   end
