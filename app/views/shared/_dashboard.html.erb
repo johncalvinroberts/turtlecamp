@@ -34,15 +34,47 @@
               <%app_link = college_app_path(app[:college_app_id]) %>
             <% end %>
               <%= link_to app_link do %>
-              <ul class="list-group m-b-0 user-list">
-                <li class="list-group-item">
-                <p class="font-600"> <%= app[:name] %> <span class="text-custom pull-right"><%= app[:percentage] %>%</span></p>
-                <div class="progress progress-bar-custom-alt progress-sm m-b-20">
-                  <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= app[:percentage] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= app[:percentage] %>%; visibility: visible; animation-name: animationProgress;">
-                  </div>
-                </div>
-              </li>
-            </ul>
+                <% if current_user.is_counselor %>
+                  <ul class="list-group m-b-0 user-list">
+                    <li class="list-group-item">
+
+                    <div class="college-header-bar-outside">
+                      <div class="college-header-bar">
+                        <p class="font-700 college-header-bar-item college-name-dashboard"> <%= app[:name] %></p>
+                        <div class="college-header-bar-item"><p>|</p></div>
+                        <p><span class="tasks-pending college-header-bar-item"><%= CollegeApp.where(id: (app[:college_app_id])).first.pending_tasks %> pending tasks</span></p>
+                        <div class="college-header-bar-item"><p>|</p></div>
+                        <div class="college-header-bar-item"><p><%= CollegeApp.where(id: (app[:college_app_id])).first.category %></p></div>
+                      </div>
+                      <p><span class="text-custom pull-right college-header-bar-item font-600"><%= app[:percentage] %>%</span></p>
+                    </div>
+                    <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+                      <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= app[:percentage] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= app[:percentage] %>%; visibility: visible; animation-name: animationProgress;">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              <% else %>
+                <ul class="list-group m-b-0 user-list">
+                    <li class="list-group-item">
+
+                    <div class="college-header-bar-outside">
+                      <div class="college-header-bar">
+                        <p class="font-600 college-header-bar-item college-name-dashboard"> <%= app[:name] %></p>
+                        <div class="college-header-bar-item"><p>|</p></div>
+                        <p><span class="tasks-pending college-header-bar-item"><%= CollegeApp.where(id: (app[:college_app_id])).first.incomplete_tasks %> open tasks</span></p>
+                        <div class="college-header-bar-item"><p>|</p></div>
+                        <div class="college-header-bar-item"><p><%= CollegeApp.where(id: (app[:college_app_id])).first.category %></p></div>
+                      </div>
+                      <p><span class="text-custom pull-right college-header-bar-item font-600"><%= app[:percentage] %>%</span></p>
+                    </div>
+                    <div class="progress progress-bar-custom-alt progress-sm m-b-20">
+                      <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= app[:percentage] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= app[:percentage] %>%; visibility: visible; animation-name: animationProgress;">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
             <% end %>
             </div>
           <% end %>
@@ -66,6 +98,7 @@
               <!-- Counsler or Student information -->
                 <div class="wid-u-info">
                 <% if user_signed_in? && current_user.is_counselor  %>
+
                     <h3 class="m-t-0 m-b-5"> <strong><%= @student.name %></strong></h3>
                     <p class="text-muted m-b-5 font-13"><%= @student.email %></p>
                     <small class="text-custom"><strong>Enrollment Year:</strong> <%= @student.app_year %></small><br>
@@ -81,6 +114,7 @@
                     <small class="text-custom"><strong>High School:</strong> <%= @student.current_school %></small><br>
                     <small class="text-custom"><strong>SAT Score:</strong> <%= @student.satm %></small><br>
                     <small class="text-custom"><strong>TOEFL Score:</strong> <%= @student.toeflr %></small><br>
+
               <!-- Need to seed data -->
                 <% end %>
                 </div>
@@ -91,7 +125,7 @@
       <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="card-box widget-user text-center">
             <div>
-              <h4 class="header-title m-t-0">Next assignment</h4>
+              <h4 class="header-title m-t-0">Next task</h4>
 
               <% if current_user.is_counselor %>
               <ul class="list-group m-b-0 user-list">
@@ -99,7 +133,7 @@
               <%= link_to student_college_app_path(@student, @student.tasks.first&.college_app_id) do %>
                   <div class="user-list-item">
                   <%= @student.tasks.first&.name %>
-                  <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
+                  <p><small>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></small></p>
                   <% end %>
                 </div>
                 </li>
@@ -110,7 +144,7 @@
               <%= link_to college_app_path(@student.tasks.first&.college_app_id) do %>
                   <div class="user-list-item">
                   <%= @student.tasks.first&.name %>
-                  <p>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></p>
+                  <p><small>Due on <%= @student.tasks.first&.due_date.strftime("%Y-%m-%d") %></small></p>
                   <% end %>
                 </div>
                 </li>

@@ -12,7 +12,7 @@
       <div class="col-lg-8">
         <div class="card-box">
           <div>
-          <div class="college-category"><%= @college_app.category.upcase %> SCHOOL</div>
+          <div class="college-category"><%= @college_app.category.upcase %></div>
           <ul class="list-inline">
             <li><h1><strong><%= @college_app.college.name %></strong></h1></li>
             <li><p><%= @college_app.college.address %></p></li>
@@ -25,17 +25,18 @@
           </ul>
           </div>
           <div>
-          Application progress
-            <p class="font-600"> <span class="text-custom pull-right" style="color: black"><%= @college_app.app_completion_percentage %>%</span></p>
+            <p class="font-600"> Application progress <span class="text-custom pull-right" style="color: black"><%= @college_app.app_completion_percentage %>%</span></p>
             <div class="progress">
-              <div class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
+              <div id="progressbar-college" class="progress-bar progress-bar-custom progress-animated wow animated animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: <%= @college_app.app_completion_percentage %>%; visibility: visible; animation-name: animationProgress;">
               </div>
             </div>
+
           <div class="app-header">
           </div>
           </div>
           <div class="top-margined">
-          Application timeline
+          <p class="font-600">Application timeline</p>
+          <p>Tasks &amp; due dates</p>
           </div>
         <div class="chart-container">
           <div class="header-title m-t-0 m-b-30">

@@ -33,7 +33,11 @@
                 <% end %>
               </div>
               <div class="card-task">
-               <p>Pending Tasks <%= student.pending_tasks %>
+<!--                 <div class="badge-container">
+                  <div class="badge badge-yellow"><%= student.pending_tasks %>
+                  </div>
+                </div> -->
+               <p><%= student.pending_tasks %> tasks pending approval
                </p>
               </div>
             </div>
