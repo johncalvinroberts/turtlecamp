@@ -91,6 +91,7 @@
   padding-top: 50px;
   padding-left: 50px;
   padding-right: 50px;
+  padding-bottom: 100px;
 }
 
 .container-demo-title {
@@ -153,7 +154,22 @@
 }
 
 #conf_msg {
-  background-color: gray;
+  background-color: white;
+  min-width: 350px;
+  padding: 127px 20px;
+  border-radius: 4px;
+  margin: 10px;
+  display: flex;
+  align-items: top;
+  flex-direction: row;
+
+}
+#conf_msg_content {
+  text-align: left;
+  h4 {
+    color: #3DDD64;
+    line-height: 32px;
+  }
 }
 
 #icon-size {
