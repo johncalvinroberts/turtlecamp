@@ -21,7 +21,7 @@
               <% if current_user.is_counselor %>
               <%= link_to "Add a school", new_student_college_app_path(@student), class: "btn btn-rec-green-sm" %>
               <% else %>
-                <%= link_to "Add a school", new_college_app_path, class: "btn btn-rec-green" %>
+                <%= link_to "Add a school", new_college_app_path, class: "btn btn-rec-green-sm" %>
               <% end %>
             </div>
           </div>
