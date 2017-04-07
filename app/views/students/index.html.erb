@@ -19,7 +19,6 @@
     <% @students.find_in_batches(batch_size: 4) do |students| %>
       <div class="row">
         <% students.each do |student| %>
-
           <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="card-student">
               <%= link_to "", student_path(student), class: "card-link"%>
@@ -27,18 +26,14 @@
                 <h3><%= "#{student.name}" %></h3>
                 <%= cl_image_tag student.photo, :gravity=>"face", :width=>50, :height=>50, :crop=>"thumb", :radius=>"max" %>
               </div>
+              <div class="card-task">
+               <p><%= student.pending_tasks %> tasks pending approval
+               </p>
+              </div>
               <div class="card-schools">
                 <% student.college_emblems.each do |emblem| %>
                   <%= image_tag emblem, class: "card-logo" %>
                 <% end %>
-              </div>
-              <div class="card-task">
-<!--                 <div class="badge-container">
-                  <div class="badge badge-yellow"><%= student.pending_tasks %>
-                  </div>
-                </div> -->
-               <p><%= student.pending_tasks %> tasks pending approval
-               </p>
               </div>
             </div>
           </div>
