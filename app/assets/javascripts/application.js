@@ -8,3 +8,11 @@
 
 
 
+$(document).ready(function() {
+  $("#conf_msg").hide();
+  $("#create_booking").on("click", function(event) {
+  event.preventDefault();
+  $("#conf_msg").show();
+  $(".container-demo-form").hide();
+})
+});
