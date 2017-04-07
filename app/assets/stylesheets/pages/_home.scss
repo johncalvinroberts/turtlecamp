@@ -120,6 +120,7 @@
 
 .container-demo-form {
   min-width: 350px;
+  height: 310px;
   padding: 0px 20px;
   border-radius: 4px;
   margin: 10px;
@@ -154,22 +155,10 @@
 }
 
 #conf_msg {
-  background-color: white;
-  min-width: 350px;
-  padding: 127px 20px;
-  border-radius: 4px;
-  margin: 10px;
-  display: flex;
-  align-items: top;
-  flex-direction: row;
-
-}
-#conf_msg_content {
   text-align: left;
-  h4 {
-    color: #3DDD64;
-    line-height: 32px;
-  }
+  color: #3DDD64;
+  line-height: 32px;
+  margin-top: 0px;
 }
 
 #icon-size {
