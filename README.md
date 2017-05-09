@@ -18,3 +18,26 @@ CREATE DATABASE turtlecamp_development WITH ENCODING='UTF8' OWNER='guochunzhong'
 psql -d turtlecamp_development -f turtlecamp_prod_db.psql
 ```
 
+## Setting up the envioroment
+
+1 - Clone the project in your machine
+```bash
+clone git@github.com:johncalvinroberts/turtlecamp.git
+```
+
+2 - Create and update the **application.yml** file
+```bash
+cd turtlecamp/config
+touch application.yml
+```
+The information of the yml file is on **trello** on the **notes board**
+
+
+3 - Installing the gems & setup of the db
+```bash
+bundle install
+rails g public_activity:migration
+rails db:create
+rails db:migrate
+rails db:seed
+```
