@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [ :new, :create]
 
   def new
     @contact = Contact.new
@@ -9,8 +9,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contacts_params)
     @contact.request = request
     if @contact.deliver!
-      flash.keep[:notice] = "Your message has been sent! Thank you!"
       redirect_to '/'
+      flash.now[:notice] = 'Thank you for your message!'
     else
       render :new
     end
