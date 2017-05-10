@@ -52,13 +52,7 @@
     </div>
 
     <div class="container-demo-form">
-      <h4 id="conf_msg">Thank you,<br>we'll be in touch shortly!</h4>
-      <%= simple_form_for(@booking) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :email %>
-      <%= f.input :phone %>
-      <%= f.button :submit, class: "btn-rec-out-black btn-block", id:"create_booking"%>
-      <% end %>
+ <%= link_to "Book today !", contacts_new_path, class:"btn btn-rec-green", id:"contact-form-btn"%>
     </div>
   </div>
 </div>

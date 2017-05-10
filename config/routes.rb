@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+
+  get 'contacts/create'
+
   resources :bookings, only: [:create]
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +12,11 @@ Rails.application.routes.draw do
   # get 'college_apps/show'
 
   root to: 'pages#home'
+
+  resources 'contacts', only: [:new, :create], path_names: { new: '' }
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # devise_for :users
 
