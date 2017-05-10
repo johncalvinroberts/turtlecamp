@@ -1,0 +1,15 @@
+<div class="wrapper-form-contacts">
+  <div class="container-form">
+    <h3>Send a message to us:</h3>
+
+    <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+      <%= f.input :name, class: "form-input-box", :required => true %>
+      <%= f.input :email, class: "form-input-box", :required => true %>
+      <%= f.input :message, :as => :text, :required => true %>
+      <div class="text-center">
+        </br>
+        <%= f.button :submit, 'Send message', :class=> "btn btn-rec-green" %>
+      </div>
+    <% end %>
+  </div>
+</div>

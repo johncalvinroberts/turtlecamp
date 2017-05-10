@@ -22,6 +22,7 @@ gem 'groupdate', '~>2.1.0'
 gem 'public_activity'
 
 gem 'cloudinary'
+gem 'mail_form'
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
+  gem 'letter_opener_web'
 end
 
 
