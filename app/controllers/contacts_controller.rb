@@ -9,8 +9,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contacts_params)
     @contact.request = request
     if @contact.deliver!
-      redirect_to '/'
-      flash.now[:notice] = 'Thank you for your message!'
+      flash[:alert] = 'Thank you for your message! We will get back to you soon.'
+      redirect_to root_path
     else
       render :new
     end
